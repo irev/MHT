@@ -1,0 +1,8 @@
+SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket, s.*, t.*, t.nama as teknisi 
+FROM `tb_pelanggan` as `p` 
+INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` 
+INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` 
+INNER JOIN `tb_paket`     as `b` ON `p`.`id_paket`=`b`.`id_paket` 
+INNER JOIN `tb_surat_jalan_teknisi`     as `s` ON `s`.`id_gangguan`=`g`.`id_gangguan` 
+INNER JOIN `tb_karyawan`     as `t` ON `t`.`id_karyawan`=`s`.`id_karyawan` 
+WHERE g.status_gangguan='0' GROUP BY p.id_pelanggan

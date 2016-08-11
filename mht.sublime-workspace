@@ -1,0 +1,1027 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"dat",
+				"date"
+			],
+			[
+				"Histor",
+				"History_Masuk"
+			],
+			[
+				"val",
+				"val	.val()"
+			],
+			[
+				"mysql_fetch_",
+				"mysql_fetch_row"
+			],
+			[
+				"ta",
+				"tarif"
+			],
+			[
+				"on",
+				"onchange	Attr"
+			],
+			[
+				"mysql",
+				"mysql_connect"
+			],
+			[
+				"Get",
+				"GetX"
+			],
+			[
+				"page",
+				"PageNo"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"opt",
+				"option	Tag"
+			],
+			[
+				"Ac",
+				"action	Attr"
+			],
+			[
+				"p",
+				"p	Tag"
+			],
+			[
+				"je",
+				"jenis_obat"
+			],
+			[
+				"na",
+				"nama_obat"
+			],
+			[
+				"join",
+				"JOIN"
+			],
+			[
+				"fuc",
+				"function"
+			],
+			[
+				"kode",
+				"kode_obat"
+			],
+			[
+				"q",
+				"qtmline"
+			],
+			[
+				"msy",
+				"mysqli_fetch"
+			],
+			[
+				"class",
+				"class	Attr"
+			],
+			[
+				"hi",
+				"height	Attr"
+			],
+			[
+				"mysql_",
+				"mysql_fetch_row"
+			],
+			[
+				"va",
+				"val	.val()"
+			],
+			[
+				"LO",
+				"login"
+			],
+			[
+				"a",
+				"auto"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"bag",
+				"background"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"i",
+				"initial"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"kr",
+				"kritis"
+			],
+			[
+				"stok",
+				"stok_tersedia"
+			],
+			[
+				"barang",
+				"barang_keluar"
+			],
+			[
+				"h",
+				"href	Attr"
+			],
+			[
+				"th",
+				"th	Tag"
+			],
+			[
+				"gr",
+				"group"
+			],
+			[
+				"bra",
+				"barang_keluar"
+			],
+			[
+				"data",
+				"data_barang"
+			],
+			[
+				"fa",
+				"faktur"
+			],
+			[
+				"to",
+				"totharga"
+			],
+			[
+				"harga_",
+				"harga_jual"
+			],
+			[
+				"hara",
+				"harga_jual"
+			],
+			[
+				"red",
+				"ready	jQuery(document).ready"
+			],
+			[
+				"harga",
+				"harga_jual"
+			],
+			[
+				"bara",
+				"barang_masuk"
+			],
+			[
+				"ko",
+				"kode_barang"
+			],
+			[
+				"fo",
+				"form	Tag"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"d",
+				"div	Tag"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"sc",
+				"scount"
+			],
+			[
+				"f",
+				"for	for (…) {…}"
+			],
+			[
+				"ht",
+				"html	.html()"
+			],
+			[
+				"v",
+				"val	.val()"
+			],
+			[
+				"Scrip",
+				"script"
+			],
+			[
+				"base",
+				"base64_decode"
+			],
+			[
+				"ob_",
+				"ob_end_flush"
+			],
+			[
+				"har",
+				"har2"
+			],
+			[
+				"sum",
+				"sumTot"
+			],
+			[
+				"bi",
+				"bindDatePicker"
+			],
+			[
+				"add",
+				"addsup"
+			],
+			[
+				"onc",
+				"onclick	Attr"
+			],
+			[
+				"Input",
+				"INPUT"
+			],
+			[
+				"t",
+				"text	.text()"
+			],
+			[
+				"remove",
+				"removeClass	.removeClass()"
+			],
+			[
+				"ani",
+				"animate	.animate() with callback"
+			],
+			[
+				"mod",
+				"modal"
+			],
+			[
+				"sli",
+				"slideDown	.slideDown()"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"s",
+				"show	.show()"
+			],
+			[
+				"reques",
+				"http_request"
+			],
+			[
+				"al",
+				"alamat"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"onC",
+				"onclick	Attr"
+			],
+			[
+				"type",
+				"type	Attr"
+			],
+			[
+				"jSO",
+				"jQuery.parseJSON	jQuery.parseJSON"
+			],
+			[
+				"att",
+				"attr	.attr() - single"
+			],
+			[
+				"ses",
+				"session_id"
+			],
+			[
+				"sess",
+				"session_start"
+			],
+			[
+				"C",
+				"Cookie"
+			],
+			[
+				"error",
+				"error_reporting"
+			],
+			[
+				"is_n",
+				"is_null"
+			],
+			[
+				"_",
+				"_POST"
+			],
+			[
+				"eac",
+				"each	$.each()"
+			],
+			[
+				"e",
+				"each	$.each()"
+			],
+			[
+				"get",
+				"getjson	$.getjson()"
+			],
+			[
+				"at",
+				"attr	.attr() - single"
+			],
+			[
+				"err",
+				"cubrid_error"
+			],
+			[
+				"fp",
+				"fputs"
+			],
+			[
+				"animate",
+				"animate	.animate()"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"sto",
+				"stok_awal"
+			],
+			[
+				"mys",
+				"mysql_query"
+			],
+			[
+				"scr",
+				"src	Attr"
+			],
+			[
+				"mysql_f",
+				"mysql_fetch_array"
+			],
+			[
+				"sql",
+				"sql_bkeluar"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"date_",
+				"date_create"
+			],
+			[
+				"date",
+				"date_format"
+			],
+			[
+				"read",
+				"readonly"
+			],
+			[
+				"pa",
+				"padding-right"
+			],
+			[
+				"l",
+				"left"
+			],
+			[
+				"mysq_f",
+				"mysql_fetch_array"
+			],
+			[
+				"no",
+				"nobru"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
+				"bor",
+				"border-left-color"
+			],
+			[
+				"id",
+				"idkr"
+			],
+			[
+				"te",
+				"teknisi"
+			],
+			[
+				"id_",
+				"id_absen"
+			],
+			[
+				"sr",
+				"script	Tag"
+			],
+			[
+				"m",
+				"method	Attr"
+			],
+			[
+				"lo",
+				"longitude"
+			],
+			[
+				"side",
+				"sidebar-menu"
+			],
+			[
+				"pas",
+				"password"
+			],
+			[
+				"php",
+				"php	<?php … ?>"
+			],
+			[
+				"ha",
+				"hapus"
+			],
+			[
+				"sta",
+				"status"
+			],
+			[
+				"stru",
+				"strtoupper"
+			],
+			[
+				"my",
+				"mysql_query"
+			],
+			[
+				"time_",
+				"time_akhir"
+			],
+			[
+				"tangga",
+				"tanggal_awal"
+			],
+			[
+				"mysql_nu",
+				"mysql_num_rows"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 377.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"About"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: COOKIE['…']"
+			],
+			[
+				"broe",
+				"View In Browser"
+			],
+			[
+				"update ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"add re",
+				"Package Control: Add Repository"
+			],
+			[
+				"pack",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"head",
+				"Snippet: bs3-panel-heading"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: add",
+				"Package Control: Add Repository"
+			],
+			[
+				"header",
+				"Snippet: bs3-page header"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"php",
+				"Snippet: bs3-table-hover"
+			],
+			[
+				"lor",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"shad",
+				"Snippet: bs3-panel-heading"
+			],
+			[
+				"abou",
+				"About"
+			],
+			[
+				" JSON",
+				"Snippet: jQuery.getJSON"
+			],
+			[
+				"Package Control",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 223.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"Package Control.sublime-package",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation') ",
+			"s",
+			"cd ~/Library/Application\\ Support/Sublime\\ Text\\ 3/Packages/",
+			"g-crud"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/obat_masuk.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/History_obat_masuk.php",
+		"/C/xampp/htdocs/htmly/obat/_script.php",
+		"/C/xampp/htdocs/htmly/obat/pages/proses/js/p_proses_k.js",
+		"/C/xampp/htdocs/htmly/obat/pages/proses/p_proses_m.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/js/formbarang/barang_m.js",
+		"/C/xampp/htdocs/htmly/obat/pages/proses/js/p_proses_m.js",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/js/jquery_append.js",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/js/jquery_append_in.js",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/js/multi_fom_invoice.js",
+		"/C/xampp/htdocs/htmly/obat/pages/gudangx/js/jquery_append_out.js",
+		"/C/xampp/htdocs/htmly/obat/_db.php",
+		"/C/xampp/htdocs/htmly/obat/pages/gudangx/js/jquery_append.js",
+		"/C/xampp/htdocs/htmly/obat/pages/proses/js/p_proses_bon_k.js",
+		"/C/xampp/htdocs/htmly/obat/pages/laporan/laporan_harian.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/laporanbulanan.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/laporan_bulanan.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/laporanstokobname.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/laporan_harian.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/History_masuk.php",
+		"/C/xampp/htdocs/htmly/MHT/index.php",
+		"/C/xampp/htdocs/htmly/MHT/login.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/js/jquery.js",
+		"/C/xampp/htdocs/htmly/obat/pages/gudangx/barang_masuk.php",
+		"/C/xampp/htdocs/htmly/tes/proes.php",
+		"/C/xampp/htdocs/htmly/tes/index1.php",
+		"/C/xampp/htdocs/htmly/tes/tampil_lengkap.php",
+		"/C/xampp/htdocs/htmly/obat/_footer.php",
+		"/D/user.dat",
+		"/C/Users/Andra/AppData/Roaming/Microsoft/UProof/ExcludeDictionaryEN0409.lex",
+		"/C/Users/Andra/AppData/Roaming/Microsoft/UProof/ExcludeDictionaryES0c0a.lex",
+		"/C/Users/Andra/AppData/Roaming/Microsoft/UProof/CUSTOM.DIC",
+		"/C/Users/Andra/AppData/Roaming/Microsoft/UProof/Kamus Bahasa Indonesia.dic",
+		"/C/xampp/htdocs/htmly/tes/db.php",
+		"/C/xampp/htdocs/htmly/obat/pages/proses/js/index.html",
+		"/C/xampp/htdocs/htmly/obat/fdb.php",
+		"/C/xampp/htdocs/htmly/obat/pages/web/tampil_barang_ready.php",
+		"/C/xampp/htdocs/htmly/obat/pages/petugas/laporanharian.php",
+		"/C/xampp/htdocs/htmly/obat/pages/obat/_home.php",
+		"/C/xampp/htdocs/htmly/obat/pages/obat/obatedit.php",
+		"/C/xampp/htdocs/htmly/obat/pages/obat/obatview.php",
+		"/C/xampp/htdocs/htmly/obat/pages/obat/obat.php",
+		"/C/xampp/htdocs/htmly/obat/pages/obat/barangview.php",
+		"/C/xampp/htdocs/htmly/esurat/koneksi.php",
+		"/C/xampp/htdocs/htmly/esurat/loginproses.php",
+		"/D/MEEDUN/app android/OneClick.jar",
+		"/D/MEEDUN/app android/Odin3_v3.07_SGSIII/Odin3 v3.07.exe",
+		"/C/xampp/htdocs/esurat/user/admin/fadd_surat.php",
+		"/C/xampp/htdocs/esurat/koneksi.php",
+		"/E/Music/06. Flo Rida feat. Jennifer Lopez - Sweet Spot 2.0.lrc",
+		"/C/xampp/htdocs/htmly/skripsi/_Contoh/bootstrap-daterangepicker-master/website/website.js",
+		"/C/xampp/htdocs/htmly/skripsi/index.php",
+		"/C/xampp/htdocs/htmly/skripsi/assets/dist/css/AdminLTE.min.css",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/satua.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/home - Copy.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/lap.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/jquery_append_in.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/data_masuk.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/data_keluar.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/proses/p_proses_m.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/faktur_masuk.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/faktur_masuk_jeson.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/monthreporting.php",
+		"/C/xampp/htdocs/htmly/skripsi/backuprestore.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/backup2.php",
+		"/C/xampp/htdocs/htmly/skripsi/tmp/backuprestore.php",
+		"/C/xampp/htdocs/htmly/skripsi/_control_sidebar.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/faktur_keluar.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/barang.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/proses/js/p_proses_m.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/d.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/web/homepage.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/barang/barang.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/formbarang/barang_m.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/barangview.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/jquery_append_out.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/barang_masuk.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/barangedit.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/proses/js/p_proses_k.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/proses/p_proses_k.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/barang_keluar.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/index.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/formbarang/barang_k.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/proses/p_proses_m_test.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/proses/js/p_proses.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/_test_.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/beackup.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/formbarang/barang_k_backup.js",
+		"/C/xampp/htdocs/htmly/skripsi/js/jquery.validate.min.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/web/tampil_barang.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/home.php",
+		"/C/Users/Andra/.sublime/history/C/xampp/htdocs/htmly/skripsi/pages/gudang/2016-03-22_12.10.57.barang_masuk.php",
+		"/C/xampp/htdocs/htmly/skripsi/_scr.php",
+		"/C/xampp/htdocs/htmly/skripsi/_db.php",
+		"/C/xampp/htdocs/htmly/skripsi/_css.php",
+		"/C/xampp/htdocs/htmly/skripsi/_script.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/web/logout.php",
+		"/C/xampp/htdocs/htmly/skripsi/logout.php",
+		"/C/xampp/htdocs/htmly/skripsi/_header.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/jquery_append.js",
+		"/C/xampp/htdocs/htmly/skripsi/dashboard.php",
+		"/C/xampp/htdocs/htmly/skripsi/_main-nav.php",
+		"/C/xampp/htdocs/htmly/skripsi/login.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/web/tampil_barang_ready.php",
+		"/C/xampp/htdocs/htmly/skripsi/_Contoh/string.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/proses/p_supplier.php",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/User/PHP.sublime-settings",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/File History/Default (Windows).sublime-keymap",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/User/LocalHistory.sublime-settings",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/Sublime Header/Default (Windows).sublime-keymap",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/jquery.js",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/js/multi_fom_invoice.js",
+		"/C/xampp/htdocs/htmly/skripsi/assets/temas/index.html",
+		"/C/xampp/htdocs/htmly/skripsi/assets/temas/pages/forms/advanced.html",
+		"/C/xampp/htdocs/htmly/skripsi/pages/gudang/sell.php",
+		"/C/xampp/htdocs/htmly/skripsi/_screen.php",
+		"/C/xampp/htdocs/htmly/ajax_login_php/index.php",
+		"/C/xampp/htdocs/htmly/kasir/kasir/proses.php",
+		"/C/xampp/htdocs/htmly/kasir/kasir/beli.php",
+		"/C/xampp/htdocs/htmly/kasir/kasir/tambah_barang.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/web/chgpwd.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/administrator/user.php",
+		"/C/xampp/htdocs/htmly/skripsi/pages/administrator/useredit.php",
+		"/C/xampp/htdocs/htmly/skripsi/_Contoh/popup_dropdown/popup_dropdown/index.php",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/User/View In Browser.sublime-settings",
+		"/C/Users/Andra/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"4.5",
+			"Arial','',5",
+			"Arial','',6",
+			"4.5",
+			"tabel_faktur_m",
+			"style",
+			"hid",
+			"vali",
+			"valid()",
+			"vaid",
+			"hitung",
+			"valid",
+			"valid()",
+			"save",
+			"id_form_m",
+			"validasi",
+			"val",
+			"stonk barang",
+			"barang",
+			"msg_error",
+			"stok_bon_",
+			"stok",
+			"obat_keluar",
+			"jumlah",
+			"<b> 0</b>",
+			"// isi keterangan ",
+			"pdf",
+			" '<",
+			"$hari_i",
+			"$is",
+			"POST",
+			"thn",
+			"$hari",
+			"$pdf",
+			"data",
+			"satuan",
+			"edit",
+			"kos",
+			"stok kos",
+			"control",
+			"barang..",
+			"barang",
+			"barang..",
+			"barang",
+			"Daftarkan Baru..!",
+			"nm_",
+			"hapus",
+			"keluar",
+			"echo",
+			"top",
+			"Barang..",
+			"</td>' +",
+			"jumlah_",
+			"hari",
+			"[",
+			"’",
+			"harga_jual",
+			"'<td",
+			"sum",
+			"Barang..",
+			"Barang",
+			"barang",
+			"Barang",
+			"barang",
+			"kode_transaksi",
+			"kode_barang",
+			"nama_barang",
+			"gudang",
+			"$notr2",
+			"$no",
+			"th",
+			"barang",
+			"satuan",
+			"Satuan",
+			"satuan",
+			"masuk",
+			"barang",
+			"gudang",
+			"data",
+			"nm_satuan",
+			"gudang",
+			"gudangp",
+			"gudang",
+			"idjenis",
+			"gudang",
+			"nm_",
+			"satuan",
+			"Satuan",
+			"satuan",
+			"Satuan",
+			"satuan",
+			"Barang",
+			"isi",
+			"satuan",
+			"Satuan",
+			"satuan",
+			"Satuan",
+			"satuan",
+			"Satuan",
+			"satuan",
+			"isi",
+			"satuan",
+			"Satuan",
+			"gudang",
+			"obat",
+			"Barang",
+			"barang",
+			"Barang",
+			"barang",
+			"Barang",
+			"barang",
+			"gudang",
+			"barang",
+			"BARANG",
+			"messages-menu",
+			"masa",
+			"mass",
+			".sidebar",
+			".PopularPosts",
+			"col-",
+			"col",
+			"navbar-custom-menu",
+			"png",
+			"control-sidebar",
+			"=html",
+			"html",
+			" <section class=\"content\">\n\n          <div class=\"row\">",
+			"</aside>"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "mht.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\xampp\\htdocs\\htmly\\skripsi\\pages\\gudang\\js\\jquery_append.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\xampp\\htdocs\\htmly\\skripsi\\invb.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 380.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,6 @@
+silahkan buat nama databasenya "notifikasifb" tanpa tanda kutip
+setelah itu impor file sql nya
+
+
+Thanks
+http://hotbenp.wordpress.com

@@ -1,0 +1,51 @@
+{
+  "name": "jquery-responsive-menu",
+  "version": "0.2.1",
+  "authors": [
+    "jbowyers"
+  ],
+  "description": "A jQuery plugin for responsive drop-down navigation menus",
+  "main": [
+    "dist/js/responsive-menu.js",
+    "dist/css/responsive-menu.css",
+    "dist/js/responsive-menu.min.js",
+    "dist/css/responsive-menu.min.css",
+    "dist/css/menu-btn.png"
+  ],
+  "keywords": [
+    "jQuery",
+    "plugin",
+    "responsive",
+    "menu",
+    "navigation",
+    "list"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "_notes",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "_references",
+    "demo",
+    "doc",
+    "src",
+    "templates",
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    "Gruntfile.js",
+    "LICENCE.txt",
+    "package.json"
+  ],
+  "dependencies": {
+    "jquery-legacy": "jquery#1.11"
+  },
+  "devDependencies": {
+    "html5shiv": "~3.7.2"
+  },
+  "private": false
+}

@@ -1,0 +1,6 @@
+//folder//
+web  = semua user
+tek  = khusus teknisi
+cs   = khusus customer service
+krd  = khusus koordinator
+maps = file pemetaan

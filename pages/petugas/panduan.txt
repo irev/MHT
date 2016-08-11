@@ -1,0 +1,13 @@
+panduan untuk mencoba kode ini
+
+1. buat database pada phpmyadmin, untuk nama database bebas
+2. kemudian pilih database yang sudah dibuat lalu tekan tab import
+3. tekan tombol browse dan arahkan ke berkas mahasiswa.sql kemudian tekan go
+4. unduh berkas crud-php-jquery-bootstrap.zip
+5. ekstrak berkas crud-php-jquery-bootstrap.zip dan salin isinya ke dalam folder yang sudah anda buat di direktori webserver anda (www/htdocs)
+6. sesuaikan nama database dan password database pada berkas koneksi.php
+7. akses dari web browser anda (http://localhost/nama_folder)
+
+semoga bermanfaat :)
+
+untuk artikel yang lain bisa mengunjungi alamat http://arifnd.wordpress.com
