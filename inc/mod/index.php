@@ -1,9 +1,14 @@
 <html>
 <head>
     <title>Google Maps Multi Icon</title>
+
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="assets/js/jquery.js"></script>
-<script type="text/javascript" src="assets/js/markerclusterer_packed.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script type="text/javascript" src="../../assets/jquery/jquery-2.1.4.min.js"><\/script>')</script>
+
+<!--script type="text/javascript" src="../../js/jquery.js"></script-->
+
+<script type="text/javascript" src="../../assets/js/markerclusterer_packed.js"></script>
 <script type="text/javascript">
 var peta;
 var nama     = new Array();
@@ -122,7 +127,7 @@ function ambildatabase(){
 function set_icon(ikon){
     if (ikon == "") {
     } else {
-        gambar_tanda = "assets/icon/"+ikon;
+        gambar_tanda = "../../assets/icon/"+ikon;
     }
 }
 

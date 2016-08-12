@@ -8,39 +8,27 @@
 ///////////////////////////////
 require("../../../../_db.php"); 
 ?>
-<div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">REQUEST PERBAIKAN GANGGUAN</h3>
-                  <div class="box-tools pull-right">
-                    <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                  </div><!-- /.box-tools -->
-                </div><!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <div class="table-responsive mailbox-messages">
+
                     <table id="DataTableGangguan" class="table table-hover table-striped">
                     <thead>
                       <tr>
-                        <th>No</th>
-                        <th></th>
+                        <th  style="max-width: 5px;">No</th>
                         <th>Kode</th>
-                        <th>Pelapor</th>
-                        <th>Keterangan Gangguan</th>
-                        <th>Awal Gangguan</th>
-                        <th>Waktu</th>
-                        <th>Status</th>
-                        <th style="width: 100px;">#</th>
+                        <th>Pin Icon</th>
+                        <th>Nama Paket</th>
+                        <th>Bandwidth</th>
+                        <th style="min-width: 100px;"></th>
                       </tr>
                     </thead>
 <tbody>
 	<?php 
 		$i = 1;
-		$query = mysql_query("SELECT tb_gangguan.*, tb_pelanggan.nama FROM `tb_gangguan` JOIN tb_pelanggan WHERE tb_gangguan.id_pelanggan=tb_pelanggan.id_pelanggan AND  tb_gangguan.`status_gangguan`='0' ORDER BY `tb_gangguan`.`id_gangguan` DESC");
-		
+		//$query = mysql_query("SELECT tb_gangguan.*, tb_pelanggan.nama FROM `tb_gangguan` JOIN tb_pelanggan WHERE tb_gangguan.id_pelanggan=tb_pelanggan.id_pelanggan AND  tb_gangguan.`status_gangguan`='0' ORDER BY `tb_gangguan`.`id_gangguan` DESC");
+		$query = mysql_query("SELECT * FROM `tb_paket` ORDER BY `tb_paket`.`keterangan` ASC");
 		// tampilkan data gangguan selama masih ada
+  
 		while($data = mysql_fetch_array($query)) {
+      /*
       if($data['status_gangguan']==0) {
         $status = '<span class="label label-danger pull-right">REQUEST</span>';
         $status_icon = "<i class='fa fa-volume-up text-danger'></i>";
@@ -59,22 +47,22 @@ require("../../../../_db.php");
       } else {
         $status = "Tidak Aktif";
       }
+      */
+  $ikon=$data['ikon'];
+  $pin_icon = '<img src="assets/icon/'.$ikon.'" alt="Mountain View" style="width:28px;height:28px;">';
+  
 	?>
 	<tr>
 		<td><?php echo $i ?></td>
-		<td class="mailbox-star"><a href="#"><?php echo $status_icon ?></a></td>
-		<td><?php echo $data['id_gangguan'] ?></td>
-		<td ><?php echo $data['pelapor'] ?> </td>
-		<td class="mailbox-subject"><b><?php echo $data['nama'] ?></b> - <?php $kets=$data['keterangan']; echo  textSingkat($kets,70); ?></td>
-		<td class="mailbox-date"><?php echo tgl_indonesia($data['tgl_pelaporan']); ?></td>
-		<td class="mailbox-date"><?php echo selisihwaktu($data['tgl_gangguan']); ?></td>
-		<td><?php echo $status ?></td>
-    
+		<td><?php echo $data['id_paket'] ?></td>
+    <td class="mailbox-star"><a href="#"><?php echo $pin_icon ?></a></td>
+		<td ><strong><a href="#"><?php echo $data['paket'] ?></a></strong></td>
+		<td class="mailbox-subject"><b><?php $kets=$data['keterangan']; echo  textSingkat($kets,70); ?></b></td>
 		<td class="mailbox-attachment">
-			<a href="#dialog-data" onclick="getform.ubah(<?php echo substr($data['id_gangguan'],5) ?>)"  id="<?php echo $data['id_gangguan'] ?>" class="btn btn-default btn-sm ubah" data-toggle="modal">
+			<a href="#dialog-data" onclick="getform.ubah(<?php echo substr($data['id_paket'],3) ?>)"  id="<?php echo $data['id_paket'] ?>" class="btn btn-default btn-sm ubah" data-toggle="modal">
 				<i class="fa fa-pencil"></i>
 			</a>
-			<a href="#" id="<?php echo $data['id_gangguan'] ?>" onclick="getform.hapus(<?php echo substr($data['id_gangguan'],5) ?>)" class="btn btn-default btn-sm hapus">
+			<a href="#" id="<?php echo $data['id_paket'] ?>" onclick="getform.hapus(<?php echo substr($data['id_paket'],3) ?>)" class="btn btn-default btn-sm hapus">
 				<i class="fa fa-trash"></i>
 			</a>
 		</td>
@@ -84,15 +72,7 @@ require("../../../../_db.php");
 		}
 	?>
  </tbody>
-                    </table><!-- /.table -->
-                  </div><!-- /.mail-box-messages -->
-                </div><!-- /.box-body -->
-                <div class="box-footer no-padding">
-                  <div class="mailbox-controls">
-                   Data Gangguan
-                  </div>
-                </div>
-              </div>
+
 
 <script> 
 $(function () {

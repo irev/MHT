@@ -8,28 +8,20 @@
 /////////////////////////////////
 require("../../../../_db.php"); 
 
- $kd_mhs = 'PK'.sprintf("%03s",$_POST['id']);
-
+echo $kd_mhs = 'PK'.sprintf("%03s",$_POST['id']);
+echo $_POST['id'];
 // query untuk menampilkan berdasarkan kd
-$data = mysql_fetch_array(mysql_query("SELECT tb_gangguan.*, tb_pelanggan.nama, tb_pelanggan.alamat FROM `tb_gangguan` JOIN tb_pelanggan WHERE tb_gangguan.id_pelanggan=tb_pelanggan.id_pelanggan AND id_gangguan='$kd_mhs'"));
+$data = mysql_fetch_array(mysql_query("SELECT * FROM `tb_paket` WHERE id_paket='$kd_mhs' ORDER BY `tb_paket`.`keterangan` ASC"));
+echo "SELECT * FROM `tb_paket` WHERE id_paket='$kd_mhs' ORDER BY `tb_paket`.`keterangan` ASC";
+
+echo $data['ikon'];
 // jika kd > 0 / form ubah data
-if(substr($kd_mhs, 2, 3) != 0) { 
+if($_POST['id'] != 0) { 
 //echo'<script>alert("EDIT");</script>';	
-	$id_gangguan = $data['id_gangguan'];
-	$pelapor = $data['pelapor'];
-	$pelanggan = $data['nama'];
-	$id_pelanggan = $data['id_pelanggan'];
-	$tgl_gangguan = $data['tgl_gangguan'];
-	$tgl_pelaporan = $data['tgl_pelaporan'];
-	$ket = $data['keterangan'];
-	$alamat = $data['alamat'];
-	$kd_status = $data['status_gangguan'];
-	
-	if($data['status_gangguan']==1) {
-		$status = "Aktif";
-	} else {
-		$status = "Tidak Aktif";
-	}
+	$id_paket = $data['id_paket'];
+	$paket    = $data['paket'];
+	$ikon     = $data['ikon'];;
+	$band     = $data['keterangan'];;
 
 //form tambah data
 } else {
@@ -38,7 +30,7 @@ if(substr($kd_mhs, 2, 3) != 0) {
    $qkdf = mysql_query("SELECT MAX(id_paket) as kodex FROM tb_paket");
    $data=mysql_fetch_array($qkdf);
    $kodef = $data['kodex'];
-   $nourut = substr($kodef, 2, 5);
+  echo  $nourut = substr($kodef, 2, 3);
    //$nourut++;
    if ($nourut==0){
     $nourut=1;
@@ -48,30 +40,29 @@ if(substr($kd_mhs, 2, 3) != 0) {
     $notr = sprintf("%03s", $nourut) ; 
    }
   //end no faktur auto 
-	$id_gangguan = "PK".$notr;
-	$pelapor ="";
-	$pelanggan ="";
-	$tgl_gangguan = "";
-	$tgl_pelaporan = date('Y-m-d H:i:s');
-	$ket = "";
-	$alamat = "";
-	$status = "";
+	$id_paket = "PK".$notr;
+	$paket    = "";
+	$ikon     = "";
+	$band     = "";
+
+   //$tgl_paket = date('Y-m-d H:i:s');
 }
 
 ?>
 <form class="form-horizontal" id="form-mahasiswa">
 <input type="text" id="kd" class="form-control" name="kd" value="<?php echo $kd_mhs ?>" style="display: none;">
 <input type="text" id="status" class="form-control" name="status" value="0" style="display: none;">	
+<input type="text" id="status" class="form-control" name="status" value="0" style="display: none;">	
 	<div class="form-group">
-		<label for="id" class="col-sm-2 control-label">Kode</label>
+		<label for="kode" class="col-sm-2 control-label">Kode</label>
 			<div class=" col-sm-10 controls">
-			<input type="text" id="kode" class="form-control" name="kode" readonly="" value="<?php echo $id_gangguan ?>">
+			<input type="text" id="kode" class="form-control" name="kode" readonly="" value="<?php echo $id_paket ?>">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="id" class="col-sm-2 control-label">Nama Paket</label>
+		<label for="nama" class="col-sm-2 control-label">Nama Paket</label>
 			<div class=" col-sm-10 controls">
-			<input type="text" id="nama" class="form-control" name="nama" value="<?php echo $pelapor ?>">
+			<input type="text" id="nama" class="form-control" name="nama" value="<?php echo $paket ?>">
 		</div>
 	</div>
 	<!--div class="form-group">
@@ -108,11 +99,11 @@ if(substr($kd_mhs, 2, 3) != 0) {
 <label for="id" class="col-sm-2 control-label">Ikon</label>
 <div class=" col-sm-10 controls">
 
-
-<a href="javascript:void(0)" id="btn1" class="btn btn-xs btn-warning">Pilih Ikon Map</a>
-<div id="byjson"></div>
-<input type="text" id="pilihikon" class="form-control" name="pilihikon" value="rumah_pelanggan.png" style="display: block;">  
-
+<a href="javascript:void(0)" id="btn1" class="btn btn-xs btn-warning">
+Pilih Ikon Map</a>
+<div id="byjson"></div>  <!--memiakai plugin  ms-Dropdown-master (Select Dropdown)-->
+<!--input type="text" id="pilihikon" class="form-control" name="pilihikon" value="rumah_pelanggan.png" style="display: block;"-->  
+<?php echo '<img src="assets/icon/'.$ikon.'">'.$ikon; ?>
 <script type="text/javascript">
 /*
 	   $("img").click(function () {
@@ -127,11 +118,12 @@ if(substr($kd_mhs, 2, 3) != 0) {
 
 	<div class="form-group">
 		<label for="id" class="col-sm-2 control-label">Bandwidth</label>
-			<div class=" col-sm-10 controls">
-			<input type="text" id="band" placeholder="... Mbps" class="form-control" name="band" value="<?php echo $ket ?>">
+			<div class=" col-sm-2 controls">
+			<input type="text" id="band" placeholder="... Mbps" class="form-control" name="band" value="<?php echo $band ?>"> 
 
 			<!--textarea id="keterangan" class="form-control" name="keterangan"><?php echo $ket ?></textarea-->
 		</div>
+		<b  class="col-sm-2">Mbps</b>
 	</div>
 	<!--div class="form-group">
 		<label for="id" class="col-sm-2 control-label">Status</label>
@@ -210,4 +202,15 @@ $('#pilihikon').on('click',function(){
     console.info(iko); 
 })
 
+/**  // SELECT ICON TEST
+<!--
+$('#byjson').on('click',function(){
+$("select").change(function(){
+    $.get($(this).parent("form").find(":input").serialize()); 
+    var form_test = $('form').serialize();
+    console.log(" form_test =  "+form_test);
+});
+});
+//-->
+*/
 </script>    

@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-5">
                 <div class="box box-danger">
                     <div class="box-header with-border">
                       <h3 class="box-title">Daftar Karyawan</h3>
@@ -9,14 +9,12 @@
                       </div>
                     </div><!-- /.box-header -->
                     <div class="box-body no-padding" style="display: block;">
-                      <ul class="users-list clearfix">
+<ul class="users-list clearfix">
 <?php 
-require("../../_db.php"); 
+require("../_db.php"); 
 $q_usr= mysql_query("SELECT * FROM `tb_karyawan`");
 while ($usr = mysql_fetch_array($q_usr)) {
 ?>
-
-
                         <li>
                         <?php 
                           echo  '<img src="assets/img/user/'.$usr['avatar'].'" alt="User Image">';
@@ -38,7 +36,7 @@ while ($usr = mysql_fetch_array($q_usr)) {
                       </ul><!-- /.users-list -->
                     </div><!-- /.box-body -->
                     <div class="box-footer text-center" style="display: block;">
-                      <a href="javascript::" class="uppercase">View All Users</a>
+                      <a href="javascript::" class="uppercase"></a>
                     </div><!-- /.box-footer -->
                   </div>
 </div>

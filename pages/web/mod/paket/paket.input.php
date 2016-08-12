@@ -7,23 +7,26 @@
 // edit 13 juli 2016
 // usercase  ALL
 /////////////////////////////////
+if(!isset($_SESSION)){
+	session_start();
+ 	error_reporting(0);
+}
+if(isset($_SESSION['login_hash'])){ 
 require("../../../../_db.php");  
 // proses menghapus data
 if(isset($_POST['hapus'])) {
-	$idhapus =  'PK'.sprintf("%05s", $_POST['hapus']);
-    $edt = mysql_query("DELETE FROM tb_gangguan WHERE id_gangguan='$idhapus'");
+	$idhapus =  'PK'.sprintf("%03s", $_POST['hapus']);
+    $edt = mysql_query("DELETE FROM tb_paket WHERE id_paket='$idhapus'");
+    echo "DELETE FROM tb_paket WHERE id_paket='$idhapus'";
     if($edt){ 
-    	echo json_encode(array('status'=>true));
-    	echo 3;
+    	echo json_encode(array('status'=>true,'msg'=>'Berhasil dihapus'));
     }else{
-    	echo json_encode(array('status'=>false));
-    	echo 0;
+    	echo json_encode(array('status'=>false,'msg'=>'Gagal dihapus'));
     }
 
 } else {
 	// deklarasikan variabel
-	$kd_mhs			= $_POST['id'];
-	$kode			= $_POST['kode'];
+	echo $kode		= $_POST['kode'];
 	$nama			= $_POST['nama'];
 	$pilihikon		= $_POST['pilihikon'];
 	$band 			= $_POST['band'];
@@ -31,39 +34,33 @@ if(isset($_POST['hapus'])) {
 	// validasi agar tidak ada data yang kosong
 	if($kode!="" && $nama!="" && $band!="" && $pilihikon!="") {
 		// proses tambah data gangguan
-		if(substr($kd_mhs, 2, 5) == 0) {
+		if(substr($kode, 2, 3) == 0) {
 			$edt = mysql_query("INSERT INTO tb_paket VALUES('$kode','$nama','$band','$pilihikon')");
 			if($edt){
 				echo json_encode(array('status'=>true));
 				echo 1;
 			}else{
 				echo json_encode(array('status'=>false));
-				echo 0;
+				echo '0 sim';
 			}
 		// proses ubah data gangguan
 		} else {
 			//echo'<script>alert("EDITsss");</script>';	
-			$edt = mysql_query("UPDATE tb_gangguan SET 
-			tgl_pelaporan 	= '$tgl_pelaporan',
-			tgl_gangguan 	= '$tgl_gangguan',
-			id_pelanggan 	= '$pelanggan',
-			pelapor 		= '$pelapor',
-			keterangan 		= '$keterangan',
-			status_gangguan	= '$status'
-			WHERE id_gangguan = '$kode'
+			$edt = mysql_query("UPDATE tb_paket SET 
+			paket 	       = '$nama',
+			ikon 	       = '$pilihikon',
+			keterangan 	   = '$band'
+			WHERE id_paket = '$kode'
 			");
 			if($edt){
-				echo json_encode(array('status'=>true));
-				echo 2;
+				echo json_encode(array('status'=>true,'msg'=>'EDIT BERHASIL'));
 			}else{
-				echo json_encode(array('status'=>false));
-				echo 0;
+				echo json_encode(array('status'=>false,'msg'=>'GAGAL BERHASIL'));
 			}
 		}
 	}
 }
-
-// tutup koneksi ke database mysql
-//koneksi_tutup();
-
+}else{
+	echo "Ilegal Akses";
+}
 ?>

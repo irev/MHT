@@ -31,7 +31,7 @@ if(!isset($_SESSION['login_hash'])){
                     <tr>
                         <th> No</th>
                         <th style="min-width: 50px;">Sataus</th>
-                        <th style="min-width: 100px;"></th>
+                        <th style="min-width: 50px;"></th>
                         <th> Nama</th>
                         <th>HP</th>
                         <th style="min-width: 40%;">Alamat</th>

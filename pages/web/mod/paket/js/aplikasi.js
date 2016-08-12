@@ -55,17 +55,18 @@
 		$("#simpan-data").bind("click", function(event) {
 			var url = "pages/web/mod/paket/paket.input.php";
 			// mengambil nilai dari inputbox, textbox dan select
-			var kd_mhs 			= $('input:text[name=kd]').val();
-			var v_kode 			= $('input:text[name=kode]').val();
-			var v_pelapor		= $('input:text[name=nama]').val();
-			var v_pelanggan 	= $('input:text[name=pilihikon]').val();
-			var v_tgl_paket 	= $('input:text[name=tgl_paket]').val();
-			var v_tgl_pelaporan	= $('input:text[name=tgl_pelaporan]').val();
-			var v_keterangan 	= $('textarea[name=keterangan]').val();
-			var v_status 		= $('input:text[name=band]').val();
+			var kd_mhs      = $('input:text[name=kd]').val();
+			var v_kode      = $('input:text[name=kode]').val();
+			var v_paket     = $('input:text[name=nama]').val();
+			var v_ikon      = $('input:text[name=pilihikon]').val();
+			//var v_tgl_paket = $('input:text[name=tgl_paket]').val();
+			//var v_tgl_pelaporan= $('input:text[name=tgl_pelaporan]').val();
+			//var v_keterangan 	= $('textarea[name=keterangan]').val();
+			var v_bandw 		= $('input:text[name=band]').val();
 
-
-			// Backup
+/*
+*
+	 // Backup  Untuk post 
 			//var v_nim = $('input:text[name=pelapor]').val();
 			//var v_nama = $('input:text[name=nama]').val();
 			//var v_alamat = $('textarea[name=alamat]').val();
@@ -85,14 +86,32 @@ console.log(v_kode+' '+v_pelapor+' '+v_pelanggan+' '+v_tgl_paket+' '+v_tgl_pelap
 				// kembalikan judul modal dialog
 				$("#myModalLabel").html("Tambah Data");
 			});
-
-var da = $('#byjson').val();			
+*/
+var dataPaket = $('form').serialize();
+if(v_kode=='' || v_paket=='' || v_ikon=='' || v_bandw=='') 
+{
+	console.log(dataPaket);
+	alert('input msih ada yg kosong post paket');
+}else{
+// POST AJAX		
+var dataPaket = $('form').serialize();
 $.ajax({
   url: url,
   method: "POST",
-  data: { id : da },
-  dataType: "html"
-});
+  data: dataPaket,
+  dataType: "html",
+  success: function(){
+     			$("#data-paket").load(main);
+				$("#menu-paket").load(menu2);
+				
+                $("#pesan").text('sukses');
+				// sembunyikan modal dialog
+				$('#dialog-data').modal('hide');
+				// kembalikan judul modal dialog
+				$("#myModalLabel").html("Tambah Data");
+  }
+});// ajax end
+}// is cek end
 
 
 		});

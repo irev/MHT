@@ -16,8 +16,6 @@ $('[data-toggle="tooltip"]').tooltip();
 }, false);
 
 showpage('pages/web/homepage.php');
-
-
 function showloading()
 {
   //$("#loading2").show()
@@ -25,10 +23,9 @@ function showloading()
 $.blockUI({ 
             centerY: 0, 
             css: { bottom: '', left: '', right: '10px' },
-            message: '<h1><img src="assets/img/ajax-loader.gif" /> Loading...</h1>' 
+            message: '<h1><img src="assets/img/ajax-loader.gif" /> Loading...</h1>'
         }); 
         setTimeout($.unblockUI, 1000); 
-
 }
 function hideloading()
 {
@@ -36,6 +33,7 @@ function hideloading()
   $('.main-content').unblock();
 }
 
+///FUNGSI UNTUK PEMANGGILN PAGE
 function showpage(link)
 {
   console.log(link);

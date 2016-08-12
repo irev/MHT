@@ -10,7 +10,7 @@
 /////////////////////////////////
 if(!isset($_SESSION['login_hash'])) 
     { 
-       // session_start(); 
+      //  session_start(); 
     } 
 
 //include("pages/".$_SESSION['login_hash']."/_home.php");

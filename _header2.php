@@ -52,8 +52,8 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
            <div class="navbar-collapse pull-left collapse" id="navbar-collapse" aria-expanded="false" style="height: 1px;">
            <!--MENU ATAS-->
             <ul class="nav navbar-nav">
-            <li><a href="#">Link</a></li>
-            <li><a href="dashboard.php?cat=web&page=Pelanggan">Pelanggan</a></li>
+            <!--li><a href="#">Link</a></li-->
+            <!--li><a href="dashboard.php?cat=web&page=Pelanggan">Pelanggan</a></li-->
             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">MAP <span class="caret"></span></a>
                <ul class="dropdown-menu" role="menu">
                     <li><a href="dashboard.php?cat=maps&page=index">Lokasi Repeater</a></li>
@@ -70,18 +70,20 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
            <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Master Data <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
+                  <!--
                     <li><a href="dashboard.php?cat=web&page=pelanggan">Daftar Pelanggan</a></li>
                     <li><a href="dashboard.php?cat=web&page=teknisi">Daftar Teknisi</a></li>
                     <li><a href="dashboard.php?cat=web&page=perangkat">Daftar Perangkat</a></li>
                     <li><a href="dashboard.php?cat=web&page=paket">Daftar Paket</a></li>
+                    //-->
                     <li class="divider"></li>
                     <li><a href="#" onclick="javascript:showpage('pages/web/pelanggan2.php');">Pelanggan(jv) ok</a></li>
                     <li><a href="#" onclick="javascript:showpage('pages/web/perangkat.php');">perangkat(jv) ok</a></li>
                     <li><a href="#" onclick="javascript:showpage('pages/web/Gangguan.php');">Gangguan (jv) ok</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/teknisi.php');">teknisi(jv)</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/paket.php');">Paket(jv)</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/teknisi.php');">teknisi(jv) minggu ini harus siap</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/paket.php');">Paket(jv) lagi proses</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li><a href="#"></a></li>
                   </ul>
             </li>
            <li class="dropdown">
@@ -105,39 +107,10 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav"> 
             
-              <?php include('mod/mod_stok.php'); ?>
-              <?php include('mod/mod_nol_stok.php'); ?>
+              <?php //include('mod/mod_stok.php'); ?>
+              <?php //include('mod/mod_nol_stok.php'); ?>
               <!-- Tasks: style can be found in dropdown.less -->
-              <li class="dropdown tasks-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-flag-o"></i>
-                  <span class="label label-danger">9</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="header">You have 9 tasks</li>
-                  <li>
-                    <!-- inner menu: contains the actual data -->
-                    <ul class="menu">
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Design some buttons
-                            <small class="pull-right">20%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">20% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                    </ul>
-                  </li>
-                  <li class="footer">
-                    <a href="#">View all tasks</a>
-                  </li>
-                </ul>
-              </li>
+
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -176,6 +149,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                     <div class="pull-left">
                       <!--a href="#" class="btn btn-default btn-flat">Profile</a-->
                       <a href="dashboard.php?cat=web&page=chgpwd" class="btn btn-default btn-flat">Ganti Password</a>
+                      <a href="pages/web/chgpwd.php" class="btn btn-default btn-flat">Ganti Password</a>
                     </div>
                     <div class="pull-right">
                       <a href="dashboard.php?cat=web&page=logout" class="btn btn-default btn-flat">Sign out</a>

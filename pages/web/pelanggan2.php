@@ -118,7 +118,7 @@ function profile(){
 </div>
 <!-- col Data TAB-->
  <div class="col-md-12">
-              <div class="nav-tabs-custom" style="min-width:1240px">
+              <div class="nav-tabs-custom" >
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#activity" data-toggle="tab" onclick="dataall()">Semua</a></li>
                   <li><a href="#tab-aktif" data-toggle="tab" onclick="dataaktif()">Aktif</a></li>
@@ -130,7 +130,7 @@ function profile(){
                  
                   <!--li><a href="#settings" data-toggle="tab" onclick="databaru()">Block</a></li-->
                 </ul>
-                <div class="tab-content" style="min-width:1240px">
+                <div class="tab-content" >
                   <div class="active tab-pane" id="activity">
                     <!-- Post -->
                         <div id="data-pelanggan"></div>
