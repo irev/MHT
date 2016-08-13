@@ -19,7 +19,6 @@ require("_db.php");
 $idkar = $_SESSION['id_karyawan'];
 mysql_query("UPDATE `tb_karyawan` SET online='1' WHERE id_karyawan='$idkar'");
 include_once("inc/function/hitung_jumlah_data_item.php");
-//include("widget/widget_gangguan.php");
 if (mode =='0'){
     error_reporting(0);
 }else{
@@ -119,10 +118,6 @@ if ($_SESSION['rememberme']=='off'){
 ?>
 <div id="main"></div>
 
-            <!--/div>
-            <!-- /.row -->
-          <!--/div-->
-          <!-- /.row -->
         </section>
         <!-- /.content -->
       </div>

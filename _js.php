@@ -3,9 +3,11 @@ Kumpulan Link JS _js.php
 -->
 <!--LINE SCRIPT-->
 <!--script src="js/jquery-2.2.1.min.js"></script-->
-<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-     <!-- jQueryUI 2.2.1 -->
-    <script src="assets/plugins/jQueryUI/jquery-ui.min.js"></script>
+<!--script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script-->
+<!--bootbox-->
+<script type="text/javascript" scr="assets/plugins/bootbox/bootbox.js"></script>
+<!-- jQueryUI 2.2.1 -->
+<script src="assets/plugins/jQueryUI/jquery-ui.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- bootstrap3-dialog-master -->
@@ -16,8 +18,7 @@ Kumpulan Link JS _js.php
 <script type="text/javascript" src="assets/plugins/daterangepicker/daterangepicker.js"></script>
 <script type="text/javascript" src="assets/plugins/datepicker/locales/bootstrap-datepicker.id.js"></script>
 
-<!--bootbox-->
-<script type="text/javascript" scr="assets/plugins/bootbox/bootbox.js"></script>
+
 <script type="text/javascript" src="assets/plugins/select2/select2.full.min.js"></script>
 <script type="text/javascript" src="assets/plugins/iCheck/icheck.min.js"></script>
 

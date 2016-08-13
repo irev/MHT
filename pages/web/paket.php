@@ -175,7 +175,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 
 
 <?php 
-include('_script.php');
+//include('_script.php');
 ?>
 
 
