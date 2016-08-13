@@ -6,7 +6,6 @@
 ?>      
 </footer>
             
-
 <script type="text/javascript" scr="assets/plugins/bootbox/bootbox.js"></script>
  <script>
 $('[data-toggle="tooltip"]').tooltip();
