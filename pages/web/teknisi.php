@@ -16,7 +16,6 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
    echo "<script>window.location='".baseurl."logout.php'</script>";
 }
 ?>
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
 	    //Fungsi Menu
@@ -61,14 +60,6 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
         $('#data-teknisi').removeClass('hide');
         $('#data-teknisi').load('pages/web/mod/teknisi/teknisi.data.php');
     }      
-    function ditail_teknisi(){
-      // $('#data-title').addClass('hide');
-        $('#header-title').addClass('hide');
-        $('#data-teknisi').addClass('hide');
-        $('#data-teknisi2').removeClass('hide');
-        $('#data-teknisi2').load('pages/web/mod/teknisi/teknisi.detail.php');
-    } 
-
 
     function teknisi_baru(){
         $('#data-title').html("Input Data Karyawan"); 
@@ -89,6 +80,18 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
     function list_block(){
         $('#data-teknisi').load('pages/web/mod/teknisi/teknisi.block.php');
     }  
+    function datateknisi(){
+        $('#data-teknisi').load('pages/web/mod/teknisi/teknisi.data.php');
+    }
+    function ditail_teknisi(idk){
+        var url = 'pages/web/mod/teknisi/teknisi.detail.php';
+        $.post(url,{idk:idk}, function(data){
+            $(".modal-body").html(data).show();
+        });
+
+    } 
+
+
 </script>
 <section class="content">
 <div class="row">
@@ -97,8 +100,6 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 				<i class="fa fa-plus"></i> Tambah Data
 			</a>
 </h3-->
-
-
     <div class="col-md-3">
     <div id="menu-teknisi"></div>
     </div>
@@ -111,11 +112,10 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                   </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
 		<!-- tempat untuk menampilkan data  -->
-		<div id="data-teknisi"></div>
+		<div id="data-teknisi1"></div>
 	</div>
         <div id="data-teknisi2"></div>
-	</div>
-</section>
+</div>
 
 <!-- awal untuk modal dialog -->
 <div id="dialog-data" class="modal fade modal-primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -123,20 +123,108 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
     <div class="modal-content">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="myModalLabel">Tambah Data</h3>
+		<h3 id="myModalLabel">Data Teknisi</h3>
 	</div>
+    <div class="modal-body">
 	<!-- tempat untuk menampilkan form  -->
-	<div class="modal-body">
-	</div>
+        <div id="modal-data-teknisi"></div>
+    </div>
 	<div class="modal-footer">
+        <button class="btn btn-danger" onclick="batal()" data-dismiss="modal" aria-hidden="true">Tutup</button>
+    <!--
         <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">Selesai</button>
-		<button class="btn btn-danger" onclick="batal()" data-dismiss="modal" aria-hidden="true">Batal</button>
 		<button id="simpan-data" class="btn btn-success">Simpan</button>
+    //-->
 	</div>
 	</div>
 	</div>
 </div>
 <!-- akhir kode modal dialog -->
+
+ <div class="col-md-12">
+              <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#activity" data-toggle="tab"  onclick=""><i class="fa fa-info"></i> Informasi</a></li>
+                  <li><a href="#tab-teknisi" data-toggle="tab" onclick="datateknisi()"><i class="fa fa-inbox"></i> Data Paket</a></li>
+                  <li><a href="#tab-aktif" data-toggle="tab" onclick="dataaktif()"></a></li>
+                  <li><a href="#tab-baru" data-toggle="tab" onclick="databaru()"></a></li>
+                  <li><a href="#tab-baik" data-toggle="tab" onclick="databaik()"></a></li>
+                  <li><a href="#tab-rusak" data-toggle="tab" onclick="datarusak()"></a></li>
+                  <?php if ($_SESSION['login_hash']=='krd' || $_SESSION['login_hash']=='cs'){ ?>
+                  <li><a href="#tab-add" data-toggle="tab" onclick="tabadd()"> </a></li>
+                  <?php } ?>
+                  <li><a href="#settings" data-toggle="tab" onclick="databarux()"></a></li>
+                <li>
+                    <a href="#dialog-data" data-toggle="modal" id="0" class="tambah btn btn-app bg-warning  pull-right" >
+     <i class="fa fa-plus"></i> Tambah Paket
+    </a>    </li>
+
+                </ul>
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                    <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-info"></i> Master Data Paket!</h4>
+                    Daftar nama paket internet yang di tawarkan pada pelanggan.
+                    <ul>
+                        <li><strong>Icon Pin</strong> : berupa ikon yang akan di tampilka pada peta (pelanggan ditampilkan berdsarkan type paket yang digunakan)  </li> 
+                        <li><strong>Bandwidth</strong> : (disebut juga Data Transfer atau Site Traffic) adalah besar data yang keluar+masuk/upload+download ke pelanggan, satuan yang dipakai pada sistem ini yaitu <strong>Mbps</strong></li> 
+
+                    </ul> 
+<!-- ul#nav>li.item$*4>a{item $} -->
+
+                  </div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-teknisi">
+                    <!-- Post -->
+                        <div id="data-teknisi"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-aktif">
+                    <!-- Post -->
+                        <div id="data-aktif" ></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-baru">
+                    <!-- Post -->
+                        <div id="data-baru"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-baik">
+                    <!-- Post -->
+                        <div id="data-baik"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-rusak">
+                    <!-- Post -->
+                        <div id="data-rusak"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-add">
+                    <!-- Post -->
+                        <div id="data-add"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-edit">
+                    <!-- The timeline -->
+                         <div id="edit-data"></div>
+                  </div><!-- /.tab-pane -->
+
+                  <div class="tab-pane" id="settings">
+
+                </div>     
+                  </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+              </div><!-- /.nav-tabs-custom -->
+ </div><!-- /.col Data TAB-->
+ </div>
+    </div>
+</section>
+
+
+
 <?php 
 //include('_script.php');
 ?>

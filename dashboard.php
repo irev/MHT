@@ -3,7 +3,7 @@
 //ob_start("ob_gzhandler");
 session_start();
 ob_start();
-echo "Tunggu Sebentar...";
+//echo "<div id='tunggu'>Tunggu Sebentar...</div>";
 if(!isset($_SESSION['login_hash']))
 {
   echo " 404  Tunggu Sebentar...";
@@ -52,8 +52,9 @@ if ($_SESSION['rememberme']=='off'){
   </head>
 
 
-  <!--body class="skin-green fixed " style="min-width: 360px;"-->
-  <body class="skin-green fixed layout-top-nav" style="min-width: 360px;">
+<!--body class="skin-green fixed " style="min-width: 360px;"-->
+
+  <body class="fixed layout-top-nav" style="min-width: 360px;">
   <!--body class="hold-transition sidebar-mini skin-green fixed sidebar-collapse" style="min-width: 360px;" -->
     <div id="navbar-header"></div>
     <?php include("_header2.php"); ?>
@@ -138,7 +139,8 @@ if ($_SESSION['rememberme']=='off'){
    
 
 <script type="text/javascript">
-  </script>
+ setTimeout('#tunggu', 1000); 
+</script>
   </body>
   </html>
   <?php } ?>

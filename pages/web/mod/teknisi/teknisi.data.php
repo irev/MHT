@@ -2,7 +2,7 @@
 //////////////////////////////
 // PROGRAM SKRIPSI MHT
 // Refyandra
-// pelanggan.data.php 
+// karyawan.data.php 
 // edit 6 juni 2016
 // usercase CUSTOMER SERVICE
 ///////////////////////////////
@@ -17,7 +17,7 @@ if(!isset($_SESSION['login_hash']))
 
                 <div class="box-body with-padding">
                   <div class="table-responsive mailbox-messages">
-                    <table id="DataTablepelanggan" class="table table-hover table-striped">
+                    <table id="DataTablekaryawan" class="table table-hover table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -35,7 +35,7 @@ if(!isset($_SESSION['login_hash']))
     $i = 1;
     $query = mysql_query("SELECT * FROM `tb_karyawan` ORDER BY `tb_karyawan`.`id_karyawan` DESC");
     
-    // tampilkan data pelanggan selama masih ada
+    // tampilkan data karyawan selama masih ada
     while($data = mysql_fetch_array($query)) {
       if($data['online']==0) {
         $status = '<span class="label label-default pull-right">Offline</span>';
@@ -93,17 +93,17 @@ if(!isset($_SESSION['login_hash']))
     <?php 
     if ($_SESSION['login_hash']=='krd'){
     ?>
-    <a href="#dialog-data" onclick="getform.ubah(<?php echo substr($data['id_pelanggan'],4) ?>)"  id="<?php echo $data['id_pelanggan'] ?>" class="btn btn-default btn-sm ubah" data-toggle="modal">
+    <a href="#dialog-data" onclick="getform.ubah(<?php echo substr($data['id_karyawan'],4) ?>)"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah" data-toggle="modal">
         <i class="fa fa-pencil"></i>
       </a> 
-      <a href="#ditail_teknisi" onclick="ditail_teknisi()"  id="<?php echo $data['id_pelanggan'] ?>" class="btn btn-default btn-sm ubah">
+      <a href="#ditail_teknisi" onclick="ditail_teknisi()"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah">
         <i class="fa fa-search"></i>
       </a>
-      <a href="#" id="<?php echo $data['id_pelanggan'] ?>" onclick="getform.hapus(<?php echo substr($data['id_pelanggan'],4) ?>)" class="btn btn-default btn-sm hapus">
+      <a href="#" id="<?php echo $data['id_karyawan'] ?>" onclick="getform.hapus(<?php echo substr($data['id_karyawan'],4) ?>)" class="btn btn-default btn-sm hapus">
         <i class="fa fa-trash"></i>
       </a>
      <?php }else{  ?>
-      <a href="#ditail_teknisi" onclick="ditail_teknisi()"  id="<?php echo $data['id_pelanggan'] ?>" class="btn btn-default btn-sm ubah">
+      <a href="#dialog-data" data-toggle="modal"  onclick="ditail_teknisi(<?php echo "'".$data['id_karyawan']."'"; ?>)"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah">
         <i class="fa fa-search"></i>
       </a>
       <?php } ?>
@@ -125,11 +125,11 @@ if(!isset($_SESSION['login_hash']))
            
 <script> 
 $(function () {
-   $("#DataTablepelanggan").DataTable({
+   $("#DataTablekaryawan").DataTable({
     //"responsive": false,
       "ordering": true,
-      "scrollY": "500px",
-      "scrollX": true,
+      "scrollY": false,//"1000px",
+      "scrollX": false,
       "scrollCollapse": true,
       "fixedColumns":{
             "leftColumns": 3,
