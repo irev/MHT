@@ -81,7 +81,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                     <li><a href="#" onclick="javascript:showpage('pages/web/perangkat.php');">perangkat(jv) ok</a></li>
                     <li><a href="#" onclick="javascript:showpage('pages/web/Gangguan.php');">Gangguan (jv) ok</a></li>
                     <li><a href="#" onclick="javascript:showpage('pages/web/teknisi.php');">teknisi(jv) minggu ini harus siap</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/paket.php');">Paket(jv) lagi proses</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/paket.php');">Paket(jv) ok</a></li>
                     <li class="divider"></li>
                     <li><a href="#"></a></li>
                   </ul>

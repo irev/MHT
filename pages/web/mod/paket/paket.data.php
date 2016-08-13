@@ -12,7 +12,7 @@ require("../../../../_db.php");
                     <table id="DataTableGangguan" class="table table-hover table-striped">
                     <thead>
                       <tr>
-                        <th  style="max-width: 5px;">No</th>
+                        <th style="max-width: 5px;">No</th>
                         <th>Kode</th>
                         <th>Pin Icon</th>
                         <th>Nama Paket</th>
@@ -62,7 +62,7 @@ require("../../../../_db.php");
 			<a href="#dialog-data" onclick="getform.ubah(<?php echo substr($data['id_paket'],3) ?>)"  id="<?php echo $data['id_paket'] ?>" class="btn btn-default btn-sm ubah" data-toggle="modal">
 				<i class="fa fa-pencil"></i>
 			</a>
-			<a href="#" id="<?php echo $data['id_paket'] ?>" onclick="getform.hapus(<?php echo substr($data['id_paket'],3) ?>)" class="btn btn-default btn-sm hapus">
+			<a href="#<?php echo $data['paket'] ?>" id="<?php echo $data['id_paket'] ?>" onclick="getform.hapus(<?php echo substr($data['id_paket'],3) ?>)" class="btn btn-default btn-sm hapus">
 				<i class="fa fa-trash"></i>
 			</a>
 		</td>

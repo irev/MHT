@@ -67,19 +67,19 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 
 <section class="content">
     <div class="row">
-
-    <div class="col-md-3">
-    <a href="#dialog-data" data-toggle="modal" id="0" class="btn btn-app tambah" >
+   <!-- 
+    <div class="col-md-12 bg-green ">
+    <a href="#dialog-data" data-toggle="modal" id="0" class="btn btn-app tambah pull-right" >
      <i class="fa fa-plus"></i> Tambah Paket
     </a>
-    <div id="menu-pakets"></div>
     </div>
-
+    //-->
+<div id="menu-pakets"></div>
  <div class="col-md-12">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#activity" data-toggle="tab"  onclick="dataall()"">Informasi</a></li>
-                  <li><a href="#tab-paket" data-toggle="tab" onclick="datapaket()">Data Paket</a></li>
+                  <li class="active"><a href="#activity" data-toggle="tab"  onclick=""><i class="fa fa-info"></i> Informasi</a></li>
+                  <li><a href="#tab-paket" data-toggle="tab" onclick=""><i class="fa fa-inbox"></i> Data Paket</a></li>
                   <li><a href="#tab-aktif" data-toggle="tab" onclick="dataaktif()"></a></li>
                   <li><a href="#tab-baru" data-toggle="tab" onclick="databaru()"></a></li>
                   <li><a href="#tab-baik" data-toggle="tab" onclick="databaik()"></a></li>
@@ -88,6 +88,11 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                   <li><a href="#tab-add" data-toggle="tab" onclick="tabadd()"> </a></li>
                   <?php } ?>
                   <li><a href="#settings" data-toggle="tab" onclick="databarux()"></a></li>
+                <li>
+                    <a href="#dialog-data" data-toggle="modal" id="0" class="tambah btn btn-app bg-warning  pull-right" >
+     <i class="fa fa-plus"></i> Tambah Paket
+    </a>    </li>
+
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
@@ -180,3 +185,62 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 
 
 <script src="pages/web/mod/paket/js/aplikasi.js"></script>
+
+<script>
+
+createByJson();
+//menggunakan  msdropdown   assets/msdropdown/js/jquery.dd.min.js
+function createByJson() {
+var jsonData = [
+                {description:'Tampil sebagai Pin pada Map', value:'', text:'Pilih Ikon Map'},
+<?php
+$dir = "../../../../assets/icon/";
+// buka directory, dan ambil semua konten
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+    while (($image = readdir($dh)) !== false){
+    switch ($image) {
+     case ".":
+        break;
+     case "..":
+        break;  
+     default:
+     //echo '<option value="'.$image.'" data-image="'.$image.'">'.$image.'</option>';
+    echo    "{image:'assets/icon/".$image."', description:'', value:'".$image."', text:'".$image."'},";
+    }
+    }
+    closedir($dh);
+  }
+}
+?>
+{description:'Tampil sebagai Pin pada Map', value:'', text:'Pilih Ikon Map'}
+];
+
+/*
+    var jsonData = [                    
+                    {description:'Choos your payment gateway', value:'', text:'Payment Gateway'},                   
+                    {image:'assets/msdropdown/img/icons/Amex-56.png', description:'My life. My card...', value:'amex', text:'Amex'},
+                    {image:'assets/msdropdown/img/icons/Discover-56.png', description:'It pays to Discover...', value:'Discover', text:'Discover'},
+                    {image:'assets/msdropdown/img/icons/Mastercard-56.png', title:'For everything else...', description:'For everything else...', value:'Mastercard', text:'Mastercard'},
+                    {image:'assets/msdropdown/img/icons/Cash-56.png', description:'Sorry not available...', value:'cash', text:'Cash on devlivery', disabled:true},
+                    {image:'assets/msdropdown/img/icons/Visa-56.png', description:'All you need...', value:'Visa', text:'Visa'},
+                    {image:'assets/msdropdown/img/icons/Paypal-56.png', description:'Pay and get paid...', value:'Paypal', text:'Paypal'}
+                    ];
+
+*/
+    // membuat <select id="msdropdown20" name="pilihikon" style="width: 250px;" tabindex="-1">
+    var jsn = $("#byjson").msDropDown({byJson:{data:jsonData, name:'pilihikon'}}).data("dd"); 
+    
+}
+$("#btn1").on("click", function() {
+    createByJson();
+    var iko = $(".selected").val();
+    console.info(iko); 
+    $(this).hide();
+});
+$('#pilihikon').on('click',function(){
+    var iko = $( this ).val();
+    //var iko = $(".selected").val();
+    console.info(iko); 
+})
+</script>    

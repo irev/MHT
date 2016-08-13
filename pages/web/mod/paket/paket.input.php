@@ -9,7 +9,7 @@
 /////////////////////////////////
 if(!isset($_SESSION)){
 	session_start();
- 	error_reporting(0);
+ 	//error_reporting(0);
 }
 if(isset($_SESSION['login_hash'])){ 
 require("../../../../_db.php");  
@@ -26,18 +26,20 @@ if(isset($_POST['hapus'])) {
 
 } else {
 	// deklarasikan variabel
+	$kd		= $_POST['kd'];
 	echo $kode		= $_POST['kode'];
 	$nama			= $_POST['nama'];
 	$pilihikon		= $_POST['pilihikon'];
-	$band 			= $_POST['band'];
-	
+	$band 			= $_POST['band'].' Mbps';
+	echo substr($kode, 2, 3);
 	// validasi agar tidak ada data yang kosong
 	if($kode!="" && $nama!="" && $band!="" && $pilihikon!="") {
 		// proses tambah data gangguan
-		if(substr($kode, 2, 3) == 0) {
+		if(substr($kd, 2, 3) == 0) {
 			$edt = mysql_query("INSERT INTO tb_paket VALUES('$kode','$nama','$band','$pilihikon')");
 			if($edt){
-				echo json_encode(array('status'=>true));
+				echo "INSERT INTO tb_paket VALUES('$kode','$nama','$band','$pilihikon";
+				echo json_encode(array('status'=>true,'msg'=>'INSERT BERHASIL'));
 				echo 1;
 			}else{
 				echo json_encode(array('status'=>false));
