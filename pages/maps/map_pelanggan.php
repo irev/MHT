@@ -5,189 +5,6 @@
 include('../../_db.php');
 //include('../../_script.php');
 ?>
-<script type="text/javascript">
-var peta;
-var koorAwal = new google.maps.LatLng(-0.7864794500552789, 100.65369380638003);
-var icon_pin ='assets/icon/icon-tower-induk.png';
-function peta_awal(){
- 
-   console.log(set_icon_tanda(jenis));
-    set_icon_tanda(jenis);
-    var settingpeta = {
-        zoom: 11,
-        center: koorAwal,
-        icon: icon_pin,
-        mapTypeId: google.maps.MapTypeId.ROADMAP 
-        };
-    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
-    google.maps.event.addListener(peta,'click',function(event){
-        tandai(event.latLng);
-    }); 
-    loadDataLokasiTersimpan();
-}
-
-function setjenis(jns){
-    jenis = jns;
-    console.log('setjenis '+ jenis);
-}
-
-function set_icon_tanda(jenisnya){
-    console.log(jenisnya);
-    switch(jenisnya){
-        case "tower":
-            icon_pin = 'assets/icon/tower1.png';
-            break;
-        case "pelanggan":
-            icon_pin = 'assets/icon/client_home.png';
-            break;
-        case  "kantor":
-            icon_pin = 'assets/icon/townhouse.png';
-            break;
-         
-            console.log( jenisnya +'icon_pin '+icon_pin);
-    }
-}
-
-
-// Removes the markers from the map, but keeps them in the array.
-function clearMarkers() {
-  tanda.setMap(null);
-}
-function tandai(lokasi){
-   clearMarkers();
-   set_icon_tanda(jenis);
-   console.log('tandai lokasi '+ jenis +' '+set_icon(jenis)); 
-    $("#koorX").val(lokasi.lat());
-    $("#koorY").val(lokasi.lng());
-    tanda = new google.maps.Marker({
-        position: lokasi,
-        map: peta,
-        icon: icon_pin
-    });
-    
-}
-
-$(document).ready(function(){
-    $("#simpanpeta").click(function(){
-        var koordinat_x = $("#koorX").val();
-        var koordinat_y = $("#koorY").val();
-        var nama_tempat = $("#namaTempat").val();   
-        var jenis = $("#jenis").val();
-        $("#loading").show();
-        $.ajax({
-            url: "pages/maps/simpan_lokasi_baru.php",
-            data: "koordinat_x="+koordinat_x+"&koordinat_y="+koordinat_y+"&nama_tempat="+nama_tempat+"&jenis="+jenis,
-            success: function(msg){
-                $("#namaTempat").val(null);
-                $("#loading").hide();
-                loadDataLokasiTersimpan();
-            }
-        });
-    });
-});
-
-
-
-function loadDataLokasiTersimpan(){
-    $('#kordinattersimpan').load('pages/maps/tampilkan_lokasi_tersimpan.php');
-}
-
-//setInterval (loadDataLokasiTersimpan, 9000);
-function CariDataLokasiTersimpan(){
-    var cari_nama_lokasi = document.getElementById('cari_nama_lokasi').value;
-    if(cari_nama_lokasi !==null){
-        $('#kordinattersimpan').load('pages/maps/tampilkan_lokasi_tersimpan.php?lokasi='+cari_nama_lokasi);
-    }else{
-        $('#kordinattersimpan').load('pages/maps/tampilkan_lokasi_tersimpan.php');
-    }
-    console.log(cari_nama_lokasi);
-}
-
-
-
-function carikordinat(lokasi){
-    set_icon(jenis);  // setjenis
-    console.log('set_icon(jenis) '+ jenis+' ' + set_icon(jenis));
-    var settingpeta = {
-        zoom: 17,
-        center: lokasi,
-        mapTypeId: google.maps.MapTypeId.ROADMAP 
-        };
-    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
-    tanda = new google.maps.Marker({
-        position: lokasi,
-        map: peta,
-        icon: 'assets/icon/'+icon_pin //setjenis pin utama
-    });
-    google.maps.event.addListener(tanda, 'click', function() {
-      infowindow.open(peta,tanda);
-    });
-    google.maps.event.addListener(peta,'click',function(event){
-        tandai(event.latLng);
-    });
-}
-
-
-function gantipeta(){
-    loadDataLokasiTersimpan();
-	var isi = document.getElementById('cmb').value;
-	if(isi=='1')
-	{
-    var settingpeta = {
-        zoom: 10,
-        center: koorAwal,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-	}
-	else if(isi=='2')
-	{
-    var settingpeta = {
-        zoom: 10,
-        center: koorAwal,
-        mapTypeId: google.maps.MapTypeId.TERRAIN 
-        };
-	}
-	else if(isi=='3')
-	{
-    var settingpeta = {
-        zoom: 10,
-        center: koorAwal,
-        mapTypeId: google.maps.MapTypeId.SATELLITE  
-        };
-	}
-	else if(isi=='4')
-	{
-    var settingpeta = {
-        zoom: 10,
-        center: koorAwal,
-        mapTypeId: google.maps.MapTypeId.HYBRID  
-        };
-	}
-    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
-    google.maps.event.addListener(peta,'click',function(event){
-        tandai(event.latLng);
-    });
-}
-
-
-function load() {
-   multi_koordinat();
-   loadDataLokasiTersimpan();
-   console.log("load peta berhasil dimuat!");
-}
-window.onload = load;
-
-
-
-
-function tampil_semua_koordinat(){
-        multi_koordinat();
-        //$(this).addClass('active');
-        //$('#kanvaspeta').load('pages/web/index.php');
-}
-</script>
-
-
 <!--body onLoad="peta_awal()"-->
 <div class="row">
 
@@ -196,6 +13,8 @@ function tampil_semua_koordinat(){
 <div class="box box-primary">
                 <div class="box-header">
                   <h3 class="box-title">Pemetaan</h3>
+            <button class="btn btn-sm btn-primary" onclick="javascript:tampil_semua_koordinat();">Tampilkan Semua Koordinat</button>
+
             <span style="float:right;">      
                 <label>Ganti Model Peta</label>
                 <select id="cmb" onchange="gantipeta()">
@@ -304,10 +123,188 @@ function tampil_semua_koordinat(){
 </div></div>
 </div>
 <!--footer-->
-
-
-
 <script type="text/javascript">
+$(document).ready(function(){
+    $("#simpanpeta").click(function(){
+        var koordinat_x = $("#koorX").val();
+        var koordinat_y = $("#koorY").val();
+        var nama_tempat = $("#namaTempat").val();   
+        var jenis = $("#jenis").val();
+        $("#loading").show();
+        $.ajax({
+            url: "pages/maps/simpan_lokasi_baru.php",
+            data: "koordinat_x="+koordinat_x+"&koordinat_y="+koordinat_y+"&nama_tempat="+nama_tempat+"&jenis="+jenis,
+            success: function(msg){
+                $("#namaTempat").val(null);
+                $("#loading").hide();
+                loadDataLokasiTersimpan();
+            }
+        });
+    });
+
+
+function load() {
+   //multi_koordinat();
+   loadDataLokasiTersimpan();
+   console.log("load peta berhasil dimuat!");
+}
+window.onload = load;
+
+
+var peta;
+var koorAwal = new google.maps.LatLng(-0.7864794500552789, 100.65369380638003);
+var icon_pin ='assets/icon/icon-tower-induk.png';
+function peta_awal(){
+ 
+   console.log(set_icon_tanda(jenis));
+    set_icon_tanda(jenis);
+    var settingpeta = {
+        zoom: 11,
+        center: koorAwal,
+        icon: icon_pin,
+        mapTypeId: google.maps.MapTypeId.ROADMAP 
+        };
+    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
+    google.maps.event.addListener(peta,'click',function(event){
+        tandai(event.latLng);
+    }); 
+    loadDataLokasiTersimpan();
+}
+
+function setjenis(jns){
+    jenis = jns;
+    console.log('setjenis '+ jenis);
+}
+
+function set_icon_tanda(jenisnya){
+    console.log(jenisnya);
+    switch(jenisnya){
+        case "tower":
+            icon_pin = 'assets/icon/tower1.png';
+            break;
+        case "pelanggan":
+            icon_pin = 'assets/icon/client_home.png';
+            break;
+        case  "kantor":
+            icon_pin = 'assets/icon/townhouse.png';
+            break;
+         
+            console.log( jenisnya +'icon_pin '+icon_pin);
+    }
+}
+
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  tanda.setMap(null);
+}
+function tandai(lokasi){
+   clearMarkers();
+   set_icon_tanda(jenis);
+   console.log('tandai lokasi '+ jenis +' '+set_icon(jenis)); 
+    $("#koorX").val(lokasi.lat());
+    $("#koorY").val(lokasi.lng());
+    tanda = new google.maps.Marker({
+        position: lokasi,
+        map: peta,
+        icon: icon_pin
+    });
+    
+}
+
+
+
+
+function loadDataLokasiTersimpan(){
+    $('#kordinattersimpan').load('pages/maps/tampilkan_lokasi_tersimpan.php');
+}
+
+//setInterval (loadDataLokasiTersimpan, 9000);
+function CariDataLokasiTersimpan(){
+    var cari_nama_lokasi = document.getElementById('cari_nama_lokasi').value;
+    if(cari_nama_lokasi !==null){
+        $('#kordinattersimpan').load('pages/maps/tampilkan_lokasi_tersimpan.php?lokasi='+cari_nama_lokasi);
+    }else{
+        $('#kordinattersimpan').load('pages/maps/tampilkan_lokasi_tersimpan.php');
+    }
+    console.log(cari_nama_lokasi);
+}
+
+
+
+function carikordinat(lokasi){
+    set_icon(jenis);  // setjenis
+    console.log('set_icon(jenis) '+ jenis+' ' + set_icon(jenis));
+    var settingpeta = {
+        zoom: 17,
+        center: lokasi,
+        mapTypeId: google.maps.MapTypeId.ROADMAP 
+        };
+    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
+    tanda = new google.maps.Marker({
+        position: lokasi,
+        map: peta,
+        icon: 'assets/icon/'+icon_pin //setjenis pin utama
+    });
+    google.maps.event.addListener(tanda, 'click', function() {
+      infowindow.open(peta,tanda);
+    });
+    google.maps.event.addListener(peta,'click',function(event){
+        tandai(event.latLng);
+    });
+}
+
+
+function gantipeta(){
+    loadDataLokasiTersimpan();
+    var isi = document.getElementById('cmb').value;
+    if(isi=='1')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: koorAwal,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    }
+    else if(isi=='2')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: koorAwal,
+        mapTypeId: google.maps.MapTypeId.TERRAIN 
+        };
+    }
+    else if(isi=='3')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: koorAwal,
+        mapTypeId: google.maps.MapTypeId.SATELLITE  
+        };
+    }
+    else if(isi=='4')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: koorAwal,
+        mapTypeId: google.maps.MapTypeId.HYBRID  
+        };
+    }
+    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
+    google.maps.event.addListener(peta,'click',function(event){
+        tandai(event.latLng);
+    });
+}
+
+
+
+
+function tampil_semua_koordinat(){
+        multi_koordinat();
+        //$(this).addClass('active');
+        //$('#kanvaspeta').load('pages/web/index.php');
+}
+
 //SKRIP DIBAWAH INI DI UNTUK MENAMPILKAN SEMUA DATA KOODINAT PELANGGAN
 //NAMUN BELUM SEMPURNA 
 //18-06-2016 SABTU JAM DELAPAN PAGI
@@ -477,6 +474,8 @@ if (navigator.geolocation) {
   error('Geo Location is not supported');
 }   
 }
+
+});
 </script>
 
 

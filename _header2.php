@@ -60,10 +60,13 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                     <li><a href="dashboard.php?cat=maps&page=map_pelanggan">Lokasi Pelanggan</a></li>
                     <li><a href="dashboard.php?cat=maps&page=map-gangguan">Lokasi Gangguan</a></li>
                     <li class="divider"></li>
+                    <li><a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map-gangguan.php');"><i class="fa fa-thumbs-down"></i>Request Gangguan(jv) OK</a></li>
                     <li><a href="#Map_Repeater" onclick="javascript:showpage('pages/maps/index.php');">Repeater (jv)</a></li>
-                    <li><a href="#Map_Pelanggan" onclick="javascript:showpage('pages/maps/map_pelanggan.php');">Lokasi Pelanggan(jv)</a></li>
+                    <li><a href="#Map_Pelanggan" onclick="javascript:showpage('pages/maps/map_pelanggan.php');">Lokasi Pelanggan(jv) lg coding</a></li>
+                    <li><a href="#Map_Pelanggan" onclick="javascript:showpage('pages/maps/index.php');">Lokasi Pelanggan index(jv) lg coding</a></li>
                     <li><a href="#Map_Perangkat" onclick="javascript:showpage('pages/maps/perangkat.php');">perangkat(jv)</a></li>
                     <li><a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map-gangguan.php');">Lokasi Request Gangguan(jv)</a></li>
+                    <li><a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map_g.php');">Lokasi Request Gangguan(jv)</a></li>
                </ul>
             </li>
  <?php if($_SESSION['login_hash']=='krd'){ ?> 

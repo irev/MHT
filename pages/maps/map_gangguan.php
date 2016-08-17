@@ -3,9 +3,10 @@
 <script type="text/javascript" src="pages/web/map/assets/js/markerclusterer_packed.js"></script>
 <script type="text/javascript" src="pages/maps/map_gangguan.js"></script>
 <?php 
-include('_script.php');
+//include('_script.php');
 ?>
 <script type="text/javascript">
+loadDataLokasiTersimpan();
 var peta;
 var koorAwal = new google.maps.LatLng(-0.7864794500552789, 100.65369380638003);
 var icon_pin ='assets/icon/icon-tower-induk.png';
@@ -176,7 +177,9 @@ function load() {
    loadDataLokasiTersimpan();
    console.log("load peta berhasil dimuat!");
 }
-window.onload = load;
+ setTimeout(function(){ window.onload = load; }, 700);
+
+
 
 
 
@@ -200,7 +203,9 @@ function tampil_semua_koordinat(){
 <div class="box box-primary">
                 <div class="box-header">
                   <h3 class="box-title">Lokasi Gangguan</h3>
-            <span style="float:right;">      
+            <span style="float:right;">
+            <button class="btn btn-sm btn-primary" onclick="javascript:tampil_semua_koordinat();">Tampilkan Semua Koordinat</button>
+                  
                 <label>Ganti Model Peta</label>
                 <select id="cmb" onchange="gantipeta()">
                     <option value="1">Peta Roadmap</option>

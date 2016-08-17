@@ -1,5 +1,14 @@
 <!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
 <script type="text/javascript" src="pages/web/map/assets/js/markerclusterer_packed.js"></script>
+<?php 
+//include('_script.php');
+ ?>
+<section class="content">
+<div class="row">
+<div class="col-md-12">
+        <div id="tampilmap"></div>
+</div>
+</section>
 <script type="text/javascript">
 //////////////////////////////////////////////////////////////////////
 //SKRIP DIBAWAH INI DI UNTUK MENAMPILKAN SEMUA DATA KOODINAT PELANGGAN
@@ -30,6 +39,7 @@ var i;
 var url;
 var gambar_tanda;
 window.onload = load;
+ $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
 var load_peta = function(){
 var load = function(){}
 return{

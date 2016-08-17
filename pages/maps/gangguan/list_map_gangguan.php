@@ -60,10 +60,10 @@ $no++;
                       <div id="collapse<?php echo $no; ?>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                        <div  class="box-body">
                        		<span class="pull-right">
-                        	<a class="btn btn-xs bg-blue" href="javascript:carikordinat(new google.maps.LatLng(<?php echo $koor['x']; ?>,<?php echo $koor['y']; ?>),icon_pin='<?php echo $koor['ikon']; ?>')"><i class="fa fa-map-marker"></i> View</a>
+                        	<a class="btn btn-xs bg-blue" href="javascript:load_peta.carikordinat(new google.maps.LatLng(<?php echo $koor['x']; ?>,<?php echo $koor['y']; ?>),icon_pin='<?php echo $koor['ikon']; ?>')"><i class="fa fa-map-marker"></i> View</a>
                         	</span>
                         	<span class="pull-left">
-                        	<!--a href="#" class=" btn btn-xs bg-red delbutton" id="<?php echo $koor['nomor']; ?>"><i class="fa fa-map-marker"></i> (Hapus)</a-->
+                        	<!--a href="#" class=" btn btn-xs bg-red delbutton" id="php echo $koor['nomor']; ?>"><i class="fa fa-map-marker"></i> (Hapus)</a-->
                         	</span>
                       </div>
                       </div>
@@ -110,7 +110,7 @@ $no++;
                       <div id="collapse<?php echo $no; ?>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                        <div  class="box-body">
                        		<span class="pull-right">
-                          <a class="btn btn-xs bg-blue" href="javascript:carikordinat(new google.maps.LatLng(<?php echo $koor['x']; ?>,<?php echo $koor['y']; ?>),icon_pin='<?php echo $koor['ikon']; ?>', new ambildatabase('<?php echo $koor['id_pelanggan']; ?>'))"><i class="fa fa-map-marker"></i> View</a>
+                          <a class="btn btn-xs bg-blue" href="javascript:load_peta.carikordinat(new google.maps.LatLng(<?php echo $koor['x']; ?>,<?php echo $koor['y']; ?>),icon_pin='<?php echo $koor['ikon']; ?>', new load_peta.ambildatabase('<?php echo $koor['id_pelanggan']; ?>'))"><i class="fa fa-map-marker"></i> View</a>
                         	<!--a class="btn btn-xs bg-blue" href="javascript:ambildatabase('<?php echo $koor['id_pelanggan']; ?>')"><i class="fa fa-map-marker"></i> View 2</a-->
                         	</span>
                         	<span class="pull-left">

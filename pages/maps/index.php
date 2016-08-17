@@ -3,9 +3,7 @@ include('../../_db.php');
 //include('../../_script.php');
 
 ?>
-<script type="text/javascript">
-    multi_koordinat();
-</script>
+
 <!--body onLoad="peta_awal()"-->
 <div class="row">
 <div class="col-md-12">
@@ -126,12 +124,12 @@ include('../../_db.php');
 
 <script type="text/javascript">
 <!--
+//peta_awal();
 var peta;
 var koorAwal = new google.maps.LatLng(-0.7864794500552789, 100.65369380638003);
-var icon_pin ='assets/icon/icon-tower-induk.png';
+var icon_pin ='assets/icon/tower1.png';
 
 function peta_awal(){
- 
    console.log(set_icon_tanda(jenis));
     set_icon_tanda(jenis);
     var settingpeta = {
@@ -164,7 +162,6 @@ function set_icon_tanda(jenisnya){
         case  "kantor":
             icon_pin = 'assets/icon/townhouse.png';
             break;
-         
             console.log( jenisnya +'icon_pin '+icon_pin);
     }
 }
@@ -180,6 +177,9 @@ function tandai(lokasi){
    console.log('tandai lokasi '+ jenis +' '+set_icon(jenis)); 
     $("#koorX").val(lokasi.lat());
     $("#koorY").val(lokasi.lng());
+    if(icon_pin==''){
+        icon_pin = 'assets/icon/tower1.png';
+    } 
     tanda = new google.maps.Marker({
         position: lokasi,
         map: peta,
@@ -290,15 +290,15 @@ function gantipeta(){
     });
 }
 
-/*
-function load() {
+
+function loadmap() {
    multi_koordinat();
    loadDataLokasiTersimpan();
    console.log("load peta berhasil dimuat!");
 }
-window.onload = load;
+window.onload = loadmap;
 
-*/
+
 // A $( document ).ready() block.
 
 
@@ -432,12 +432,6 @@ function ambildatabase(){
     var markerCluster = new MarkerClusterer(peta, markers);
     
 }
-    loadDataLokasiTersimpan();
-    multi_koordinat();
-    //tampil_semua_koordinat();
-    console.log( "ready!" );
-
-
 // fungsi inilah yang akan menampilkan gambar ikon sesuai dengan kategori markernya sendiri
 function set_icon(ikon){
     if (ikon == "") {
