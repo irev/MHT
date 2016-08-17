@@ -17,14 +17,14 @@ require("../../../../_db.php");
 
 // proses menghapus data
 if(isset($_POST['hapus'])) {
-	$idhapus =  'KR'.sprintf("%03s", $_POST['hapus']);
+	echo $_POST['hapus'];
+	//$idhapus =  'KR'.sprintf("%03s", $_POST['hapus']);
+	$idhapus = $_POST['hapus'];
     $edt = mysql_query("DELETE FROM tb_karyawan WHERE id_karyawan='$idhapus'");
     if($edt){ 
-    	echo json_encode(array('status'=>true));
-    	echo 3;
+    	echo json_encode(array('status'=>true,'msg'=>'ok'));
     }else{
-    	echo json_encode(array('status'=>false));
-    	echo 0;
+    	echo json_encode(array('status'=>false,'msg'=>'error'));
     }
 
 } else {

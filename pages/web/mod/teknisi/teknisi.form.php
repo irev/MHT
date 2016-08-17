@@ -10,14 +10,11 @@ if(!isset($_SESSION['login_hash']))
 {
   echo "What your looking for..??";
 }else{
- 
-
-
  ?>
 <div class="">
 
                 <div class="box-body with-padding">
-                  <div class="table-responsive mailbox-messages">
+                  <div class=" mailbox-messages">
                     <?php
 // $_POST['id'] ="003"; /// test edit data
 //$_GET['id']="KR000";
@@ -144,13 +141,13 @@ if(substr($kd_pel, 2, 4) != 0) {
   <hr>
   <div class="form-group">
     <label for="id" class="col-sm-2 control-label">gambar</label>
-      <div class=" col-sm-10 controls">       
+  <div class=" col-sm-10 controls">       
           <!--input type="file" name="gambar" id="gambar"-->
-          <a onclick="getform.avatar('CL0006')" data-toggle="modal" class="btn  btn-default" tabindex="-1" href="#dialog-data">
+          <a onclick="avatar('<?php echo $id_karyawan ?>')" data-toggle="modal" class="btn  btn-default" tabindex="-1" href="#dialog-foto">
           <img id='previewing2' src="assets/img/user/noimage.jpg" class="img-circle" alt="User Image">
   </a>
   <input name="gambar" id="gambar" hidden></input>
-      </div>   
+  </div>   
   </div>
    <div class="form-group">
      <div class=" col-sm-2 controls"></div>
@@ -177,9 +174,10 @@ if(substr($kd_pel, 2, 4) != 0) {
        // if($kd_pel !== 0) { 
        //    echo  '<option value="0">Blockss</option><option value="1">Aktifss</option>';
        // }
-           echo  '<option value="Koordinator">Koordinator</option>
+           echo  '<option value="Teknisi">Teknisi</option>
                   <option value="Customer Service">Customer Service</option>
-                  <option value="Teknisi">Teknisi</option>';
+                  <option value="Koordinator">Koordinator</option>'
+                  ;
         ?>
       </select>
   </div>        
@@ -207,17 +205,42 @@ User Login
       <div class=" col-sm-10 controls">
       <input type="password" id="password2" onkeyup="cekpas()" class="form-control datemask2" on name="password2" value="<?php //echo $password ?>" required>
     </div>
-  </div>
+  </div> 
+  <hr>
+    <a id="simpan-data-pelanggan" href="#" class="btn-success col-sm-1 btn pull-right">Simpan</a>&nbsp;
+  <input type="reset" value="Reset" class="btn btn-danger"/>
   </form>
-    <hr>
-    <div class="form-group">
-        <a id="simpan-data-pelanggan" href="#msg-modal" class="btn btn-success form-control" data-toggle="modal">Simpan</a>
+   
+ <!-- awal untuk modal dialog -->
+<div id="dialog-foto" class="modal fade modal-primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Data Teknisi</h3>
     </div>
+    <div class="modal-body">
+    <!-- tempat untuk menampilkan form  -->
+        <div id="modal-data-teknisi"></div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" onclick="resetModal()" data-dismiss="modal" aria-hidden="true">Tutup</button>
+    <!--
+        <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">Selesai</button>
+        <button id="simpan-data" class="btn btn-success">Simpan</button>
+    //-->
+    </div>
+    </div>
+    </div>
+</div>
+<!-- akhir kode modal dialog -->
 
 <?php
 //include('../../../../_script.php');
 ?> 
 <script type="text/javascript">
+$('#previewing2').attr('width', '100');
+$('#previewing2').attr('height', '100');
 function cekpas() {
     var x = $('#password').val();
     var xx = $('#password2').val();
@@ -237,6 +260,7 @@ function cekpas() {
       return false;    
     }
 }
+
   // ketika tombol simpan ditekan
     $("#simpan-data-pelanggan").bind("click", function(event) {
       var url = "pages/web/mod/teknisi/teknisi.input.php";
@@ -254,39 +278,41 @@ function cekpas() {
       var avatar      = $('input:text[name=gambar]').val();
       var data = $('#form-pelanggan').serialize();
       //var dataType = 'jpg, png, jpeg';
-      if(v_nama !='' && v_alamat !='' && v_hp !='' && v_bagian !='' && v_us !='' && v_ps !=''){ 
-      console.log(v_kode+' '+v_hp+' '+v_nama+' '+kd_pel +' '+avatar);
-
+if(v_nama !='' && v_alamat !='' && v_hp !='' && v_bagian !='' && v_us !='' && v_ps !=''){ 
       // mengirimkan POST data ke berkas teknisi.input.php untuk di proses
       $.post(url, {kode: v_kode, nama: v_nama, hp: v_hp, alamat: v_alamat, bagian:v_bagian,  username: v_us, password: v_ps, gambar:v_ps, gambar: avatar, id:kd_pel},function(){
-          $('#msg').html(
-            '<div class="alert alert-success alert-dismissable">'+
+
+     $.blockUI({ 
+            centerY: 0, 
+            css: { bottom: '', left: '', right: '10px' },
+            message: '<div class="alert alert-success alert-dismissable">'+
                     '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
                     '<h4><i class="icon fa fa-ban"></i> Alert!</h4>'+
                     'Data berhasil disimpan!'+
-            '</div>'  
-          );
-
-          $('#msg, .in').slideDown('slow').delay(1500).slideUp('slow', function(){
-              teknisi_baru();
-              var menu2 = "pages/web/mod/teknisi/teknisi.menu.php";
-              $("#menu-pelanggan").load(menu2);
-            });
+                    '</div>'
+        });
+     setTimeout($.unblockUI, 1000);
+//showpage('pages/web/teknisi.php');
+        $('#add-teknisi').load('pages/web/mod/teknisi/teknisi.form.php');
+ 
       });
       
       }else{
-        //alert('Data Belum terisi dengan benar!');
-        //$('#msg').html();
-        $("#msg").html(
-          '<div class="alert alert-danger alert-dismissable">'+
+         $.blockUI({ 
+            centerY: 0, 
+            css: { bottom: '', left: '', right: '10px' },
+            message: '<div class="alert alert-danger alert-dismissable">'+
                     '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
                     '<h4><i class="icon fa fa-ban"></i> Alert!</h4>'+
                     'Data belum terisi dengan benar!'+
-          '</div>' 
-          );
-          $('#msg, .in').slideDown('slow').delay(1500).slideUp('slow');
+                    '</div>' 
+        });
+     setTimeout($.unblockUI, 1000);
+    
+
       }
     });
+
 // file upload java sript
 // //////////////////////////////////////////////
  $("#gambar").on('change', function() {
@@ -329,6 +355,16 @@ function cekpas() {
   //$("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
 </script>
 <script type="text/javascript" src="assets/plugins/select2/select2.full.min.js"></script>  
+<script>
+function avatar(kd_pel){
+       var url = "pages/web/mod/teknisi/upload_file_ajax/ajax_upload_image_main.php";
+       $("#myModalLabel").html("Upload Foto"); 
+       $.post(url, {id: kd_pel} ,function(data) {
+       $(".modal-body").html(data).show();
+       });     
+  }
+ 
+</script>
 
                   </div><!-- /.mail-box-messages -->
                 </div><!-- /.box-body -->
@@ -338,4 +374,6 @@ function cekpas() {
                   </div>
                 </div>
               </div>
+
+              
 <?php } ?>

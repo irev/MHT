@@ -15,11 +15,10 @@ require("../../inc/function/hitung_jumlah_pelanggan.php");
 if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
    echo "<script>window.location='".baseurl."logout.php'</script>";
 }
-
-
 ?>
 <!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
 <script type="text/javascript">
+
 	    //Fungsi Menu
     function list_allpelanggan(){
         $(this).addClass('active');

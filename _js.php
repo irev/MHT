@@ -4,10 +4,10 @@ Kumpulan Link JS _js.php
 <!--LINE SCRIPT-->
 <!--script src="js/jquery-2.2.1.min.js"></script-->
 <!--script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script-->
-<!--bootbox-->
-<script type="text/javascript" scr="assets/plugins/bootbox/bootbox.js"></script>
+ <script src="js/jquery-2.2.1.min.js"></script>
 <!-- jQueryUI 2.2.1 -->
 <script src="assets/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- bootstrap3-dialog-master -->
@@ -40,9 +40,10 @@ Kumpulan Link JS _js.php
 <script type="text/javascript" src="assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script type="text/javascript" src="assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>  
 <script type="text/javascript" src="assets/plugins/zdatepicker/javascript/zebra_datepicker.js"></script>
-<script type="text/javascript" src="js/jquery.blockUI.js"></script>
+<!--bootbox-->
+<script type="text/javascript" scr="assets/plugins/bootbox/bootbox.js"></script>
  <!-- DataTables -->
-    <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
 
 <!--LINE SCRIPT END-->
 
@@ -54,4 +55,45 @@ Kumpulan Link JS _js.php
   $("#tampil_barang_ready").DataTable({"lengthMenu": [ [5, 10, 15, 20, -1], [5, 10, 15, 20, "All"] ]});
 */
 
-  </script>
+  
+function showloading()
+{
+  //$("#loading2").show()
+ // $('.main-content').html({ message: '<h1><img src="../assets/img/ajax-loader.gif" /><p>Just a moment..</h1>',showOverlay: true, css: { backgroundColor: '#FFFFFF'}}),
+$.blockUI({ 
+            centerY: 0, 
+            css: { bottom: '', left: '', right: '10px' },
+            message: '<h1><img src="assets/img/ajax-loader.gif" /> Loading...</h1>'
+        }); 
+        setTimeout($.unblockUI, 1000); 
+}
+function hideloading()
+{
+  //$("#loading2").hide()
+  $('.main-content').unblock();
+}
+
+///FUNGSI UNTUK PEMANGGILN PAGE
+function showpage(link)
+{
+  console.log(link);
+  $.ajax({
+  type: "GET",
+  url: link,
+  beforeSend: showloading(),
+  success: function(msg){
+  $("#main").hide();
+  $("#main").html(msg).show("slow");
+  hideloading();
+  },
+  error: function(msg){
+  $("#main").html("<font color='#ff0000'>Ajax loading error, Coba diulangi lagi.</font>").show("slow");
+  hideloading();
+  }
+  //, complete: hideloading()
+  });
+}
+
+
+
+</script>

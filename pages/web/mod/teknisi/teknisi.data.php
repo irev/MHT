@@ -22,6 +22,7 @@ if(!isset($_SESSION['login_hash']))
                       <tr>
                         <th>No</th>
                         <th>Kode</th>
+                        <th>foto</th>
                         <th  style="width: 300px;">Nama</th>
                         <th>Nomor HP</th>
                         <th style="width: 300px;">Alamat</th>
@@ -75,11 +76,15 @@ if(!isset($_SESSION['login_hash']))
       } else {
         $bagian = "Tidak Aktif";
       }
+      //$ava=$data['avatar'];
+      if($data['avatar']=='' ?:  $avatar=$data['avatar']);
+      
   ?>
   <tr>
     <td><?php echo $i ?></td>
     <!--td class="mailbox-star"><a href="#"><?php echo $status_icon ?></a></td-->
     <td><?php echo $data['id_karyawan'] ?></td>
+    <td><img  width="50" height="50" src="assets/img/user/<?php echo $avatar ?>"/></td>
     <td ><?php echo $data['nama'] ?> </td>
     <td ><?php echo "0".$data['hp'] ?> </td>
     <td class="mailbox-subject"><?php $kets=$data['alamat']; echo  textSingkat($kets,70); ?></td>
@@ -96,14 +101,14 @@ if(!isset($_SESSION['login_hash']))
     <a href="#dialog-data" onclick="getform.ubah(<?php echo substr($data['id_karyawan'],4) ?>)"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah" data-toggle="modal">
         <i class="fa fa-pencil"></i>
       </a> 
-      <a href="#ditail_teknisi" onclick="ditail_teknisi()"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah">
+      <a href="#ditail_teknisi" data-toggle="modal" onclick="ditail_teknisi(<?php echo "'".$data['id_karyawan']."'"; ?>)"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah">
         <i class="fa fa-search"></i>
       </a>
-      <a href="#" id="<?php echo $data['id_karyawan'] ?>" onclick="getform.hapus(<?php echo substr($data['id_karyawan'],4) ?>)" class="btn btn-default btn-sm hapus">
+      <a href="#"  id="<?php echo $data['id_karyawan'] ?>" onclick="hapus(<?php echo substr($data['id_karyawan'],4) ?>)" class="btn btn-default btn-sm hapus">
         <i class="fa fa-trash"></i>
       </a>
      <?php }else{  ?>
-      <a href="#dialog-data" data-toggle="modal"  onclick="ditail_teknisi(<?php echo "'".$data['id_karyawan']."'"; ?>)"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah">
+      <a href="#ditail_teknisi" data-toggle="modal"  onclick="ditail_teknisi(<?php echo "'".$data['id_karyawan']."'"; ?>)"  id="<?php echo $data['id_karyawan'] ?>" class="btn btn-default btn-sm ubah">
         <i class="fa fa-search"></i>
       </a>
       <?php } ?>
@@ -159,4 +164,31 @@ $(function () {
   });
 </script>
 
-<?php } ?>
+<?php if ($_SESSION['login_hash']=='krd'){ ?>
+<script type="text/javascript">
+  
+        // ketika tombol hapus ditekan
+        $('.hapus').on("click", function(){
+            var url = "pages/web/mod/teknisi/teknisi.input.php";
+            // ambil nilai id dari tombol hapus
+            kd_pel = this.id;
+            
+            // tampilkan dialog konfirmasi
+            var answer = confirm("Apakah anda ingin mengghapus data ini?");
+            console.info( kd_pel );
+            // ketika ditekan tombol ok
+            if (answer) {
+                // mengirimkan perintah penghapusan ke berkas input.php
+                $.post(url, {hapus: kd_pel} ,function() {
+                    // tampilkan data yang sudah di perbaharui
+                    // ke dalam <div id="data"></div>
+                    $("#data-teknisi").load(main);
+                   //$("#menu-teknisi").load(main2);
+                });
+            }
+        });
+</script>
+<?php 
+}
+}
+?>

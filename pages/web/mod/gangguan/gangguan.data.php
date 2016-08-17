@@ -7,7 +7,12 @@
 // edit2 7 agus 2016
 // usercase CUSTOMER SERVICE
 ///////////////////////////////
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }else{}
 require("../../../../_db.php"); 
+
 ?>
 <div class="box box-primary">
                 <div class="box-header with-border">
@@ -17,7 +22,7 @@ require("../../../../_db.php");
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="table-responsive mailbox-messages">
-                    <table id="DataTableGangguanData" class="table table-hover table-striped">
+<table id="DataTableData" class="table table-hover table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -79,9 +84,11 @@ require("../../../../_db.php");
       <!--a href="#dialog-surat-jalan" onclick="SuratJalan(<?php echo substr($data['id_gangguan'],5) ?>,0)"  id="<?php echo $data['id_gangguan'] ?>" class="btn btn-danger btn-* ubah" data-toggle="modal" style="width: 100%;">
         <i class="fa fa-pencil"></i> Buat Surat
       </a-->
+      <?php if($_SESSION['login_hash']=='krd'){ ?>
       <a href="#dialog-data" onclick="getform.SuratJalan(<?php echo substr($data['id_gangguan'],5) ?>,0)"  id="<?php echo $data['id_gangguan'] ?>" class="btn btn-danger btn-* ubah" data-toggle="modal" style="width: 100%;">
         <i class="fa fa-pencil"></i> Buat Surat
       </a>
+      <?php }else{} ?>
     </td>
 	</tr>
 	<?php
@@ -102,17 +109,18 @@ require("../../../../_db.php");
 
 
 <script>
-/*
-/$(function () {
-   //$("#DataTableGangguan").DataTable();
-   $('#DataTableGangguanData').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
+   $('#DataTableData').DataTable({
+    "autoWidth": true,
+      "language": {
+            "lengthMenu": " Tampil _MENU_ record per halaman",
+            "zeroRecords": " Maaf - Data tidak ditemukan",
+            "info": " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
+            "infoEmpty": " Data tidak tersedia",
+            "search": " Cari Data : ",
+            "previus": " Cari Data : ",
+            "next": " Cari Data : ",
+            "infoFiltered": " (filtered from _MAX_ total records)"
+        }
     });
-//  });
-*/
+
 </script>  

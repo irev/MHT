@@ -2,13 +2,13 @@
     if(!isset($_SESSION)) 
     { 
         session_start(); 
-    } 
+    }else{} 
 if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
    echo "<script>window.location='logout.php'</script>";
 }
 
      ?>
-     <style type="text/css">
+<style type="text/css">
      .main-header .title-app {
       float: left;
       background-color: transparent;
@@ -60,32 +60,50 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                     <li><a href="dashboard.php?cat=maps&page=map_pelanggan">Lokasi Pelanggan</a></li>
                     <li><a href="dashboard.php?cat=maps&page=map-gangguan">Lokasi Gangguan</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/maps/index.php');">Lokasi Repieter(jv)</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/maps/map_pelanggan.php');">Lokasi Pelanggan(jv)</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/maps/perangkat.php');">perangkat(jv)</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/maps/map-gangguan.php');">Lokasi Request Gangguan(jv)</a></li>
+                    <li><a href="#Map_Repeater" onclick="javascript:showpage('pages/maps/index.php');">Repeater (jv)</a></li>
+                    <li><a href="#Map_Pelanggan" onclick="javascript:showpage('pages/maps/map_pelanggan.php');">Lokasi Pelanggan(jv)</a></li>
+                    <li><a href="#Map_Perangkat" onclick="javascript:showpage('pages/maps/perangkat.php');">perangkat(jv)</a></li>
+                    <li><a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map-gangguan.php');">Lokasi Request Gangguan(jv)</a></li>
                </ul>
             </li>
-          
+ <?php if($_SESSION['login_hash']=='krd'){ ?> 
            <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Master Data <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Master Data kordinator (jv) ok <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                  <!--
-                    <li><a href="dashboard.php?cat=web&page=pelanggan">Daftar Pelanggan</a></li>
-                    <li><a href="dashboard.php?cat=web&page=teknisi">Daftar Teknisi</a></li>
-                    <li><a href="dashboard.php?cat=web&page=perangkat">Daftar Perangkat</a></li>
-                    <li><a href="dashboard.php?cat=web&page=paket">Daftar Paket</a></li>
-                    //-->
                     <li class="divider"></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/pelanggan2.php');">Pelanggan(jv) ok</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/perangkat.php');">perangkat(jv) ok</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/Gangguan.php');">Gangguan (jv) ok</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/teknisi.php');">teknisi(jv) minggu ini harus siap</a></li>
-                    <li><a href="#" onclick="javascript:showpage('pages/web/paket.php');">Paket(jv) ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/pelanggan2.php');"><i class="fa fa-user"></i> Pelanggan(jv) ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/perangkat.php');"> <i class="fa fa-rss"></i> Perangkat(jv) ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/Gangguan.php');">  <i class="fa fa-sign-out"></i> Gangguan (jv) ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/teknisi.php');">   <i class="fa fa-user-secret"></i> Karyawan(jv)ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/paket.php');">     <i class="fa fa-cubes"></i> Paket(jv) ok</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"></a></li>
+                  </ul>
+            </li> 
+<?php } if($_SESSION['login_hash']=='cs' || $_SESSION['login_hash']=='tek'){ ?>   
+         
+           <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data cs & tek (jv) ok<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="divider"></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/pelanggan2.php');"><i class="fa fa-user"></i> Pelanggan(jv) ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/teknisi.php');">   <i class="fa fa-user-secret"></i> Karyawan(jv)ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/perangkat.php');"> <i class="fa fa-rss"></i> Perangkat(jv) ok</a></li>
+                    <li><a href="#" onclick="javascript:showpage('pages/web/paket.php');">     <i class="fa fa-cubes"></i> Paket(jv) ok</a></li>
                     <li class="divider"></li>
                     <li><a href="#"></a></li>
                   </ul>
             </li>
+<?php } ?>  
+            <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Request<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="divider"></li>
+                       <li><a href="#" onclick="javascript:showpage('pages/web/Gangguan.php');">  <i class="fa fa-sign-out"></i>Gangguan (jv) ok</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"></a></li>
+                  </ul>
+            </li>          
            <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Laporan<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -116,7 +134,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <?php  $img_q= mysql_fetch_array(mysql_query("SELECT tb_karyawan.avatar,tb_karyawan.bagian, tb_karyawan.hp as login_hp FROM tb_karyawan WHERE id_karyawan='".$_COOKIE['id']."'"));
                  $img = 'assets/img/user/'.$img_q['avatar'];
-                echo  '<img src="'.$img.'" class="img-circle" alt="User Image" style="width:25px; height:25px;">'; 
+                echo  '<img src="'.$img.'" class="img-circle" id="menu-avatar" alt="User Image" style="width:25px; height:25px;">'; 
 
              ?>
                   <span class="hidden-xs">
@@ -135,7 +153,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                   <!-- Menu Body -->
                   <li class="user-body">
                     <div class="col-xs-4 text-center">
-                      <a href="dashboard.php?cat=web&page=Profile">Profile</a>
+                      <a href="#Profile" onclick="javascript:showpage('pages/web/mod/teknisi/teknisi.profile.php');">Profile</a>
                     </div>
                     <div class="col-xs-4 text-center">
                       <a href="#">Sales</a>
@@ -148,8 +166,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                   <li class="user-footer">
                     <div class="pull-left">
                       <!--a href="#" class="btn btn-default btn-flat">Profile</a-->
-                      <a href="dashboard.php?cat=web&page=chgpwd" class="btn btn-default btn-flat">Ganti Password</a>
-                      <a href="pages/web/chgpwd.php" class="btn btn-default btn-flat">Ganti Password</a>
+                     <a href="#ganti_password" class="btn btn-default btn-flat" onclick="javascript:showpage('pages/web/chgpwd.php');">Ganti Password</a>
                     </div>
                     <div class="pull-right">
                       <a href="dashboard.php?cat=web&page=logout" class="btn btn-default btn-flat">Sign out</a>

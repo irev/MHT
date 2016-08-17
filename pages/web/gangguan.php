@@ -9,32 +9,171 @@
 if(!isset($_SESSION)) 
     { 
         session_start(); 
-    } 
+    }else{} 
 require("../../_db.php");
 require("../../inc/function/hitung_jumlah_pelanggan.php");
+require("../../inc/function/hitung_jumlah_data_item.php");
+//require("../../inc/function/hitung_jumlah_pelanggan.php");
 if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
    echo "<script>window.location='".baseurl."logout.php'</script>";
 }
 ?>
+<script type="text/javascript">
+//$('#data-widgets').load('pages/web/widgets.prangkat.php');
+//$('#data-all').load('pages/web/mod/gangguan/gangguan.alldata.php');
+dataall();
+function dataall(){
+ $('#data-all').load('pages/web/mod/gangguan/gangguan.alldata.php');
+ 
+}
+function datagangguan(){
+ $('#data-gangguan').load('pages/web/mod/gangguan/gangguan.data.php');
+
+
+}
+function datapending(){
+ $('#data-pending').load('pages/web/mod/gangguan/gangguan.pending.php');
+
+}
+function datadone(){
+ $('#data-done').load('pages/web/mod/gangguan/gangguan.done.php');
+
+}
+function dataProcess(){
+ $('#data-Process').load('pages/web/mod/gangguan/gangguan.OnProccess.php');
+}
+function datasutarjalan(){
+ $('#data-surat-jalan').load('pages/web/mod/surat/gangguan.surat.php');
+}
+function datablock(){
+ $('#data-block').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=3&ket=Process');
+}
+function tabadd(){
+ $('#data-add').load('pages/web/mod/perangkat/perangkat.form.php?id=0&ket=Process');
+}
+  //  $('#data-pending').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=0');
+  //  $('#data-gangguan').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=1');
+  //  $('#data-cuti').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=2');
+  //  $('#data-block').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=3');
+  // $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=4');
+</script>
+
 <!--script src="pages/web/mod/gangguan/js/aplikasi.js"></script-->
-<link rel="stylesheet" type="text/css" href="assets/msdropdown/css/dd.css" />
 <section class="content">
     <div class="row">
-        <div class="col-md-3">
+<div class="col-md-3">
  <?php if($_SESSION['login_hash']=='cs' || $_SESSION['login_hash']=='krd'){ ?>
             <div class="form-group">
-                <a href="#dialog-data" id="0" class="btn text-success btn-app tambah" data-toggle="modal" >
+                <a href="#dialog-data" data-toggle="modal" id="0" class="btn text-success btn-app" onclick="tambahData('0')" >
                     <i class="fa fa-plus"></i> GANGGUAN
                 </a>
+                <!--a class="btn btn-app" href="#timeout" onclick="clearTimeout(mytab,13000);;">stop</a-->
                 <br>
             </div>
- <?php } ?>           
-            <div id="menu-gangguan"></div>
-        </div>
-        <div class="col-md-9">
-                 <div id="data-gangguan"></div>
-        </div>
-</section>
+ <?php } ?>  
+ </div>
+ <div class="col-md-12">
+              <div class="nav-tabs-custom">
+         <!--tapmpil Ul tab -->       
+                   <span id="menu-tab-gangguan"></span>
+
+         
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                        <div id="data-all"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-gangguan">
+                    <!-- Post -->
+                        <div id="data-gangguan"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-pending">
+                    <!-- Post -->
+                        <div id="data-pending"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-done">
+                    <!-- Post -->
+                        <div id="data-done"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-Process">
+                    <!-- Post -->
+                        <div id="data-Process"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-sutar-jalan">
+                    <!-- Post -->
+                    <div id="msg"></div>
+                        <div id="data-surat-jalan"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-add">
+                    <!-- Post -->
+                        <div id="data-add"></div>
+                    <!-- Post -->
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab-edit">
+                    <!-- The timeline -->
+                         <div id="edit-data"></div>
+                  </div><!-- /.tab-pane -->
+
+                  <div class="tab-pane" id="settings">
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputName" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+              </div><!-- /.nav-tabs-custom -->
+ </div><!-- /.col Data TAB-->
+
+</div><!--div-->
+</section><!--section-->
 
 <!-- awal untuk modal dialog -->
 <div id="dialog-data" class="modal fade modal-primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -45,37 +184,17 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                 <h3 id="myModalLabel">Tambah Data</h3>
             </div>
             <!-- tempat untuk menampilkan form  -->
-            <div class="modal-body">
+            <div id="modal-body" class="modal-body">
             </div>
             <div class="modal-footer"> 
                 <!--button id="cetak-data" class="btn btn-success" hidden="true">Cetak</button-->
                 <button id="batal" class="btn btn-danger pull-left" data-dismiss="modal" aria-hidden="true">Batal</button>
-                <div id="bt-simpan"></div>               
+                <div id="bt-simpan"></div>
             </div>
         </div>
     </div>
 </div>
 <!-- END awal untuk modal dialog -->
-
-<!-- awal untuk modal dialog -->
-<div id="dialog-surat-jalan" class="modal fade modal-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
- <div class="modal-dialog">
-    <div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Buat surat Jalan</h3>
-    </div>
-    <!-- tempat untuk menampilkan form SURAT JALAN -->
-    <div class="modal-body">
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Batal</button>
-        <button id="simpan-surat-jalan" class="btn btn-success" onclick="simpan_surat_jalan()">Simpan</button>
-    </div>
-    </div>
-    </div>
-</div>
-<!-- akhir kode modal dialog -->
 
 <!-- akhir kode modal dialog -->
 <?php 
@@ -84,15 +203,23 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 
 <!--function menu pada halaman-->
 <script type="text/javascript">
+$('#menu-tab-gangguan').load('pages/web/mod/gangguan/gangguan.tab.php');
+function menuTab(){
+    $('#menu-tab-gangguan').load('pages/web/mod/gangguan/gangguan.tab.php');
+console.info('setInterval menu-tab');
+//setInterval(menuTab, 3000);
+}
+window.onload = menuTab;
+var mytab = setInterval(menuTab, (3600*60)*5);
+//var stopInter=
+//clearTimeout(mytab);
+//setInterval(stopInter, 10000);
 $('.paginate_button').addClass('btn btn-sm');
 /// function sub menu halaman
 <!-- // FUNSI PADA HALAMAN GANGGUAN
-    var main = "pages/web/mod/gangguan/gangguan.timeline.php";
-    var menu2 = "pages/web/mod/gangguan/gangguan.menu.php";
     $("#breadcrumb, #judulhal").text('Gangguan');
-    $("#data-gangguan").load(main);
-    $("#menu-gangguan").load(menu2);
-    //Fungsi Menu
+  
+   //Fungsi Menu
     function list_allgangguan() {
         $(this).addClass('active');
         $('#data-gangguan').load('pages/web/mod/gangguan/gangguan.alldata.php');
@@ -116,16 +243,16 @@ $('.paginate_button').addClass('btn btn-sm');
 
     function list_Pending() {
         $(this).addClass('active');
-//        $('#data-gangguan').load('pages/web/mod/gangguan/gangguan.pending.php');
-          $('#data-gangguan').load('assets/temas/pages/tables/data.html');
+          $('#data-gangguan').load('pages/web/mod/gangguan/gangguan.pending.php');
+          //$('#data-gangguan').load('assets/temas/pages/tables/data.html');
 
     }
 
     function list_surat() {
-        $('#header-title').removeClass('hide');
-        $('#data-pelanggan2').addClass('hide');
-        $('#data-title').html(" Surat Jalan");
-        $('#data-gangguan').load('pages/web/mod/surat/gangguan.surat.php');
+        //$('#header-title').removeClass('hide');
+        //$('#data-pelanggan2').addClass('hide');
+        //$('#data-title').html(" Surat Jalan");
+        $('#data-surat-jalan').load('pages/web/mod/surat/gangguan.surat.php');
         //$('#data-gangguan2').load('pages/web/mod/gangguan/gangguan.surat.print.php');
     }
 
@@ -158,11 +285,11 @@ $('.paginate_button').addClass('btn btn-sm');
             // tampilkan data gangguan dari berkas gangguan.data.php 
             // ke dalam <div id="data-gangguan"></div>
             $("#data-gangguan").load(main);
-            $("#menu-gangguan").load(menu2);
+            //$("#menu-gangguan").load(menu2);
 
             // ketika tombol ubah/tambah di tekan
-            $('.tambah').on("click", function(e) {
-                var url = "pages/cs/mod/gangguan/gangguan.form.php"; 
+            $('.tambahhh').on("click", function(e) {
+                var url = "pages/web/mod/gangguan/gangguan.form.php"; 
                 // ambil nilai id dari tombol ubah
                 // kd_mhs = this.id;
                 var kd_mhs = $(this).attr("id");
@@ -177,19 +304,16 @@ $('.paginate_button').addClass('btn btn-sm');
                 }, function(data) {
                     // tampilkan form.php ke dalam <div class="modal-body"></div>
                     $(".modal-body").html(data).show();
-
                 });
             });
 
             // ketika tombol hapus ditekan
             $('.hapus').on("click", function() {
-                var url = "pages/cs/mod/gangguan/gangguan.input.php";
+                var url = "pages/web/mod/gangguan/gangguan.input.php";
                 // ambil nilai id dari tombol hapus
                 kd_mhs = this.id;
-
                 // tampilkan dialog konfirmasi
                 var answer = confirm("Apakah anda ingin mengghapus data ini?");
-
                 // ketika ditekan tombol ok
                 if (answer) {
                     // mengirimkan perintah penghapusan ke berkas input.php
@@ -205,7 +329,7 @@ $('.paginate_button').addClass('btn btn-sm');
 
             // ketika tombol simpan gangguan ditekan
             $("#simpan-data").bind("click", function(event) {
-                var url = "pages/cs/mod/gangguan/gangguan.input.php";
+                var url = "pages/web/mod/gangguan/gangguan.input.php";
                 // mengambil nilai dari inputbox, textbox dan select
                 var kd_mhs = $('input:text[name=kd]').val();
                 var v_kode = $('input:text[name=kode]').val();
@@ -231,7 +355,7 @@ $('.paginate_button').addClass('btn btn-sm');
                     // tampilkan data yang sudah di perbaharui
                     // ke dalam <div id="data"></div>
                     $("#data-gangguan").load(main);
-                    $("#menu-gangguan").load(menu2);
+                    //$("#menu-gangguan").load(menu2);
 
                     // sembunyikan modal dialog
                     $('#dialog-data').modal('hide');
@@ -274,14 +398,12 @@ $('.paginate_button').addClass('btn btn-sm');
                 status: v_status, 
                 id: kd_mhs, 
                 kd: kd_mhs 
-            } ,function() {
-            
-                $("#data-gangguan").load(main);
-                $("#data-gangguan").load(main);
-                $("#menu-gangguan").load(menu2);
+            } ,function() {  
+               // $("#data-gangguan").load(main);
+               // $("#data-gangguan").load(main);
+               // //$("#menu-gangguan").load(menu2);
                 // sembunyikan modal dialog
-                $('#dialog-surat-jalan').modal('hide');
-                
+                $('#dialog-data').modal('hide');
                 // kembalikan judul modal dialog
                 $("#myModalLabel").html("Tambah Data ");
             });
@@ -302,11 +424,26 @@ $('.paginate_button').addClass('btn btn-sm');
 ?>
     
 <script type="text/javascript">
+function tambahData(kd){
+                var url = "pages/web/mod/gangguan/gangguan.form.php"; 
+                console.log(kd); 
+                $("#bt-simpan").html('<button id="simpan-data" class="btn btn-success" onclick="simpan(1)">Simpan Ganguan</button>'); 
+                $("#batal").text('Batal');
+                $("#myModalLabel").html("Tambah Data Gangguan");
+                $.post(url, {
+                    id: kd
+                }, function(data) {
+                    // tampilkan form.php ke dalam <div class="modal-body"></div>
+                    $(".modal-body").html(data).show();
+                    console.info('tambah baru');
+                });
+}
+
 function simpan(id_form){
     // jika id  1 = form gangguan dan 2 = form surat  
     if(id_form==1){
         alert('SIMPAN DATA GANGGUAN');
-                var url = "pages/cs/mod/gangguan/gangguan.input.php";
+                var url = "pages/web/mod/gangguan/gangguan.input.php";
                 // mengambil nilai dari inputbox, textbox dan select
                 var kd_mhs = $('input:text[name=kd]').val();
                 var v_kode = $('input:text[name=kode]').val();
@@ -332,7 +469,7 @@ function simpan(id_form){
                     // tampilkan data yang sudah di perbaharui
                     // ke dalam <div id="data"></div>
                     $("#data-gangguan").load(main);
-                    $("#menu-gangguan").load(menu2);
+                    //$("#menu-gangguan").load(menu2);
 
                     // sembunyikan modal dialog
                     $('#dialog-data').modal('hide');
@@ -375,11 +512,11 @@ function simpan(id_form){
             
                 $("#data-gangguan").load(main);
                 $("#data-gangguan").load(main);
-                $("#menu-gangguan").load(menu2);
+                //$("#menu-gangguan").load(menu2);
                 // sembunyikan modal dialog
                 $('#dialog-data').modal('hide');
                 $('#form-gangguan').html('hide');
-                $('#dialog-surat-jalan').modal('hide');
+                $('#dialog-data').modal('hide');
                 // kembalikan judul modal dialog
                 $("#myModalLabel").html("Tambah Data ");
             });
@@ -401,7 +538,7 @@ function simpan_perbaikan(){
                 var v_simpan      = 'done';
                 var v_perbaikan   = $('input:text[name=id_perbaikan]').val();
                 var v_surat       = $('input:text[name=id_surat]').val();
-                var v_gangguan      = $('input:text[name=id_gangguan]').val();
+                var v_gangguan    = $('input:text[name=id_gangguan]').val();
                 var v_tgl_selesai = $('input:text[name=tgl_selesai]').val();
                 var v_keterangan  = $('textarea[name=keterangan]').val();
                 /// TESTING MENGGUNKAN CONSOLE.LOG()
@@ -412,7 +549,7 @@ function simpan_perbaikan(){
                     // tampilkan data yang sudah di perbaharui
                     // ke dalam <div id="data"></div>
                     $("#data-gangguan").load(main);
-                    $("#menu-gangguan").load(menu2);
+                    //$("#menu-gangguan").load(menu2);
 
                     // sembunyikan modal dialog
                     $('#dialog-data').modal('hide');
@@ -442,9 +579,8 @@ function simpan_perbaikan(){
         return {
             ubah: function(idubh) {
                 kd_gag = String(idubh);
-                console.log(idubh + ' gg');
-                console.log(kd_gag + ' ffff');
-                var url = "pages/cs/mod/gangguan/gangguan.form.php";
+                console.info('UBAH ID = '+idubh);
+                var url = "pages/web/mod/gangguan/gangguan.form.php";
 
                 $("#myModalLabel").html("Ubah Data Gangguan");
                 $.post(url, {
@@ -457,8 +593,6 @@ function simpan_perbaikan(){
             },
             SuratJalan: function(idubh) {
                 kd_gag = String(idubh);
-                console.log(idubh+' gg');
-                console.log(kd_gag+' ffff');
                 //var url = "pages/krd/mod/gangguan/gangguan.form.php";
                 var url = "pages/krd/gangguan_form_buat_sj.php";
                 var tanya =confirm("Buat Surat Jalan...?");
@@ -495,7 +629,6 @@ function simpan_perbaikan(){
             cetak: function(idg, idsur) {
                 //var url = "pages/cs/mod/gangguan/gangguan.surat.print.php";
                 var url = "pages/web/print.php";
-                console.log(idg + ' ' + idsur);
                 $("#myModalLabel").html("Print Surat Tugas");
                 $("#simpan-data").css('visibility', 'hidden');
                 $.post(url, {
@@ -509,10 +642,10 @@ function simpan_perbaikan(){
                 kd_gag = String(id_done);
                 console.log(id_done + ' DONE  ' +  kd_gag);
                 /// file ini akan dipindah pada folder mod teknisi
-                var url = "pages/cs/mod/gangguan/gangguan.form.done.php";
+                var url = "pages/web/mod/gangguan/gangguan.form.done.php";
 
                 $("#myModalLabel").html("Entri Data Perbaikan");
-                $("#bt-simpan").html('<button id="simpan-surat-jalan" class="btn btn-success" onclick="simpan_perbaikan()">Selesai</button>');
+                $("#bt-simpan").html('<button id="simpan-surat-jalan" class="btn btn-success" onclick="simpan_perbaikan()">Selesai (Done)</button>');
 
                 $.post(url, {
                     id: kd_gag
@@ -520,18 +653,15 @@ function simpan_perbaikan(){
                     // tampilkan gangguan.form.php ke dalam <div class="modal-body"></div>
                     $(".modal-body").html(data).show();
                 });
-                ubah();
+                datadone();
             },
             hapus: function(idhapus) {
                 // ketika tombol hapus ditekan
 
-                var main = "pages/cs/mod/gangguan/gangguan.data.php";
-                var url = "pages/cs/mod/gangguan/gangguan.input.php";
+                var main = "pages/web/mod/gangguan/gangguan.data.php";
+                var url = "pages/web/mod/gangguan/gangguan.input.php";
                 // ambil nilai id dari tombol hapus
                 kd_mhs = idhapus;
-                console.log(kd_mhs);
-                console.log(idhapus + ' gg');
-                console.log(kd_mhs + ' ffff');
                 // tampilkan dialog konfirmasi
                 var answer = confirm("Apakah anda ingin mengghapus data ini?");
 
@@ -544,20 +674,15 @@ function simpan_perbaikan(){
                         // tampilkan data gangguan yang sudah di perbaharui
                         // ke dalam <div id="data-gangguan"></div>
                         $("#data-gangguan").load(main);
-                        $("#menu-gangguan").load(menu2);
+                        //$("#menu-gangguan").load(menu2);
                     });
                 }
             },
             hapus_SJ: function(idhapus) {
                 // ketika tombol hapus_SJ ditekan
-
-                var main = "pages/cs/mod/gangguan/gangguan.data.php";
-                var url = "pages/krd/gangguan.input.php";
+                var url = "pages/web/mod/gangguan/gangguan.input.php";
                 // ambil nilai id dari tombol hapus
                 kd_mhs = idhapus;
-                console.log(kd_mhs);
-                console.log(idhapus + ' gg');
-                console.log(kd_mhs + ' ffff');
                 // tampilkan dialog konfirmasi
                 var answer = confirm("Apakah anda ingin mengghapus data ini?");
 
@@ -565,13 +690,20 @@ function simpan_perbaikan(){
                 if (answer) {
                     // mengirimkan perintah penghapusan ke berkas transaksi.input.php
                     $.post(url, {
-                        hapus: kd_mhs
-                    }, function() {
+                        hapus_sj: kd_mhs
+                    }, function(data) {
+                        $.blockUI({ 
+                        centerY: 0, 
+                        css: { bottom: '', left: '', right: '10px' },
+                        message: '<strong>'+data.msg+'</strong>'
+                        }); 
+                        setTimeout($.unblockUI, 3000); 
+                        
                         // tampilkan data gangguan yang sudah di perbaharui
                         // ke dalam <div id="data-gangguan"></div>
-                        $("#data-gangguan").load(main);
-                        $("#menu-gangguan").load(menu2);
-                    });
+                        $('#data-surat-jalan').load('pages/web/mod/surat/gangguan.surat.php');
+                        //$("#menu-gangguan").load(menu2);
+                    }, "json");
                 }
             },
              ubah_stat: function(ids,idg,idk){
@@ -583,12 +715,12 @@ function simpan_perbaikan(){
                     var id_k=idk;
                 if (tanya == true ){
                     $.post(url,{proses_surat: id_s, proses_gangguan: id_g, karyawan: id_k}, function(data) {
-                    $("#menu-gangguan").load(menu2);
+                    //$("#menu-gangguan").load(menu2);
                     list_surat();
                     }); 
                     console.log(id_g);
                     $.post(url_print,{id: id_s, gangguan: id_g, karyawan: id_k}, function(data) {
-                    $("#menu-gangguan").load(menu2); 
+                    //$("#menu-gangguan").load(menu2); 
                     window.open(url_print+'?id=SJ'+id_s+'&gangguan=MT'+id_g+'&karyawan=KR'+id_k);
                     });       
                 }
@@ -599,15 +731,14 @@ function simpan_perbaikan(){
 //-->
 
 $('[data-toggle="tooltip"]').tooltip();
-$('#DataTableGangguan').DataTable({});
-$('#DataTableGangguan').DataTable({});
+
 </script>
 <script type="text/javascript">
     $("#datemask2").inputmask("mm/dd/yyyy", {
         "placeholder": "mm/dd/yyyy"
     });
-</script>
 
+</script>
 
 <!--
 <div id="dialog" title="Catatan halman gangguan">

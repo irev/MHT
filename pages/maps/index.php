@@ -6,11 +6,8 @@ include('../../_db.php');
 <script type="text/javascript">
     multi_koordinat();
 </script>
-
 <!--body onLoad="peta_awal()"-->
 <div class="row">
-
-
 <div class="col-md-12">
 <div class="box box-primary">
                 <div class="box-header">
@@ -50,8 +47,6 @@ include('../../_db.php');
                 </div><!-- /.box-body -->
     </div>                    
 </div>
-
-
 <div class="col-md-9">
 <!--TAMPILKAN MAP-->
     <div id="kanvaspeta" style=" margin:0px auto; width:100%; height:300px; float:right; padding:10px;"></div>
@@ -61,13 +56,9 @@ include('../../_db.php');
 
     </article>
 </div>
-
 <div id="form_lokasi" class="box-footer" style="background-color:#333333; color:#FFFFFF">
-
 <p><b>PANEL</b></p>
 <div class="row">
-
-
     <div class="col-md-4">
         <div class="form-group">
             <input type="radio" name="jenis" id="jenis" value="tower" onclick="setjenis(this.value)">

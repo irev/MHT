@@ -34,7 +34,9 @@ Kumpulan CSS _css.php
     <link rel="stylesheet" href="assets/dist/css/skins/_all-skins.min.css">
         <!--Data table-->
     <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
-    <script src="js/jquery-2.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/msdropdown/css/dd.css" />
+    
+   
 <!-- ///////////////////////////////////////////////////////////////// -->
 <!-- <msdropdown> -->
 

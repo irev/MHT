@@ -7,6 +7,10 @@
 // usercase CUSTOMER SERVICE
 /////////////////////////////////
 require("../../../../_db.php"); 
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }else{}
 ?>
 <div class="box box-primary">
                 <div class="box-header with-border">

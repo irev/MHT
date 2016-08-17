@@ -4,16 +4,6 @@
 session_start();
 ob_start();
 //echo "<div id='tunggu'>Tunggu Sebentar...</div>";
-if(!isset($_SESSION['login_hash']))
-{
-  echo " 404  Tunggu Sebentar...";
-  // $_COOKIE['id'];
-  //echo "PAGES 404";
-  echo'<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div> Please wait...';
-  echo "<script>window.location='index.php'</script>";
-  echo '<script>alert("ERROR"); </script>';
-  
-}else{
 require("_db.php");
 $idkar = $_SESSION['id_karyawan'];
 mysql_query("UPDATE `tb_karyawan` SET online='1' WHERE id_karyawan='$idkar'");
@@ -28,13 +18,13 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
    echo "<script>window.location='logout.php'</script>";
 }
 if ($_SESSION['rememberme']=='off'){
-    $session_logout = $_SESSION['session_off']; //it means 1 jam. 
-     //and then cek the time session 
+    $session_logout = $_SESSION['session_off']; // 1 jam. 
+     //and  cek waktu session 
     if($session_logout >= $_SESSION['session_time']){ 
         //user session time is up 
-       //destroy the session 
+       //destroy user session 
       session_destroy(); 
-     //redirect to login page 
+     //redirect ke login page 
      header("Location:index.php"); 
     } 
 }
@@ -46,7 +36,7 @@ if ($_SESSION['rememberme']=='off'){
   <meta name="description" content="">
   <meta name="author" content="meedun"> 
   <?php include("_css.php"); ?>
-  <?php include("_js.php"); ?>  
+  <?php include("_js.php"); ?>   
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <link rel="shortcut icon" href="favicon.png"/>
   </head>
@@ -56,6 +46,14 @@ if ($_SESSION['rememberme']=='off'){
 
   <body class="fixed layout-top-nav" style="min-width: 360px;">
   <!--body class="hold-transition sidebar-mini skin-green fixed sidebar-collapse" style="min-width: 360px;" -->
+<?php
+if(!isset($_SESSION['login_hash']))
+{  
+  ////redirect logout
+  echo'<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div> Please wait...';
+  echo "<script>window.location='index.php'</script>"; 
+}
+?>
     <div id="navbar-header"></div>
     <?php include("_header2.php"); ?>
     <!--HEADER--> 
@@ -143,4 +141,4 @@ if ($_SESSION['rememberme']=='off'){
 </script>
   </body>
   </html>
-  <?php } ?>
+  

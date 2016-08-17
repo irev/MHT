@@ -1,3 +1,9 @@
+<?php 
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }else{}
+?>
 <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Dafta Gangguan Sedang Proses</h3>
@@ -59,9 +65,12 @@
       <td class="mailbox-attachment"><?php echo  tgl_indonesia($gangguan['tgl_pelaporan']); ?></td>
       <td class="mailbox-date"><?php echo  selisihwaktu($gangguan['tgl_gangguan']); ?></td> 
       <td><?php echo $status ?></td>
-      <td><a href="#dialog-data"  class="btn btn-default btn-sm" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onclick="getform.done(<?php echo substr($gangguan['id_gangguan'],5) ?>)" id="<?php echo $gangguan['id_gangguan'] ?>">
-      <i class="fa fa-pencil pull-right"></i>
+      <td>
+      <?php if($_SESSION['login_hash']=='tek'){ ?>
+      <a href="#dialog-data"  class="btn btn-primary btn-sm" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Selesaikan" onclick="getform.done(<?php echo substr($gangguan['id_gangguan'],5) ?>)" id="<?php echo $gangguan['id_gangguan'] ?>">
+      <i class="fa fa-thumbs-up pull-right"></i>
           </a>
+       <?php } ?>   
       </td>
 </tr>
 

@@ -9,7 +9,6 @@
 //MAP PELANGGAN DALAM POSES PERBAIKAN 
 //EDIT TERAKHIR 24 JUNI 2016
 ////////////////////////////////////////////////////////////////////// 
-
 ////VARIABEL PETA
 var peta;
 var nama     = new Array();
@@ -20,7 +19,7 @@ var band     = new Array();
 var perangkat= new Array(); 
 var pelapor  = new Array();
 var teknisi  = new Array();
-var komen     = new Array();
+var komen    = new Array();
 var ikon     = new Array(); 
 var mac      = new Array(); 
 var alamat   = new Array();
@@ -30,19 +29,23 @@ var idpel;
 var i;
 var url;
 var gambar_tanda;
+window.onload = load;
+var load_peta = function(){
+var load = function(){}
+return{
 /// function Load PETA
-function load() {
+load: function() {
    multi_koordinat();
    $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
    console.log("load peta berhasil dimuat!");
-}
-window.onload = load;
+},
+
 
 function CariKoordinatPelanggan(){
 
-}
+},
 
-function carikordinat(lokasi){
+ carikordinat: function(lokasi){
     var settingpeta = {
         zoom: 17,
         center: lokasi,
@@ -223,7 +226,9 @@ include('../../_db.php');
     // nah untuk yang satu ini...untuk mem-push semua marker kedalam array untuk dikelompokan
     var markerCluster = new MarkerClusterer(peta, markers);
     
-}
+} (jQuery); 
+
+
 </script>
 
 

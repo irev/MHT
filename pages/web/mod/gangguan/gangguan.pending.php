@@ -1,3 +1,11 @@
+<?php 
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }else{}
+?>
+
+
     <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
 
 <div class="box box-primary">
@@ -20,7 +28,7 @@
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="table-responsive mailbox-messages">
-                    <table id="DataTableGangguan" class="table table-hover table-striped">
+ <table id="DataTablePending" class="table table-hover table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -86,16 +94,22 @@
 
 
 
+ 
 <script>
-//$(function () {
-   //$("#DataTableGangguan").DataTable();
-    $('#DataTableGangguan').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
+  <!--
+ $('.paginate_button').addClass('btn');
+   $('#DataTablePending').DataTable({
+    "autoWidth": true,
+      "language": {
+            "lengthMenu": " Tampil _MENU_ record per halaman",
+            "zeroRecords": " Maaf - Data tidak ditemukan",
+            "info": " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
+            "infoEmpty": " Data tidak tersedia",
+            "search": " Cari Data : ",
+            "previus": " Cari Data : ",
+            "next": " Cari Data : ",
+            "infoFiltered": " (filtered from _MAX_ total records)"
+        }
     });
-//  });
+  -->
 </script>  

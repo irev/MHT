@@ -12,12 +12,18 @@
 <ul class="users-list clearfix">
 <?php 
 require("../_db.php"); 
-$q_usr= mysql_query("SELECT * FROM `tb_karyawan`");
+$q_usr= mysql_query("SELECT * FROM `tb_karyawan`  ORDER BY `tb_karyawan`.`online` DESC");
 while ($usr = mysql_fetch_array($q_usr)) {
+if($usr['avatar']==''){
+  $usrAva ='noimage.jpg';
+}else{
+  $usrAva=$usr['avatar'];
+}
 ?>
+
                         <li>
                         <?php 
-                          echo  '<img src="assets/img/user/'.$usr['avatar'].'" alt="User Image">';
+                          echo  '<img id="avatar" src="assets/img/user/'.$usrAva.'" alt="User Image avatar">';
                         ?>
                           <a class="users-list-name" href="#"><?php echo $usr['nama']; ?></a>
                          <?php 
@@ -40,3 +46,7 @@ while ($usr = mysql_fetch_array($q_usr)) {
                     </div><!-- /.box-footer -->
                   </div>
 </div>
+<script type="text/javascript">
+$('img, .avatar').attr('width', '50');
+$('img, .avatar').attr('height', '50');
+</script>

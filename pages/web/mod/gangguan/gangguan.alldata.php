@@ -8,39 +8,6 @@
 ///////////////////////////////
 require("../../../../_db.php");  
 ?>
-
-<script type="text/javascript">
-  <!--
-  //$("#DataTableGangguan").DataTable();
-    $('#DataTableGangguan').DataTable({
-    "fixedColumns": false,
-    "responsive": false,
-      "ordering": true,
-      //"scrollY": false,
-      "scrollX": false,
-      "scrollCollapse": true,
-      "fixedColumns":{
-            "leftColumns": 1,
-            "rightColumns": 1
-        },
-    //"autoWidth": false,
-      "language": {
-            "lengthMenu": " Tampil _MENU_ record per halaman",
-            "zeroRecords": " Maaf - Data tidak ditemukan",
-            "info": " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
-            "infoEmpty": " Data tidak tersedia",
-            "search": " Cari Data : ",
-            "previus": " Cari Data : ",
-            "next": " Cari Data : ",
-            "infoFiltered": " (filtered from _MAX_ total records)"
-        }
-    });
-         
-
-
-  -->
-</script>
-
 <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">SEMUA DAFTAR GANGGUAN</h3>
@@ -53,14 +20,13 @@ require("../../../../_db.php");
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th></th>
                         <th>Kode</th>
-                        <th style="width: 100px">Pelapor</th>
-                        <th style="width: 900px;">Keterangan Gangguan</th>
+                        <th >Pelapor</th>
+                        <th >Keterangan Gangguan</th>
                         <th>Awal Gangguan</th>
                         <th>Waktu</th>
                         <th>Status</th>
-                        <th style="width: 100px;">#</th>
+                        <th >#</th>
                       </tr>
                     </thead>
 <tbody>
@@ -90,8 +56,7 @@ require("../../../../_db.php");
       }
 	?>
 	<tr>
-		<td><?php echo $i ?></td>
-		<td class="mailbox-star"><a href="#"><?php echo $status_icon ?></a></td>
+		<td><?php echo $i ?> &nbsp; &nbsp; <?php echo $status_icon ?></td>
 		<td><?php echo $data['id_gangguan'] ?></td>
 		<td ><?php echo $data['pelapor'] ?> </td>
 		<td class="mailbox-subject"><b><?php echo $data['nama'] ?></b> - <?php $kets=$data['keterangan']; echo  textSingkat($kets,70); ?></td>
@@ -123,6 +88,21 @@ require("../../../../_db.php");
               </div>
 
 
-<script type="text/javascript">
-  $('#DataTableGangguanAll').DataTable({});
-</script>
+<script>
+$(function () {
+$('#DataTableGangguanAll').DataTable({
+      "language": {
+            "lengthMenu"   : " Tampil _MENU_ record per halaman",
+            "zeroRecords"  : " Maaf - Data tidak ditemukan",
+            "info"         : " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
+            "infoEmpty"    : " Data tidak tersedia",
+            "search"       : " Cari Data : ",
+            "previus"      : " Cari Data : ",
+            "next"         : " Cari Data : ",
+            "infoFiltered" : " (filtered from _MAX_ total records)"
+        }
+    });
+  });
+    console.log( "ready!" );
+
+</script>  

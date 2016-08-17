@@ -13,11 +13,19 @@ if(isset($_POST['hapus'])) {
 	$idhapus =  'MT'.sprintf("%05s", $_POST['hapus']);
     $edt = mysql_query("DELETE FROM tb_gangguan WHERE id_gangguan='$idhapus'");
     if($edt){ 
-    	echo json_encode(array('status'=>true));
-    	echo 3;
+    	echo json_encode(array('status'=>true,'msg'=>'Request perbaikan dihapus'));
     }else{
-    	echo json_encode(array('status'=>false));
-    	echo 0;
+    	echo json_encode(array('status'=>false,'msg'=>'Request gagal dihapus'));
+    }
+}if(isset($_POST['hapus_sj'])) {
+	$idhapussj =   $_POST['hapus_sj'];
+    $edt = mysql_query("DELETE FROM tb_surat_jalan_teknisi WHERE id_surat='$idhapussj'");
+    if($edt){ 
+    	echo json_encode(array('status'=>true,'msg'=>'Surat jalan dengan id '.$idhapussj.' beshasil dihapus'));
+    	
+    }else{
+    	echo json_encode(array('status'=>false, 'msg'=>'Surat gagal hapus'));
+    	
     }
 
 }else if(isset($_POST['proses_surat']) && isset($_POST['proses_gangguan'])) {

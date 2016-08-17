@@ -10,7 +10,7 @@ require("../../../../_db.php");
 if(!isset($_SESSION)) 
     { 
         session_start(); 
-    } 
+    }else{} 
 if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
    echo "<script>window.location='".baseurl."logout.php'</script>";
 }
@@ -41,18 +41,17 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                       </tr>
                     </thead>            
 <tbody>
-	<?php 
-		$i = 1;
+  <?php 
+    $i = 1;
 //bedakan query teknisi dengan yg lainnya (cs dan krd)
   if($_SESSION['login_hash']=='cs' || $_SESSION['login_hash']=='krd'){ 
-     $query = mysql_query("SELECT * FROM `tb_surat_jalan_teknisi` ORDER BY `tb_surat_jalan_teknisi`.`id_surat` DESC");	
+     $query = mysql_query("SELECT * FROM `tb_surat_jalan_teknisi` ORDER BY `tb_surat_jalan_teknisi`.`id_surat` DESC");  
    }else{
      $id_tek=$_COOKIE['id'];
      $query = mysql_query("SELECT * FROM `tb_surat_jalan_teknisi` WHERE `id_karyawan`='$id_tek' ORDER BY `tb_surat_jalan_teknisi`.`id_surat` DESC"); 
    }
-
-		// tampilkan data gangguan selama masih ada
-		while($data = mysql_fetch_array($query)) {
+    // tampilkan data gangguan selama masih ada
+    while($data = mysql_fetch_array($query)) {
       if($data['status']==0) {
         $status = '<span class="label label-danger pull-right">REQUEST</span>';
         $status_icon = "<i class='fa fa-volume-up text-danger'></i>";
@@ -71,13 +70,13 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
       } else {
         $status = "Tidak Aktif";
       }
-	?>
-	<tr>
-		<td><?php echo $i ?></td>
-		<td class="mailbox-star">
+  ?>
+  <tr>
+    <td><?php echo $i ?></td>
+    <td class="mailbox-star">
       <!--a href="#"><?php echo $status_icon ?></a-->
       <?php if($_SESSION['login_hash']=='cs' || $_SESSION['login_hash']=='krd'){ ?>
-      <a href="#" id="<?php echo $data['id_surat'] ?>" onclick="getform.hapus_SJ(<?php echo substr($data['id_surat'],6) ?>)" class="btn btn-default btn-sm hapus">
+      <a href="#" id="<?php echo $data['id_surat'] ?>" onclick="getform.hapus_SJ(<?php echo "'".$data['id_surat']."'" ?>)" class="btn btn-default btn-sm hapus">
         <i class="fa fa-trash"></i>
       </a>
       <?php }else  echo $status_icon;?>
@@ -91,7 +90,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
       ?>
     </td>
 
-		<td>
+    <td>
       <?php 
         $q2 = mysql_query("SELECT * FROM `tb_surat_jalan_teknisi` where id_gangguan='".$data['id_gangguan']."'");
         $dq2 = mysql_fetch_array($q2);
@@ -112,7 +111,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
         echo $dq4['nama']; 
       ?>
     </td>
-		<td >
+    <td >
     <?php echo $dq4['hp'];  ?>
     </td>
     <?php 
@@ -120,31 +119,31 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
     $ids= substr($data['id_surat'],2);
     $idk= substr($data['id_karyawan'],2);
     ?>
-		<td class="mailbox-date"><?php echo selisihwaktu($dq2['tgl_surat']); ?></td>
-		<td>
+    <td class="mailbox-date"><?php echo selisihwaktu($dq2['tgl_surat']); ?></td>
+    <td>
      <?php if($_SESSION['login_hash']=='tek'){ ?>
             <div class="btn btn-default btn-sm" id="status_gangguan" onclick=getform.ubah_stat(<?php echo "'".$ids."','".$idg."','".$idk."'"; ?>)><?php echo $status ?></div>
      <?php }else {
        echo  $status;
      } ?>
     </td>
-		<td class="pull-right">
+    <td class="pull-right">
 
-			<a href="#dialog-data" onclick="getform.print(<?php echo$idg ?>,<?php echo$ids ?>)"  id="<?php echo $data['id_surat'] ?>" class="btn btn-info btn-sm ubah" data-toggle="modal" style="width: 100%;">
-				<i class="fa fa-print"></i> View
-			</a>
-			<!--a href="#" id="<?php echo $data['id_surat'] ?>" onclick="getform.hapus(<?php echo substr($data['id_surat'],5) ?>)" class="btn btn-default btn-sm hapus">
-				<i class="fa fa-trash"></i>
-			</a-->
-		</td>
-	</tr>
+      <a href="#dialog-data" onclick="getform.print(<?php echo$idg ?>,<?php echo $ids ?>)"  id="<?php echo $data['id_surat'] ?>" class="btn btn-info btn-sm ubah" data-toggle="modal" style="width: 100%;">
+        <i class="fa fa-print"></i> View
+      </a>
+      <!--a href="#" id="<?php echo $data['id_surat'] ?>" onclick="getform.hapus(<?php echo substr($data['id_surat'],5) ?>)" class="btn btn-default btn-sm hapus">
+        <i class="fa fa-trash"></i>
+      </a-->
+    </td>
+  </tr>
 <?php
-		$i++;
-		}
+    $i++;
+    }
   if($i == 1){ 
     echo "<tr><td colspan='11'><div align='center'> Belum Ada Data </div></td></tr>";
   }
-	?>
+  ?>
  </tbody>
                     </table><!-- /.table -->
                   </div><!-- /.mail-box-messages -->

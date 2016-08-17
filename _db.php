@@ -249,14 +249,63 @@ function textSingkat($string, $limit, $break=" ", $pad="...")
   return $string . $pad;
 }
 
-/// NAMA TOKO 
-define("toko", "PT. MEEDUN SOFT");
-define("toko_alamat", "Jln. Paus No. 28 Ulak Karang");
-define("toko_kota", "Padang. Sumatra Barat");
-define("toko_tlp1", "085212663404");
-define("toko_tlp2", "085212663404");
-define("toko_tlp3", "085212663404");
-define("toko_mail", "refyandra@gmail.com");
+///// fungsi ubah ukuran gambar 
+function createThumbnail($pathToImage, $thumbWidth = 225) {
+    $result = 'Failed';
+    if (is_file($pathToImage)) {
+        $info = pathinfo($pathToImage);
+
+        $extension = strtolower($info['extension']);
+        if (in_array($extension, array('jpg', 'jpeg', 'png', 'gif'))) {
+
+            switch ($extension) {
+                case 'jpg':
+                    $img = imagecreatefromjpeg("{$pathToImage}");
+                    break;
+                case 'jpeg':
+                    $img = imagecreatefromjpeg("{$pathToImage}");
+                    break;
+                case 'png':
+                    $img = imagecreatefrompng("{$pathToImage}");
+                    break;
+                case 'gif':
+                    $img = imagecreatefromgif("{$pathToImage}");
+                    break;
+                default:
+                    $img = imagecreatefromjpeg("{$pathToImage}");
+            }
+            // load image and get image size
+
+            $width = imagesx($img);
+            $height = imagesy($img);
+
+            // calculate thumbnail size
+            $new_width = $thumbWidth;
+            $new_height = floor($height * ( $thumbWidth / $width ));
+
+            // create a new temporary image
+            //ukuran ditetapkan
+            $tinggi=225; $lebar=225;
+            $tmp_img = imagecreatetruecolor($lebar, $tinggi);
+
+            // copy and resize old image into new image
+            //imagecopyresized($tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+
+            imagecopyresized($tmp_img, $img, 0, 0, 0, 0, $lebar, $tinggi, $width, $height);
+                $pathToImage = $pathToImage;
+              //  $pathToImage = $pathToImage . '.thumb.' . $extension;
+            // save thumbnail into a file
+            imagejpeg($tmp_img, "{$pathToImage}");
+            $result = $pathToImage;
+        } else {
+            $result = 'Failed|Not an accepted image type (JPG, PNG, GIF).';
+        }
+    } else {
+        $result = 'Failed|Image file does not exist.';
+    }
+    return $result;
+}
+
 
 
 ?>

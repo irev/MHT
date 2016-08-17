@@ -26,24 +26,22 @@ if(isset($_POST['hapus'])) {
 
 } else {
 	// deklarasikan variabel
-	$kd		= $_POST['kd'];
-	echo $kode		= $_POST['kode'];
+	$kd				= $_POST['kd'];
+    $kode			= $_POST['kode'];
 	$nama			= $_POST['nama'];
 	$pilihikon		= $_POST['pilihikon'];
 	$band 			= $_POST['band'].' Mbps';
-	echo substr($kode, 2, 3);
+	
 	// validasi agar tidak ada data yang kosong
 	if($kode!="" && $nama!="" && $band!="" && $pilihikon!="") {
 		// proses tambah data gangguan
 		if(substr($kd, 2, 3) == 0) {
 			$edt = mysql_query("INSERT INTO tb_paket VALUES('$kode','$nama','$band','$pilihikon')");
 			if($edt){
-				echo "INSERT INTO tb_paket VALUES('$kode','$nama','$band','$pilihikon";
-				echo json_encode(array('status'=>true,'msg'=>'INSERT BERHASIL'));
-				echo 1;
+				echo json_encode(array('status'=>true,'msg'=>'Paket berhasil ditambahkan'));
+				
 			}else{
-				echo json_encode(array('status'=>false));
-				echo '0 sim';
+				echo json_encode(array('status'=>false,'msg'=>'Simpan Gagal'));
 			}
 		// proses ubah data gangguan
 		} else {

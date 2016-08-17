@@ -1,13 +1,6 @@
-<?php
-ob_start();
- session_start();
-if(!isset($_SESSION['login_hash'])){
+<?php 
 require("_db.php");
-if(isset($_COOKIE['id'])){
- $idk=$_COOKIE['id'];
-mysql_query("UPDATE tb_karyawan SET online='0' WHERE id_karyawan='$idk'"); 
- }
-}
+//SET Mode 
 if (mode == 0){
     error_reporting(0);
 }else{
@@ -65,9 +58,20 @@ margin: 5% 50%;
 }
 
 </style>
+
+   <!-- jQuery 2.2.1 -->
+    <script src="assets/plugins/jQuery/jquery-2.2.1.min.js"></script>
+    <!-- jQuery 2.1.4 >
+    <script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script-->
+    <!-- Bootstrap 3.3.5 -->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="assets/plugins/iCheck/icheck.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.js"></script>
+
+
 </head>
 <body class="hold-transition login-page bgimg">
-
 <div class="">
   <div class="login-box">
     <?php if(mode==1){ echo "<center>".msg."</center>";} ?>
@@ -75,9 +79,17 @@ margin: 5% 50%;
       <!--a href="#"><img src="assets/img/logoinv.png"> </a-->
       </div><!-- /.login-logo -->
       <div class="box box-solid box-default"> 
-<?php if(isset($_SESSION['login_hash']))
-{  
-  //echo "PAGES 404";
+
+<?php
+ob_start();
+session_start();
+if(!isset($_SESSION['login_hash'])){
+if(isset($_COOKIE['id'])){
+ $idk=$_COOKIE['id'];
+mysql_query("UPDATE tb_karyawan SET online='0' WHERE id_karyawan='$idk'"); 
+ }
+}else{  
+// Jika Sudah berhasil
   echo'<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>';
   echo "<script>window.location='dashboard.php'</script>";
 }
@@ -86,25 +98,19 @@ if(isset($_SESSION['login_hash'])){
   mysql_query("UPDATE `tb_karyawan` SET online='2' WHERE id_karyawan='$idkar'"); 
 }
 ?>
-
     <form id="loginform" action method="POST">
       <div class="login-box-body">
         <p class="login-box-msg">Masuk untuk memulai sesi Anda</p>
         <!--form id="loginform" action="index.php?login_attempt=1" method="post"-->
           <div class="form-group has-feedback">
-
-
           <div id="logerror"> 
             <div id="overlay" class="overlay" style="display:none;" ><i class="fa fa-refresh fa-spin"></i></div>
-        
- </div>
-            
-
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" value=""/>
+          </div>
+            <input type="text" id="username" name="username" class="form-control"  placeholder="Username" value=""/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" value=""/>
+            <input type="password" id="password" name="password" class="form-control"  placeholder="Password" value=""/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -121,18 +127,10 @@ if(isset($_SESSION['login_hash'])){
           </div>
           </div>
         </form>
-        <!--div class="social-auth-links text-center">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-          <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
-        </div><!-- /.social-auth-links -->
-<!--div class="box-footer">
-        <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
-       
-</div--> 
       </div><!-- /.login-box-body -->
-      <div class="box-body no-border">
+      <center style="color:#ffffff"><b><?php echo app_name.' Version '.ver.' '.build_date   ?></b></center>
+      <center>
+      <div class=" col-sm-12 box-body no-border">
       <div class="box-group box-solid no-border" id="accordion">
       <div class="panel"> 
       <a href="#collapse" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" class="collapsed"><center><i class="fa fa-info"></i>  User Login Demo  <i class="fa fa-angle-right"></i></center></a>
@@ -152,28 +150,18 @@ if(isset($_SESSION['login_hash'])){
       </div>
       </div>
       </div>
-      <center style="color:#ffffff"><b><?php echo app_name.' Version '.ver.' '.build_date   ?></b></center>
+      </center>
     </div><!-- /.login-box -->
 
-<?php 
 
+
+<?php 
 ob_end_flush();
 ?>
-
-
-   <!-- jQuery 2.2.1 -->
-    <script src="assets/plugins/jQuery/jquery-2.2.1.min.js"></script>
-    <!-- jQuery 2.1.4 >
-    <script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script-->
-    <!-- Bootstrap 3.3.5 -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="assets/plugins/iCheck/icheck.min.js"></script>
-
-  <script>
+<script>
 <!--
 $( document ).ready(function() {
-    console.log( "ready!" );
+   console.log( "Data Ok!" );
 
       $(function () {
         $('input').iCheck({
@@ -182,15 +170,6 @@ $( document ).ready(function() {
           increaseArea: '20%' // optional
         });
       });
-/*
- $(function(){
-  $('.bt_login').click(function(e) {
-        $('.overlay').toggle();
-        e.stopPropagation();
-   });
-});
-*/
-
 var msg_error = [
             '<div class="col-md-12 alert">',
             '<div aria-hidden="false" id="alert" style="display: block;" class="alert modal fade in"  role="dialog">',
@@ -203,15 +182,21 @@ var msg_error = [
             '</div>'
         ].join("\n");
 
- 
-   //*$('#loginform').validate();   */ 
-   // var url = "login.php";       
+$("#loginform").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#btn-login").click();
+    }
+});
+
 $(document).on('click','#btn-login', function(){  
+  document.getElementById("username").readonly = true;
+  document.getElementById("password").readonly = true;
   var dc =  $("#loginform").serialize();
   var u = $("#username").val();
   var p = $("#password").val();
   if (u !='' || p !='' || dc!="username=&password="){
      $("#overlay").css("display", "block");
+
           $.ajax({
             type: "POST",
             url: 'login.php', 
@@ -243,6 +228,8 @@ setTimeout(function () {
  $("#overlay").css("display", "none");
  $("#msg").css("display", "none");
  $("#username, #password").val("");
+ document.getElementById("username").readonly = false;
+ document.getElementById("password").readonly = false;
 }, 3000);
 });
 

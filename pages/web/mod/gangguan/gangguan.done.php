@@ -10,7 +10,7 @@
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="table-responsive mailbox-messages">
-                    <table class="table table-hover table-striped">
+<table id="DataTableDone" class="table table-hover table-striped">
                     <thead>
                       <tr>
                          <th>No</th>
@@ -72,10 +72,6 @@
                 </div>
               </div>
 
-
-
-
-
 <!-- kode modal dialog -->
 <div id="ditel-gangguan" class="modal">
               <div class="modal-dialog">
@@ -96,3 +92,19 @@
               </div><!-- /.modal-dialog -->
             </div>
 <!-- akhir kode modal dialog -->              
+
+<script type="text/javascript">
+  $('#DataTableDone').DataTable({
+    "autoWidth": true,
+      "language": {
+            "lengthMenu"   : " Tampil _MENU_ record per halaman",
+            "zeroRecords"  : " Maaf - Data tidak ditemukan",
+            "info"         : " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
+            "infoEmpty"    : " Data tidak tersedia",
+            "search"       : " Cari Data : ",
+            "previus"      : " Cari Data : ",
+            "next"         : " Cari Data : ",
+            "infoFiltered" : " (filtered from _MAX_ total records)"
+        }
+    });
+</script>

@@ -27,50 +27,28 @@ else
 //echo $info; 	
 $sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
 //no faktur auto
-   $qkdf = mysql_query("SELECT MAX(id_karyawan) as kodex FROM tb_karyawan");
-   $data=mysql_fetch_array($qkdf);
-   $kodef = $data['kodex'];
-   $nourut = substr($kodef, 2, 5);
-   //$nourut++;
-   if ($nourut==0){
-    $nourut=1;
-    $notr =sprintf("%03s", $nourut) ; 
-   }else{
-    $nourut++;
-    $notr = sprintf("%03s", $nourut) ; 
-   }
 
+$idk = $_SESSION['id_karyawan']; 
 echo $tipeFile = '.'.substr($_FILES["file"]["type"],6);
   //end no faktur auto                                            
-$targetPath = "../../../../../assets/img/user/KR".$notr.$tipeFile; // Target path where file is to be stored
+$targetPath = "../../../../../assets/img/user/".$idk.$tipeFile; // Target path where file is to be stored
 echo $targetfoto =  substr($_FILES['file']['name'],5); // nama file
                                       
 $upup=move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
-//ubah ukuran file
 
 
-////ubah ukuran file
-//$sourceImagePath=$targetPath;
-//createThumbnail($sourceImagePath, 225);
-/*/calling the function
-$result = explode('|',createThumbnail($sourceImagePath, 225));
-            if ($result[0] != 'Failed'){
-                header('Location:' .$targetPath. basename($result[0]));
-            } else {
-               // header('Location: error.gif');
-            }
-*/
+/// update data foto/ avatar pada data base
+$file_foto = $idk.$tipeFile;
+mysql_query("UPDATE tb_karyawan SET avatar='$file_foto' WHERE id_karyawan='$idk'");
 
-
-
-
+echo "UPDATE tb_karyawan SET avatar='$file_foto' WHERE id_karyawan='$idk'";
 echo "<div style='color:#000;'><center><span id='success' >Image Uploaded Successfully...!!</span><br/>";
-echo "<br/><b>File Name:</b> " . $notr . "<br>";
+echo "<br/><b>File Name:</b> " . $idk.$tipeFile . "<br>";
 echo "<b>Type:</b> " . $_FILES["file"]["type"] . "<br>";
 $ukuran= ($_FILES["file"]["size"] /1024); 
 echo "<b>Size:</b> " . substr($ukuran,0,5) . " KB<br>";
-echo "<script>$('#previewing2').attr('src','assets/img/user/KR".$notr.$tipeFile."' );</script>";
-echo "<script>$('#gambar').attr('value','KR".$notr.$tipeFile."' );</script>";
+echo "<script>$('#previewing2').attr('src','assets/img/user/".$idk.$tipeFile."' );</script>";
+echo "<script>$('#gambar').attr('value','".$idk.$tipeFile."' );</script>";
 echo "<b>Temp file:</b> " . $_FILES["file"]["tmp_name"] . "<br>$sourcePath</center></div>";
 echo createThumbnail($targetPath, 225);
 }

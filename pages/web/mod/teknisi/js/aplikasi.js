@@ -53,7 +53,7 @@
 		});
 		
 		// ketika tombol simpan ditekan
-		$("#simpan-data").bind("click", function(event) {
+	$("#simpan-data").bind("click", function(event) {
 	  var url = "pages/web/mod/teknisi/teknisi.input.php";
       // mengambil nilai dari inputbox, textbox dan select
       // input data teknisi
@@ -75,31 +75,10 @@
       $.post(url, {kode: v_kode, teknisi: v_teknisi, hp: v_hp, alamat: v_alamat, koordinatx:v_koodx, koordinaty: v_koody, status_pel: v_status, tgl_berlangganan:v_tgl_berlangganan, paket:v_paket, perangkat:v_perangkat, id:kd_pel},function(){
         //$("#data-teknisi").load(main);
        // $('#msg').addClass('hide')
-          $('#msg').html(
-            '<div class="alert alert-success alert-dismissable">'+
-                    '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
-                    '<h4><i class="icon fa fa-ban"></i> Alert!</h4>'+
-                    'Data berhasil disimpan!'+
-            '</div>'  
-          );
-
-          $('#msg').slideDown('slow').delay(1500).slideUp('slow', function(){
-          	//$("#msg").modal('hide');
-          	//$("#msg-modal").modal('hide');
-              teknisi_baru();
-            });
+   
       });
       }else{
-        //alert('Data Belum terisi dengan benar!');
-        //$('#msg').html();
-        $("#msg").html(
-          '<div class="alert alert-danger alert-dismissable">'+
-                    '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
-                    '<h4><i class="icon fa fa-ban"></i> Alert!</h4>'+
-                    'Data belum terisi dengan benar!'+
-          '</div>' 
-          );
-          $('#msg').slideDown('slow').delay(1500).slideUp('slow');
+        alert('Data Belum terisi dengan benar!');
       }
 		});
 	});

@@ -7,6 +7,10 @@
 // usercase CUSTOMER SERVICE
 ///////////////////////////////
 require("../../../../_db.php"); 
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }else{} 
 ?>
 
                     <table id="DataTableGangguan" class="table table-hover table-striped">

@@ -10,7 +10,7 @@ session_start();
 if(!isset($_SESSION['login_hash'])){
   echo "<script>alert('anda harus login dulu..!');</script>";
 } 
-$login=$_SESSION['login_hash'];
+
 ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
@@ -121,7 +121,7 @@ function tabadd(){
                   <li><a href="#tab-baru" data-toggle="tab" onclick="databaru()">Baru</a></li>
                   <li><a href="#tab-baik" data-toggle="tab" onclick="databaik()">Baik</a></li>
                   <li><a href="#tab-rusak" data-toggle="tab" onclick="datarusak()">Rusak</a></li>
-                  <?php if ($login=='krd' || $login=='cs'){ ?>
+                  <?php if ($_SESSION['login_hash']=='krd' || $_SESSION['login_hash']=='cs'  || $_SESSION['login_hash']=='tek'){ ?>
                   <li><a href="#tab-add" data-toggle="tab" onclick="tabadd()">Tambah Perangkat</a></li>
                   <?php } ?>
                   <li><a href="#settings" data-toggle="tab" onclick="databarux()"></a></li>

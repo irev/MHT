@@ -9,7 +9,7 @@
 if(!isset($_SESSION)) 
     { 
         session_start(); 
-    } 
+    }else{} 
 require("../../_db.php");
 require("../../inc/function/hitung_jumlah_pelanggan.php");
 if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
@@ -19,6 +19,8 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 
 <script type="text/javascript" src="assets/msdropdown/js/jquery.dd.min.js"></script>
 <script type="text/javascript">
+ //Ganti judul halaman
+   $("#breadcrumb, #judulhal").text('Data Paket');
 <!--
 	    //Fungsi Menu
     function list_allpaket(){
@@ -79,7 +81,8 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#activity" data-toggle="tab"  onclick=""><i class="fa fa-info"></i> Informasi</a></li>
-                  <li><a href="#tab-paket" data-toggle="tab" onclick=""><i class="fa fa-inbox"></i> Data Paket</a></li>
+                  <li><a href="#tab-paket" data-toggle="tab" onclick="list_paket()"><i class="fa fa-inbox"></i> Data Paket</a></li>
+                  <!--
                   <li><a href="#tab-aktif" data-toggle="tab" onclick="dataaktif()"></a></li>
                   <li><a href="#tab-baru" data-toggle="tab" onclick="databaru()"></a></li>
                   <li><a href="#tab-baik" data-toggle="tab" onclick="databaik()"></a></li>
@@ -88,11 +91,14 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
                   <li><a href="#tab-add" data-toggle="tab" onclick="tabadd()"> </a></li>
                   <?php } ?>
                   <li><a href="#settings" data-toggle="tab" onclick="databarux()"></a></li>
-                <li>
-                    <a href="#dialog-data" data-toggle="modal" id="0" class="tambah btn btn-app bg-warning  pull-right" >
-     <i class="fa fa-plus"></i> Tambah Paket
-    </a>    </li>
-
+                  //-->
+      <?php if ($_SESSION['login_hash']=='krd'){ ?>
+                  <li>
+                    <a href="#dialog-paket" data-toggle="modal" id="0" onclick="tambah(0)" class="tambah btn btn-app bg-warning  pull-right" >
+                    <i class="fa fa-plus"></i> Tambah Paket
+                    </a>    
+                  </li>
+      <?php } ?>
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
@@ -155,12 +161,12 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
  </div><!-- /.col Data TAB-->
 
 <!-- awal untuk modal dialog -->
-<div id="dialog-data" class="modal fade modal-primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="dialog-paket" class="modal fade modal-primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
  <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Tambah Data</h3>
+        <h3 id="myModalLabel">Tambah Data Paket</h3>
     </div>
     <!-- tempat untuk menampilkan form  -->
     <div class="modal-body">
@@ -187,7 +193,6 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 <script src="pages/web/mod/paket/js/aplikasi.js"></script>
 
 <script>
-
 createByJson();
 //menggunakan  msdropdown   assets/msdropdown/js/jquery.dd.min.js
 function createByJson() {

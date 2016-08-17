@@ -25,7 +25,8 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 </h3-->
 
 <script type="text/javascript">
-
+ //Ganti judul halaman
+   $("#breadcrumb, #judulhal").text('Data Pelanggan');
 $('.paginate_button').addClass('btn btn-sm');
 
 function dataall(){
@@ -125,8 +126,11 @@ function profile(){
                   <li><a href="#tab-baru" data-toggle="tab" onclick="databaru()">Baru</a></li>
                   <li><a href="#tab-cuti" data-toggle="tab" onclick="datacuti()">Cuti</a></li>
                   <li><a href="#tab-block" data-toggle="tab" onclick="datablock()">Block</a></li>
+      <?php if ($_SESSION['login_hash']=='krd' || $_SESSION['login_hash']=='krd' ){ ?>
+
                   <li><a href="#tab-add" data-toggle="tab" onclick="tabadd()">Tambah Pelanggan</a></li>
-                  <li><a href="#tab-profile" data-toggle="tab" onclick="profile()"></a></li>
+      <?php } ?>
+                  <!--li><a href="#tab-profile" data-toggle="tab" onclick="profile()"></a></li-->
                  
                   <!--li><a href="#settings" data-toggle="tab" onclick="databaru()">Block</a></li-->
                 </ul>

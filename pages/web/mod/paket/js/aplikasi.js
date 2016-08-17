@@ -60,10 +60,6 @@
 			var v_kode      = $('input:text[name=kode]').val();
 			var v_paket     = $('input:text[name=nama]').val();
 			var v_ikon      = $('select[name=pilihikon]').val();
-			//var v_ikon      = $('input:text[name=pilihikon]').val();
-			//var v_tgl_paket = $('input:text[name=tgl_paket]').val();
-			//var v_tgl_pelaporan= $('input:text[name=tgl_pelaporan]').val();
-			//var v_keterangan 	= $('textarea[name=keterangan]').val();
 			var v_bandw 		= $('input[name=band]').val();
 			// var v_bandw = document.getElementById("band");
 
@@ -79,18 +75,15 @@ $.ajax({
   url: url,
   method: "POST",
   data: dataPaket,
-  dataType: "html",
-  success: function(){
-     			$("#data-paket").load(main);
-				$("#menu-paket").load(menu2);
-				
-                $("#pesan").text('sukses');
+  dataType: "json",
+  success: function(respon){
 				// sembunyikan modal dialog
-				$('#dialog-data').modal('hide');
+				$('#dialog-paket').modal('hide');
 				// kembalikan judul modal dialog
-				$("#myModalLabel").html("Tambah Data");
+				$("#myModalLabel").html("");
+				alert(respon.msg);
   }
-});// ajax end
+},'json');// ajax end
 }// is cek end
 
 
@@ -102,12 +95,13 @@ $.ajax({
 
 
 var getform = function(){
+var tambah = function(kd){
+}
 var ubah = function(idubh){
 }
 var hapus = function(idg){
 }
 var print =function(idsur){
-
 }
 var tambah= function(){} 
 return{
@@ -137,7 +131,7 @@ return{
 				$(".modal-body").html(data).show();
 			});
 	},
-	tambah: function(){
+	tambah: function(kd){
 
 			var url = "pages/web/mod/paket/paket.form.php";
 			
@@ -147,7 +141,7 @@ return{
 			console.log(kd_mhs);
 				// saran dari mas hangs 
 				$("#myModalLabel").html("Tambah Data paket");
-			$.post(url, {id: kd_mhs} ,function(data) {
+			$.post(url, {id: kd} ,function(data) {
 				// tampilkan mahasiswa.form.php ke dalam <div class="modal-body"></div>
 				$(".modal-body").html(data).show();
 			});
@@ -159,9 +153,6 @@ return{
 			var url  = "pages/web/mod/paket/paket.input.php";
 			// ambil nilai id dari tombol hapus
 			kd_mhs = idhapus;
-			console.log(kd_mhs);
-			console.log(idhapus+' gg');
-		    console.log(kd_mhs+' ffff');
 			// tampilkan dialog konfirmasi
 			var answer = confirm("Apakah anda ingin mengghapus paket ini?");
 			

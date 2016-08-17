@@ -3,19 +3,19 @@
 <?php 
 //include('_script.php');
  ?>
-
+<section class="content">
 <div class="row">
 <div class="col-md-12">
-    <div class="col-md-3">
-    	<div id="menumap"></div>
-	</div>
-	<div class="col-md-9">
     	<div id="tampilmap"></div>
-</div>
-</div>
 
+</div>
+</section>
 <script type="text/javascript">
 <!--
+
+ //Ganti judul halaman
+     $("#breadcrumb, #judulhal").text('Map Gangguan'); 
+ //Tampil peta    
 	 $('#tampilmap').load('pages/maps/map_g.php');
 	 $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
 	 $('#menumap').load('pages/maps/_map_menu.php');
