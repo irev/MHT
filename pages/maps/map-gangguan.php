@@ -18,11 +18,11 @@
 <div class="col-md-3">   
 <div class="box box-primary">
                 <div class="box-header">
-                  <img src="assets/icon/error.png"><h3 class="box-title"> Lokasi Request Gangguan</h3>
+                  <img src="assets/icon/error.png"><h3 class="box-title"> Map Maintenance Request</h3>
             <span style="float:right;"> 
             <div class="form-group">     
                 <label> Ganti Model Peta </label>
-                <select id="cmb" onchange="gantipeta()">
+                <select id="cmb" onchange="load_peta.multi_koordinat()">
                     <option value="1">Peta Roadmap</option>
                     <option value="2">Peta Terrain</option>
                     <option value="3">Peta Satelite</option>
@@ -53,7 +53,7 @@
                 </div><!-- /.box-body -->
     </div>                    
 
-<button onclick="load_peta.multi_koordinat()">Refres Peta</button>
+<button onclick="load_peta.multi_koordinat()">Refresh Peta</button>
 
 <!--END TAMPILKAN MAP-->
 <!--END BOX-->
@@ -78,7 +78,7 @@
 <!--
 
  //Ganti judul halaman
-     $("#breadcrumb, #judulhal").text('Map Lokasi Request Gangguan'); 
+     $("#breadcrumb, #judulhal").text('Map Maintenance Request'); 
  //Tampil peta    
 	 //$('#tampilmap').load('pages/maps/map_g.php');
 	 // $('#menumap').load('pages/maps/_map_menu.php');
@@ -119,17 +119,19 @@ var i;
 var url;
 var icon_pin =  "assets/icon/error.png"; // tanda gangguan
 var gambar_tanda = "assets/icon/error.png"; // tanda gangguan
-
+var solok = new google.maps.LatLng(-0.790475563065513, 100.66022586805047); //set koordinat awal
+var kontur;
 $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
 var load_peta = function(){
 	var peta_awal		= function(){}
+	var gantipeta		= function(){}
 	var loadingpeta     = function(){}
 	var set_icon        = function(){}
 	var set_icon_tanda  = function(){}
 	var clearMarkers	= function(){}
 	var tandai 			= function(){}
 	var carikordinat	= function(){}
-	var multi_koordinat = function(){}
+	var multi_koordinat = function(kontur){}
 	var ambildatabase	= function(){}
 	var CariDataLokasiTersimpan = function(){} 
 	var peta            = function(){}
@@ -153,10 +155,59 @@ return{
     }); 
    // load_peta.loadDataLokasiTersimpan();
 },
+gantipeta: function(){
+    //loadDataLokasiTersimpan();
+    var isi = document.getElementById('cmb').value;
+    if(isi=='1')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+       var kontur="ROADMAP"; 
+    }
+    else if(isi=='2')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.TERRAIN 
+        };
+   
+     var kontur="TERRAIN";    
+    }
+    else if(isi=='3')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.SATELLITE  
+        };
+     var kontur="SATELLITE";    
+
+    }
+    else if(isi=='4')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.HYBRID  
+        };
+     var kontur="HYBRID";    
+
+    }
+    load_peta.multi_koordinat(kontur); 
+    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
+    google.maps.event.addListener(peta,'click',function(event){
+        //tandai(event.latLng);
+    });
+    
+},
 loadingpeta: function(){
    //load_peta.multi_koordinat();
    //$('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
-   console.log("load peta berhasil dimuat!");
+   console.log("load peta berhasil dimuat!" + kontur);
 },
 
 CariDataLokasiTersimpan: function(){
@@ -237,8 +288,58 @@ carikordinat: function(lokasi){
 //menampilkan multi kordinat
 multi_koordinat: function () {
     // $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
-    var solok = new google.maps.LatLng(-0.790475563065513, 100.66022586805047);
-    console.log(solok);
+var isi = document.getElementById('cmb').value;
+    if(isi=='1')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: true
+        };
+       var kontur="ROADMAP"; 
+    }
+    else if(isi=='2')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        mapTypeControl: true 
+        };
+   
+     var kontur="TERRAIN";    
+    }
+    else if(isi=='3')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        mapTypeControl: true 
+        };
+     var kontur="SATELLITE";    
+
+    }
+    else if(isi=='4')
+    {
+    var settingpeta = {
+        zoom: 10,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapTypeControl: true  
+        };
+     var kontur="HYBRID";    
+
+    }else{
+    var settingpeta = {
+        zoom: 9,
+        center: solok,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: true	
+    };  
+    }
+   
     // ini buat menghilangkan icon place bawaan google maps
     var myStyles =[
     {
@@ -250,18 +351,11 @@ multi_koordinat: function () {
     }
     ];
 
-    var petaoption = {
-        zoom: 9,
-        center: solok,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: true,
-        //styles: myStyles 
-        };
-
-    peta = new google.maps.Map(document.getElementById("kanvaspeta"),petaoption);
+    peta = new google.maps.Map(document.getElementById("kanvaspeta"),settingpeta);
     google.maps.event.addListener(peta,'click',function(event){
     //	untuk view peta gangguan fungsi tandai dimatikan 
     //  load_peta.tandai(event.latLng);
+    console.log(kontur);
     }); 
     // panggil pungsi ini buat nampilkan markernya di peta
     load_peta.ambildatabase(idpel);
@@ -405,7 +499,10 @@ load_peta.loadingpeta();
 //agar saat loading map tampil dengan sempurna
 //Set pemanggila semua kordinat dalam 700s
 //untuk menunggu fuction ambildatabase(); selesai di proses
- setTimeout(function(){ load_peta.multi_koordinat(); }, 1700);
+//var kontur = 'ROADMAP';
+
+ //setTimeout(function(){ load_peta.gantipeta(); }, 1700);
+ setTimeout(function(){ load_peta.multi_koordinat(kontur); }, 1700);
 
 });
 
