@@ -402,16 +402,20 @@ include('../../_db.php');
                                  "<!--div class=\'col-md-8\'-->"+
                                  "<i class=\'fa fa-info\'></i> <b><i>Info Pelanggan</i></b>"+
                                  
-                                 "<hr>Pelanggan<table>"+
+                                 "<table>"+
+                                        "<tr bgcolor=\'#c3bdbd\'>"+
+                                            "<td width=\'150px\'>Pelanggan</td><td></td><td></td>"+
+                                        "</tr>"+
                                         "<tr>"+
-                                            "<td><i class=\'fa fa-user\'></i> <b>" + nama['.$i.'] + "</b></td>"+
+                                        "<tr bgcolor=\'#aef5cd\'>"+
+                                            "<td width=\'150px\'><i class=\'fa fa-user\'></i> <b>" + nama['.$i.'] + "</b></td><td></td><td></td>"+
                                         "</tr>"+
                                         "<tr>"+
                                             "<td><b><i class=\'fa fa-map-marker\'></i> Alamat</b></td>"+
-                                            "<td><b> : </b></td>"+
-                                            "<td><font color=\'blue\'>" + alamat['.$i.'] + "</font></td>"+
+                                            "<td width=\'20px\'><b> : </b></td>"+
+                                            "<td width=\'200px\'><font color=\'blue\'>" + alamat['.$i.'] + "</font></td>"+
                                         "</tr>"+
-                                        "<tr>"+
+                                        "<tr bgcolor=\'#aef5cd\'>"+
                                             "<td><b><i class=\'fa fa-phone\'></i> Hp</b></td>"+
                                             "<td> <b> : </b> </td>"+
                                             "<td><font color=\'blue\'>0" + hp['.$i.'] + "</td>"+
@@ -421,7 +425,7 @@ include('../../_db.php');
                                             "<td> <b> : </b> </td>"+
                                             "<td>" + kategori['.$i.'] +"</font></td>"+
                                         "</tr>"+
-                                        "<tr>"+
+                                        "<tr bgcolor=\'#aef5cd\'>"+
                                             "<td></td>"+
                                             "<td> <b> : </b> </td>"+
                                             "<td><font color=\'blue\'>["+ band['.$i.']+ "]</font></td>"+
@@ -431,17 +435,15 @@ include('../../_db.php');
                                           "<td> <b> : </b> </td>"+
                                             "<td><font color=\'blue\'> " + perangkat['.$i.'] + "  " + mac['.$i.']+ "</font></td>"+
                                         "</tr>"+
-                                        "</table>"+
-
-                                         "<hr>PELAPOR<table>"+
-                                        "<tr>"+                                  
-                                            "<td><i class=\'fa fa-frown-o\'></i> <b>pelapor</b></td>"+
-                                          "<td> <b> : </b> </td>"+
-                                            "<td><font color=\'blue\'>" + pelapor['.$i.'] + "</font></td>"+
+                                         "<tr bgcolor=\'#c3bdbd\'><td>PELAPOR</td><td></td><td></td></tr>"+
+                                        "<tr bgcolor=\'#aef5cd\'>"+                                  
+                                            "<td width=\'150px\'><i class=\'fa fa-frown-o\'></i> <b>pelapor</b></td>"+
+                                          	"<td width=\'20px\'> <b> : </b> </td>"+
+                                            "<td width=\'200px\'><font color=\'blue\'>" + pelapor['.$i.'] + "</font></td>"+
                                         "</tr>"+
                                         "<tr>"+                                  
                                             "<td><i class=\'fa fa-comment\'></i> <b>Keluhan</b></td>"+
-                                          "<td> <b> : </b> </td>"+
+                                          	"<td> <b> : </b> </td>"+
                                             "<td><font color=\'blue\'>  " + komen['.$i.'] + "</font></td>"+
                                         "</tr>"+  
 
