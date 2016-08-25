@@ -33,10 +33,10 @@
 <?php
 // Load data tempat tersimpan
 //include('koneksi.php');
-include('../../../_db.php');
+include('../../_db.php');
 if(isset($_GET['lokasi'])){
 $nmLokasi = $_GET['lokasi'];
-$query = "SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` LEFT JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE `g`.`status_gangguan`='0'  AND `p`.`nama` like '%".$nmLokasi."%' GROUP BY p.id_pelanggan";
+$query = "SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` INNER JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE `g`.`status_gangguan`='3'  AND `p`.`nama` like '%".$nmLokasi."%' GROUP BY p.id_pelanggan";
 //$query = "SELECT * FROM `tb_pelanggan` JOIN tb_paket WHERE tb_pelanggan.id_paket=tb_paket.id_paket AND nama like '%$nmLokasi%'"; 
 $lokasi = mysql_query($query);
 
@@ -93,8 +93,8 @@ $no++;
 <?php	
 $no=0;
 //$lokasi = mysql_query("SELECT * FROM `tb_pelanggan` JOIN tb_paket WHERE tb_pelanggan.id_paket=tb_paket.id_paket");
-$lokasi = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` LEFT JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='0' GROUP BY p.id_pelanggan");
-//$lokasi = "SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` LEFT JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='0' GROUP BY p.id_pelanggan";
+$lokasi = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` INNER JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='3' GROUP BY p.id_pelanggan");
+//$lokasi = "SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` INNER JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='3' GROUP BY p.id_pelanggan";
 
 while($koor=mysql_fetch_array($lokasi)){
 $no++;

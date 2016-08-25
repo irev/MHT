@@ -6,8 +6,35 @@ include_once("../../_db.php");
 include_once("../../widget/function/hitung_jumlah_data_item.php");
  ?>
     <div id='widget_gangguan'></div>
-    <div id='widget_perangkat'></div>
+    <!--div id='widget_perangkat'></div-->
     <div id='user_online'></div>
+
+<div id="user_online"><div class="col-md-7">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Management Handling Troubleshoot</h3>
+                      <div class="box-tools pull-right">
+                        <!--span class="label label-danger">8 New Members</span-->
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                      </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body " style="display: block;">
+                    <strong>SELAMAT DATANG</strong><br>
+                    Sistem Aplikasi Management Handling Troubleshoot ini akan membantu dalam pengkoodinasian teknisi yang akan melakukan penanganan terhadap komplain parapelanggan jaringan ISP Solok Media Net
+                    </div><!-- /.box-body -->
+                    <div class="box-footer text-center" style="display: block;">
+                      <a href="javascript::" class="uppercase"></a>
+                    </div><!-- /.box-footer -->
+                  </div>
+</div>
+<script type="text/javascript">
+$('img, .avatar').attr('width', '50');
+$('img, .avatar').attr('height', '50');
+</script></div>
+
+
+
 
 </div>
 </div><!-- /.row -->

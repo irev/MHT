@@ -1,5 +1,4 @@
 <!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
-
 <?php 
 //include('_script.php');
  ?>
@@ -18,7 +17,7 @@
 <div class="col-md-3">   
 <div class="box box-primary">
                 <div class="box-header">
-                  <img src="assets/icon/error.png"><h3 class="box-title"> Map Maintenance Request</h3>
+                  <img src="assets/icon/done.png"><h3 class="box-title"> Map Maintenance Process</h3>
             <span style="float:right;"> 
             <div class="form-group">     
                 <label> Ganti Model Peta </label>
@@ -105,7 +104,8 @@ var kategori = new Array();
 var hp       = new Array();
 var paket    = new Array(); 
 var band     = new Array(); 
-var perangkat= new Array(); 
+var perangkat= new Array();
+var gangguan = new Array(); 
 var pelapor  = new Array();
 var teknisi  = new Array();
 var komen    = new Array();
@@ -117,11 +117,11 @@ var y        = new Array();
 var idpel;
 var i;
 var url;
-var icon_pin =  "assets/icon/error.png"; // tanda gangguan
-var gambar_tanda = "assets/icon/error.png"; // tanda gangguan
+var icon_pin =  "assets/icon/done.png"; // tanda gangguan
+var gambar_tanda = "assets/icon/done.png"; // tanda gangguan
 var solok = new google.maps.LatLng(-0.790475563065513, 100.66022586805047); //set koordinat awal
 var kontur;
-$('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+$('#kordinattersimpan').load('pages/maps/list_map_done.php');
 var load_peta = function(){
 	var peta_awal		= function(){}
 	var gantipeta		= function(){}
@@ -206,16 +206,16 @@ gantipeta: function(){
 },
 loadingpeta: function(){
    //load_peta.multi_koordinat();
-   //$('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+   //$('#kordinattersimpan').load('pages/maps/list_map_done.php');
    console.log("load peta berhasil dimuat!" + kontur);
 },
 
 CariDataLokasiTersimpan: function(){
     var cari_nama_lokasi = document.getElementById('cari_nama_lokasi').value;
     if(cari_nama_lokasi !==null){
-        $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php?lokasi='+cari_nama_lokasi);
+        $('#kordinattersimpan').load('pages/maps/list_map_done.php?lokasi='+cari_nama_lokasi);
     }else{
-        $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+        $('#kordinattersimpan').load('pages/maps/list_map_done.php');
     }
     console.log(cari_nama_lokasi);
 },
@@ -239,9 +239,9 @@ clearMarkers: function() {
 },
 set_icon: function(ikon){
     //if (ikon == "") {
-    	//gambar_tanda = "assets/icon/error.png"//+ikon;
+    	//gambar_tanda = "assets/icon/done.png"//+ikon;
    // } else {
-        gambar_tanda = "assets/icon/error.png"//+ikon;
+        gambar_tanda = "assets/icon/done.png"//+ikon;
    // }
 },
 tandai: function(lokasi){
@@ -272,7 +272,7 @@ carikordinat: function(lokasi){
     tanda = new google.maps.Marker({
         position: lokasi,
         map: peta,
-        icon: 'assets/icon/error.png'//+icon_pin //setjenis pin utama
+        icon: 'assets/icon/done.png'//+icon_pin //setjenis pin utama
     });
     
     load_peta.ambildatabase(idpel);
@@ -287,7 +287,7 @@ carikordinat: function(lokasi){
 },
 //menampilkan multi kordinat
 multi_koordinat: function () {
-    // $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+    // $('#kordinattersimpan').load('pages/maps/list_map_done.php');
 var isi = document.getElementById('cmb').value;
     if(isi=='1')
     {
@@ -370,39 +370,40 @@ ambildatabase: function(){
 include('../../_db.php');
       //$query = mysql_query("SELECT `a`.*,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` AS `a` LEFT JOIN `tb_paket` AS `b` ON `a`.`id_paket` = `b`.`id_paket` LEFT JOIN `tb_perangkat` as `c` ON `a`.`id_perangkat`=`c`.`id_perangkat` where `a`.`status`='0'");
       //$query = mysql_query("SELECT `g`.*,g.keterangan as komen,`p`.*,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_gangguan` as `g` LEFT JOIN `tb_pelanggan` as `p` ON `g`.`id_pelanggan`=`p`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `c`.`id_perangkat`=`p`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `b`.`id_paket`=`p`.`id_paket` WHERE `g`.`status_gangguan`='0' GROUP BY p.id_pelanggan");
-   $query = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` LEFT JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='0' GROUP BY p.id_pelanggan");
+   $query = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` INNER JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='3' GROUP BY p.id_pelanggan");
     $i = 0;
     $js = "";
 
     // kita lakuin looping datanya disini
     while ($value = mysql_fetch_assoc($query)) {
 
-    $js .= 'nama['.$i.'] = "'.$value['nm_pelanggan'].'";
+      $js.= 'nama['.$i.']     = "'.$value['nm_pelanggan'].'";
             kategori['.$i.']  = "'.$value['paket'].'";
-            alamat['.$i.'] = "'.$value['alamat'].'";
-            hp['.$i.'] = "'.$value['hp'].'";
-            paket['.$i.'] = "'.$value['paket'].'";
-            ikon['.$i.'] = "'.$value['ikon'].'";
-            band['.$i.'] = "'.$value['keterangan'].'";
+            alamat['.$i.']    = "'.$value['alamat'].'";
+            hp['.$i.']        = "'.$value['hp'].'";
+            paket['.$i.']     = "'.$value['paket'].'";
+            ikon['.$i.']      = "'.$value['ikon'].'";
+            band['.$i.']      = "'.$value['keterangan'].'";
             perangkat['.$i.'] = "'.$value['merek'].'";
-            pelapor['.$i.'] = "'.$value['pelapor'].'";
-            komen['.$i.'] = "'.$value['komen'].'";
-            
-            mac['.$i.'] = "'.$value['mac_address'].'";
-            x['.$i.'] = "'.$value['x'].'"; //latittude
-            y['.$i.'] = "'.$value['y'].'"; //longitude
+            gangguan['.$i.']  = "'.$value['id_gangguan'].'";
+            pelapor['.$i.']   = "'.$value['pelapor'].'";
+            komen['.$i.']     = "'.$value['komen'].'";
+        
+            mac['.$i.']       = "'.$value['mac_address'].'";
+            x['.$i.']         = "'.$value['x'].'"; //latittude
+            y['.$i.']         = "'.$value['y'].'"; //longitude
             set_icon("'.$value['ikon'].'");
             //idpel = ;
             // kita set dulu koordinat markernya
             var point = new google.maps.LatLng(parseFloat(x['.$i.']),parseFloat(y['.$i.']));
 
             // disini kita masukin konten yang akan ditampilkan di InfoWindow
-            var contentString =  "<div class=\'col-md-12\'><!--div class=\'col-md-4\'>"+
-                                 "<img class=\'profile-user-img img-responsive\' src=\'assets/icon/" + ikon['.$i.'] + "\'></div-->"+
-                                 "<!--div class=\'col-md-8\'-->"+
-                                 "<i class=\'fa fa-info\'></i> <b><i>Info Pelanggan</i></b>"+
-                                 
-                                 "<table>"+
+            var contentString =                              
+                                 "<div class=\'col-md-12 no-border mapinfo\'>"+
+                                 "<table class=\'table-striped\'>"+
+                                        "<tr>"+
+                                            "<td width=\'150px\'><i class=\'fa fa-info\'></i> <b><i>Info Pelanggan</i></b></td><td></td><td> <a class=\'btn btn-xs btn-success pull-right\'><i class=\'fa fa-star text-warning\' ></i> DONE</a><br></td>"+
+                                        "</tr>"+
                                         "<tr bgcolor=\'#c3bdbd\'>"+
                                             "<td width=\'150px\'>Pelanggan</td><td></td><td></td>"+
                                         "</tr>"+
@@ -412,7 +413,7 @@ include('../../_db.php');
                                         "</tr>"+
                                         "<tr>"+
                                             "<td><b><i class=\'fa fa-map-marker\'></i> Alamat</b></td>"+
-                                            "<td width=\'20px\'><b> : </b></td>"+
+                                            "<td width=\'5px\'><b> : </b></td>"+
                                             "<td width=\'200px\'><font color=\'blue\'>" + alamat['.$i.'] + "</font></td>"+
                                         "</tr>"+
                                         "<tr bgcolor=\'#aef5cd\'>"+
@@ -435,10 +436,10 @@ include('../../_db.php');
                                           "<td> <b> : </b> </td>"+
                                             "<td><font color=\'blue\'> " + perangkat['.$i.'] + "  " + mac['.$i.']+ "</font></td>"+
                                         "</tr>"+
-                                         "<tr bgcolor=\'#c3bdbd\'><td>PELAPOR</td><td></td><td></td></tr>"+
+                                         "<tr bgcolor=\'#c3bdbd\'><td>ID Gangguan</td><td>" + gangguan['.$i.'] + "</td><td></td></tr>"+
                                         "<tr bgcolor=\'#aef5cd\'>"+                                  
                                             "<td width=\'150px\'><i class=\'fa fa-frown-o\'></i> <b>pelapor</b></td>"+
-                                          	"<td width=\'20px\'> <b> : </b> </td>"+
+                                          	"<td width=\'5px\'> <b> : </b> </td>"+
                                             "<td width=\'200px\'><font color=\'blue\'>" + pelapor['.$i.'] + "</font></td>"+
                                         "</tr>"+
                                         "<tr>"+                                  
@@ -447,7 +448,7 @@ include('../../_db.php');
                                             "<td><font color=\'blue\'>  " + komen['.$i.'] + "</font></td>"+
                                         "</tr>"+  
 
-                                    "</table><hr></div><!--/div-->";
+                                    "</table></div>";
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString,

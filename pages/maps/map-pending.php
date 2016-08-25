@@ -18,7 +18,7 @@
 <div class="col-md-3">   
 <div class="box box-primary">
                 <div class="box-header">
-                  <img src="assets/icon/error.png"><h3 class="box-title"> Map Maintenance Request</h3>
+                  <img src="assets/icon/blue-warning.png"><h3 class="box-title"> Map Maintenance Pending</h3>
             <span style="float:right;"> 
             <div class="form-group">     
                 <label> Ganti Model Peta </label>
@@ -78,7 +78,7 @@
 <!--
 
  //Ganti judul halaman
-     $("#breadcrumb, #judulhal").text('Map Maintenance Request'); 
+     $("#breadcrumb, #judulhal").text('Map Maintenance Pending'); 
  //Tampil peta    
 	 //$('#tampilmap').load('pages/maps/map_g.php');
 	 // $('#menumap').load('pages/maps/_map_menu.php');
@@ -117,11 +117,11 @@ var y        = new Array();
 var idpel;
 var i;
 var url;
-var icon_pin =  "assets/icon/error.png"; // tanda gangguan
-var gambar_tanda = "assets/icon/error.png"; // tanda gangguan
+var icon_pin =  "assets/icon/blue-warning.png"; // tanda gangguan
+var gambar_tanda = "assets/icon/blue-warning.png"; // tanda gangguan
 var solok = new google.maps.LatLng(-0.790475563065513, 100.66022586805047); //set koordinat awal
 var kontur;
-$('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+$('#kordinattersimpan').load('pages/maps/list_map_pending.php');
 var load_peta = function(){
 	var peta_awal		= function(){}
 	var gantipeta		= function(){}
@@ -206,16 +206,16 @@ gantipeta: function(){
 },
 loadingpeta: function(){
    //load_peta.multi_koordinat();
-   //$('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+   //$('#kordinattersimpan').load('pages/maps/list_map_pending.php');
    console.log("load peta berhasil dimuat!" + kontur);
 },
 
 CariDataLokasiTersimpan: function(){
     var cari_nama_lokasi = document.getElementById('cari_nama_lokasi').value;
     if(cari_nama_lokasi !==null){
-        $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php?lokasi='+cari_nama_lokasi);
+        $('#kordinattersimpan').load('pages/maps/list_map_pending.php?lokasi='+cari_nama_lokasi);
     }else{
-        $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+        $('#kordinattersimpan').load('pages/maps/list_map_pending.php');
     }
     console.log(cari_nama_lokasi);
 },
@@ -239,9 +239,9 @@ clearMarkers: function() {
 },
 set_icon: function(ikon){
     //if (ikon == "") {
-    	//gambar_tanda = "assets/icon/error.png"//+ikon;
+    	//gambar_tanda = "assets/icon/blue-warning.png"//+ikon;
    // } else {
-        gambar_tanda = "assets/icon/error.png"//+ikon;
+        gambar_tanda = "assets/icon/blue-warning.png"//+ikon;
    // }
 },
 tandai: function(lokasi){
@@ -272,7 +272,7 @@ carikordinat: function(lokasi){
     tanda = new google.maps.Marker({
         position: lokasi,
         map: peta,
-        icon: 'assets/icon/error.png'//+icon_pin //setjenis pin utama
+        icon: 'assets/icon/blue-warning.png'//+icon_pin //setjenis pin utama
     });
     
     load_peta.ambildatabase(idpel);
@@ -287,7 +287,7 @@ carikordinat: function(lokasi){
 },
 //menampilkan multi kordinat
 multi_koordinat: function () {
-    // $('#kordinattersimpan').load('pages/maps/gangguan/list_map_gangguan.php');
+    // $('#kordinattersimpan').load('pages/maps/list_map_pending.php');
 var isi = document.getElementById('cmb').value;
     if(isi=='1')
     {
@@ -370,7 +370,7 @@ ambildatabase: function(){
 include('../../_db.php');
       //$query = mysql_query("SELECT `a`.*,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` AS `a` LEFT JOIN `tb_paket` AS `b` ON `a`.`id_paket` = `b`.`id_paket` LEFT JOIN `tb_perangkat` as `c` ON `a`.`id_perangkat`=`c`.`id_perangkat` where `a`.`status`='0'");
       //$query = mysql_query("SELECT `g`.*,g.keterangan as komen,`p`.*,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_gangguan` as `g` LEFT JOIN `tb_pelanggan` as `p` ON `g`.`id_pelanggan`=`p`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `c`.`id_perangkat`=`p`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `b`.`id_paket`=`p`.`id_paket` WHERE `g`.`status_gangguan`='0' GROUP BY p.id_pelanggan");
-   $query = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` LEFT JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='0' GROUP BY p.id_pelanggan");
+   $query = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` INNER JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='3' GROUP BY p.id_pelanggan");
     $i = 0;
     $js = "";
 
