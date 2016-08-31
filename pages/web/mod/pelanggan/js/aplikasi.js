@@ -110,7 +110,6 @@
 
 var getform = function(){
 var set_koordinat = function(kd_pel){
-
 }
 var ubah = function(idubh){
 }
@@ -118,6 +117,7 @@ var hapus = function(idg){
 }
 var print =function(idsur){
 }
+
 return{
 	set_koordinat: function(kd_pel){
        var url = "pages/maps/koordinat.php";

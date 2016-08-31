@@ -18,7 +18,7 @@ require("../../../../_db.php");
 if(isset($_GET['id'])){
   //echo $kd_pel = 'CL'.sprintf("%04s",$_GET['id']);
 
- echo $kd_pel =$_GET['id'];
+$kd_pel =$_GET['id'];
  /* 
   $data  = mysql_fetch_array(mysql_query("SELECT tb_pelanggan.*, tb_pelanggan.status as status_pel , tb_perangkat.* FROM `tb_pelanggan` 
                                                  JOIN tb_perangkat 
@@ -151,13 +151,13 @@ if(substr($kd_pel, 2, 5) != 0) {
      <label for="id" class="col-sm-2 control-label"></label>
   <div class=" col-sm-10 controls">
    <div class="col-xs-2">
-      <label for="id" class="control-label">kordinat X</label>
+      <label for="id" class="control-label">koordinat X</label>
    </div> 
   <div class="col-xs-3">
       <input type="text"  name="koordinatx" id="koorX" class="form-control" placeholder="latittude" value="<?php echo $koordinatx ?>">
   </div>
    <div class="col-xs-2">
-      <label for="id" class="control-label">kordinat Y</label>
+      <label for="id" class="control-label">koordinat Y</label>
    </div> 
   <div class="col-xs-3">
       <input type="text"  name="koordinaty" id="koorY" class="form-control" placeholder="longitude" value="<?php echo $koordinaty ?>">
@@ -250,7 +250,7 @@ Keterangan Paket
         ?>
          <option value="0">tidak ada</option>
       </select>
-            <input type="text"  name="perangkatlama" id="perangkatlama" class="form-control" placeholder="longitude" value="<?php echo $id_perangkat ?>">
+            <input type="text"  name="perangkatlama" id="perangkatlama" class="form-control" placeholder="longitude" value="<?php echo $id_perangkat ?>" style="display: none;">
     </div>
   </div>
   </form>

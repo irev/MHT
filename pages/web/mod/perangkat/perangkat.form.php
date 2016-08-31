@@ -11,12 +11,14 @@
 <div class="table-responsive mailbox-messages">
 <?php
 session_start();
+require("../../../../_db.php"); 
 if(!isset($_SESSION['login_hash'])){
-  echo "<script>alert('anda harus login dulu..!');</script>";
+  echo "<script>alert('anda harus login dulu..!'); window.location ="+baseurl+" </script>";
+  header("Location:".baseurl);
 } 
 //$_POST['id'] ="0002";
 //$_GET['id'];
-require("../../../../_db.php"); 
+
 //echo $_GET['id'];
 if(isset($_GET['id'])){
  //echo $kd_pel = 'CL'.sprintf("%04s",$_GET['id']);
@@ -60,6 +62,10 @@ if(substr($kd_pel, 2, 5) != 0) {
     $stat = "DIPAKAI";
   }else if($data['status']==2){
     $stat = "RUSAK";
+  }else{
+    $data['status']='0';
+    $stat = "Pilih Status";
+
   }  
 
 //form tambah data
@@ -84,8 +90,10 @@ if(substr($kd_pel, 2, 5) != 0) {
   $merek        = "";
   $mac          = "";
   $tgl          = "";
-  $ket          = "";
-  $stat         = "";  
+  $ket          = ".:: Pilih Keterangan ::.";
+  $data['keterangan']="BARU";
+  $stat         = ".:: Pilih Status ::.";
+  $data['status']='0';  
 }
 
 ?>

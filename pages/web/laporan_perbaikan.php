@@ -27,7 +27,8 @@ if (isset($_POST['priode'])) {
 		echo "<option value='".date('d')."'>".date('d')."</option>";
 		for ($tgl=1; $tgl <= 31; $tgl++) { 
 			# code tampil bulan...
-			echo "<option value='".$tgl."'>".$tgl."</option>";
+			
+			echo "<option value='".sprintf("%02s",$tgl)."'>".sprintf("%02s",$tgl)."</option>";
 		} ?>
 	</select>
 </div>
@@ -37,7 +38,7 @@ if (isset($_POST['priode'])) {
 			echo "<option value='".date('m')."'>".nm_bulanIndonesia(date('m'))."</option>";
 	for ($bln=1; $bln <= 12; $bln++) { 
 			# code tampil bulan...
-			echo "<option value='".$bln."'>".nm_bulanIndonesia($bln)."</option>";
+			echo "<option value='".sprintf("%02s",$bln)."'>".nm_bulanIndonesia($bln)."</option>";
 		} ?>
 	</select>
 </div>
@@ -63,7 +64,7 @@ if (isset($_POST['priode'])) {
 		echo "<option value='".date('d')."'>".date('d')."</option>";
 		for ($tgl=1; $tgl <= 31; $tgl++) { 
 			# code tampil bulan...
-			echo "<option value='".$tgl."'>".$tgl."</option>";
+			echo "<option value='".sprintf("%02s",$tgl)."'>".$tgl."</option>";
 		} ?>
 	</select>
 </div>
@@ -73,7 +74,7 @@ if (isset($_POST['priode'])) {
 			echo "<option value='".date('m')."'>".nm_bulanIndonesia(date('m'))."</option>";
 	for ($bln=1; $bln <= 12; $bln++) { 
 			# code tampil bulan...
-			echo "<option value='".$bln."'>".nm_bulanIndonesia($bln)."</option>";
+			echo "<option value='".sprintf("%02s",$bln)."'>".nm_bulanIndonesia($bln)."</option>";
 		} ?>
 	</select>
 </div>
@@ -100,16 +101,16 @@ if (isset($_POST['priode'])) {
 <div class="col-md-8">
 <div class="box">
 <div class="box-body">
-<div id="tampil-laporan">Tampil Laporan</div>
+<div id="tampil-laporan">Untuk menampilkan laporan: <br> <ul><li>Pilih tanggal awal dan akhir laporan yang akan di tampilkan</li><li>Lalu tekan tombol tampil.</li></ul></div>
 <!--iframe src="pages/web/mod/laporan/generate_gangguan.php" width='100%' height='500'></iframe-->
 </div>
 </div>
 </div>
-<div class="col-md-7">
+<!--div class="col-md-7">
 <div class="box">
-<!--iframe src="pages/web/mod/laporan/generate_perbaikan.php" width='100%' height='500'></iframe-->
+<iframe src="pages/web/mod/laporan/generate_perbaikan.php" width='100%' height='500'></iframe>
 </div>
-</div>
+</div-->
 
 </div>
 </div>

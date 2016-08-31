@@ -26,7 +26,7 @@ if(!isset($_SESSION['login_hash']) && !isset($_SESSION['login_name'])){
 
 <script type="text/javascript">
  //Ganti judul halaman
-   $("#breadcrumb, #judulhal").text('Data Pelanggan');
+$("#breadcrumb, #judulhal").text('Data Pelanggan');
 $('.paginate_button').addClass('btn btn-sm');
 
 function dataall(){
@@ -61,61 +61,9 @@ function profile(){
   // $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.aktif.php?pelanggan=4');
 
 </script>
+
 <div class="col-md-12">
-<div class="col-md-3">
-<div class="info-box bg-navy disabled color-palette">
-  <!-- Apply any bg-* class to to the icon to color it -->
-  <span class="info-box-icon bg-red-active"><i class="fa fa-sign-out"></i></span>
-  <div class="info-box-content bg-red">
-    <span class="info-box-text">AKTIF</span>
-    <span class="info-box-number"><?php echo hitung_aktif()?></span>
-  </div><!-- /.info-box-content -->
-  <div class="info-box-content">
-  <a href="?cat=<?php echo $_SESSION['login_hash']; ?>&page=gangguan" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-  </div>
-</div>
-</div><!-- /.info-box -->
-<div class="col-md-3">
-<div class="info-box bg-navy disabled color-palette">
-  <!-- Apply any bg-* class to to the icon to color it -->
-  <span class="info-box-icon bg-red-active"><i class="fa fa-sign-out"></i></span>
-  <div class="info-box-content bg-red">
-    <span class="info-box-text">BARU</span>
-    <span class="info-box-number"><?php echo hitung_baru()?></span>
-  </div><!-- /.info-box-content -->
-  <div class="info-box-content">
-  <a href="?cat=<?php echo $_SESSION['login_hash']; ?>&page=gangguan" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-  </div>
-</div>
-</div><!-- /.info-box -->
-<div class="col-md-3">
-<div class="info-box bg-navy disabled color-palette">
-  <!-- Apply any bg-* class to to the icon to color it -->
-  <span class="info-box-icon bg-red-active"><i class="fa fa-sign-out"></i></span>
-  <div class="info-box-content bg-red">
-    <span class="info-box-text">CUTI</span>
-    <span class="info-box-number"><?php echo hitung_cuti()?></span>
-  </div><!-- /.info-box-content -->
-  <div class="info-box-content">
-  <a href="?cat=<?php echo $_SESSION['login_hash']; ?>&page=gangguan" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-  </div>
-</div>
-</div><!-- /.info-box -->
-<div class="col-md-3">
-<div class="info-box bg-navy disabled color-palette">
-  <!-- Apply any bg-* class to to the icon to color it -->
-  <span class="info-box-icon bg-red-active"><i class="fa fa-sign-out"></i></span>
-  <div class="info-box-content bg-red">
-    <span class="info-box-text">BLOCK</span>
-    <span class="info-box-number"><?php echo hitung_block()?></span>
-  </div><!-- /.info-box-content -->
-  <div class="info-box-content">
-  <a href="?cat=<?php echo $_SESSION['login_hash']; ?>&page=gangguan" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-  </div>
-</div>
-</div><!-- /.info-box -->
-
-
+ <div id='widget_pelanggan'></div>
 </div>
 <!-- col Data TAB-->
  <div class="col-md-12">
@@ -267,9 +215,16 @@ function profile(){
 <!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
 <script type="text/javascript">
         var main  = "pages/web/mod/pelanggan/pelanggan.aktif.php";
+        var widget_pelanggan = "widget/widget_pelanggan.php";
+
        // var menu2 = "pages/web/mod/pelanggan/pelanggan.menu.php";
         $("#data-pelanggan").load(main);
        // $("#menu-pelanggan").load(menu2);
+ function widget(){
+       $('#widget_pelanggan').load(widget_pelanggan);
+ }
+    window.onload =widget;
+    setInterval(widget, 3000);
 
 	    //Fungsi Menu
     function list_allpelanggan(){

@@ -28,7 +28,7 @@ if ($_SESSION['rememberme']=='off'){
      header("Location:index.php"); 
     } 
 }
-?>
+?> 
   <head style="min-width: 360px;">
   <title id="web-title"><?php echo title ?></title>
   <meta charset="utf-8">

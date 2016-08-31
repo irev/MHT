@@ -4,12 +4,23 @@
  ?>
 <section class="content">
 <div class="row">
-
+<div class="col-md-9">
+<div class="box" >
+  <div class="box-body">
+    <a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map-pelanggan.php');" class="btn btn-info"><i class="fa fa-map-marker"></i> Pelanggan</a>
+    <a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map-gangguan.php');" class="btn btn-danger"><i class="fa fa-map-marker"></i> Request </a>
+    <a href="#Map_Pending" onclick="javascript:showpage('pages/maps/map-pending.php');" class="btn btn-primary"><i class="fa fa-map-marker"></i> Pending </a>
+    <a href="#Map_Proses" onclick="javascript:showpage('pages/maps/map-proses.php');" class="btn btn-warning"><i class="fa fa-map-marker"></i> Proses </a>
+    <a href="#Map_Done" onclick="javascript:showpage('pages/maps/map-done.php');" class="btn btn-success"><i class="fa fa-map-marker"></i> Done</a>
+<br>
+</div>
+</div>
+</div>
 <div class="col-md-9">
 <div class="box" >
   <div class="box-body">
 <!--TAMPILKAN MAP-->
-    <div id="kanvaspeta" style=" margin:0px auto; width:100%; height:400px; float:left; padding:10px;"  onload="javascript:load_peta.multi_koordinat();">kanvaspeta</div>
+    <div id="kanvaspeta" style=" margin:0px auto; width:100%; height:450px; float:left; padding:10px;"  onload="javascript:load_peta.multi_koordinat();">kanvaspeta</div>
 </div>
 </div>
 </div> 
@@ -59,11 +70,6 @@
 </div>
 </div>
 </div>
-
-
-  <div class="col-md-3">
-    <div id="menumap">menumap</div>
-  </div>
 
 
 </div>
@@ -370,7 +376,7 @@ ambildatabase: function(){
 include('../../_db.php');
       //$query = mysql_query("SELECT `a`.*,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` AS `a` LEFT JOIN `tb_paket` AS `b` ON `a`.`id_paket` = `b`.`id_paket` LEFT JOIN `tb_perangkat` as `c` ON `a`.`id_perangkat`=`c`.`id_perangkat` where `a`.`status`='0'");
       //$query = mysql_query("SELECT `g`.*,g.keterangan as komen,`p`.*,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_gangguan` as `g` LEFT JOIN `tb_pelanggan` as `p` ON `g`.`id_pelanggan`=`p`.`id_pelanggan` LEFT JOIN `tb_perangkat` as `c` ON `c`.`id_perangkat`=`p`.`id_perangkat` LEFT JOIN `tb_paket` as `b` ON `b`.`id_paket`=`p`.`id_paket` WHERE `g`.`status_gangguan`='0' GROUP BY p.id_pelanggan");
-   $query = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` INNER JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='3' GROUP BY p.id_pelanggan");
+   $query = mysql_query("SELECT `p`.*,`p`.`nama` as nm_pelanggan ,`g`.*,`g`.`keterangan` as komen,`b`.*,`c`.merek,`c`.mac_address,`c`.keterangan as pr_ket FROM `tb_pelanggan` as `p` INNER JOIN `tb_gangguan` as `g` ON `p`.`id_pelanggan`=`g`.`id_pelanggan` INNER JOIN `tb_perangkat` as `c` ON `p`.`id_perangkat`=`c`.`id_perangkat` INNER JOIN `tb_paket` as `b` ON `p`.`id_paket`=`b`.`id_paket` WHERE g.status_gangguan='2' GROUP BY p.id_pelanggan");
     $i = 0;
     $js = "";
 

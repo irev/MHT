@@ -15,21 +15,22 @@ if(!isset($_SESSION['login_hash'])){
         </script>";
 } 
 $login=$_SESSION['login_hash'];
-echo $st=$_GET['status'];
+ $st=$_GET['status'];
 ?>
     <!--Data table-->
     <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
     <div class="box-body no-padding">
-        <div class="mailbox-messages">
-            <table id="DataTablepelangganAktif" class="table table-hover table-striped">
+        <div class="mailbox-messages table-responsive">
+            <table id="TabelPerangkat" class="table table-hover table-striped">
                 <thead>
                     <tr>
                         <th>No</th>
                         <?php if ($login=='krd' || $login=='cs' &&  $st==0){ 
                           echo "<th></th>";  
                         }else{
-                        
+
                           }?>
+                        <th>Id Perangkat </th>
                         <th>Merek </th>
                         <th>Mac Address</th>
                         <th>TGL. Pembelian</th>
@@ -41,14 +42,13 @@ echo $st=$_GET['status'];
 <?php 
 
   if($_GET['status'] !== "undefined"){
-       echo  $st=$_GET['status'];
-       echo  $kt=$_GET['ket'];
-  
+       $st=$_GET['status'];
+       $kt=$_GET['ket'];
   if($st==0){
     // stok perangkat
     //$queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat  FROM `tb_perangkat`");
-    $queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat, tb_perangkat.status as stsp FROM `tb_perangkat` 
-                           LEFT JOIN `tb_pelanggan` ON `tb_perangkat`.`id_perangkat`=`tb_pelanggan`.`id_perangkat` 
+    $queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat, tb_perangkat.status as stsp FROM `tb_perangkat`
+                           LEFT JOIN `tb_pelanggan` ON (`tb_perangkat`.`id_perangkat`=`tb_pelanggan`.`id_perangkat`) 
                           ");
   } 
   elseif($st==0 && $_GET['ket']==1) {
@@ -61,10 +61,13 @@ echo $st=$_GET['status'];
                            WHERE tb_perangkat.keterangan='BAIK' AND tb_perangkat.status='1'");
   } 
   elseif($st==1 && $kt=='STOK') {
-    $queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat FROM `tb_perangkat` WHERE status='0'");     
+    $queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat FROM `tb_perangkat` WHERE  keterangan!='rusak' && status='0'");     
   }
   elseif($st==1 &&   $kt=='BARU') {
-    $queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat FROM `tb_perangkat` WHERE `keterangan`='$kt'");     
+   // $queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat FROM `tb_perangkat` WHERE  `keterangan`='$kt'");     
+   $queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat, tb_perangkat.status as stsp FROM `tb_perangkat` 
+                           LEFT JOIN `tb_pelanggan` ON `tb_perangkat`.`id_perangkat`=`tb_pelanggan`.`id_perangkat` 
+                           WHERE tb_perangkat.keterangan='BARU'");
   }
   elseif($st==1 && $_GET['ket']=='BAIK') {
     //$queryA = mysql_query("SELECT *,tb_perangkat.keterangan as ket_perangkat FROM `tb_perangkat` WHERE `keterangan`='$kt'"); 
@@ -117,6 +120,11 @@ echo $st=$_GET['status'];
         $ket_perangkat="<span class='label label-primary pull-center'>".$dataA['ket_perangkat']."</span>";
         $rusak="no";
       }
+      elseif ($dataA['ket_perangkat']=='BARU' && $dataA['status']=='0') {
+        # code...
+        $ket_perangkat="<span class='label label-primary pull-center'>".$dataA['ket_perangkat']."</span>";
+        $rusak="no";
+      }
 
 
   ?>
@@ -126,10 +134,8 @@ echo $st=$_GET['status'];
   </td>
  
 <?php if ($login=='krd' || $login=='cs' &&  $st==0){ ?>
-           
-
   <td class="mailbox-star" style="width: 5%;">
-    <a href="#tab-edit" data-toggle="tab" class="btn btn-default btn-sm ubah" <?php $idpr = $dataA['id_perangkat']; echo 'onclick="getform.ubah(\''.$idpr.'\')"' ?> id="<?php echo $dataA['id_perangkat'] ?>">
+    <a href="#tab-edit" data-toggle="tab" class="btn btn-default btn-sm ubah" <?php $idpr = $dataA['id_perangkat']; echo 'onclick="getform.ubah(\''.$dataA[0].'\')"' ?> id="<?php echo $dataA[0] ?>">
       <i class="fa fa-gear"></i> 
     </a>
    <a  href="#tab-add" data-toggle="tab" class="btn btn-default btn-sm hapus" id="<?php echo $dataA['id_perangkat'] ?>" onclick="getform.hapus(<?php echo substr($dataA['id_perangkat'],4) ?>)">
@@ -160,7 +166,8 @@ echo $st=$_GET['status'];
                                 <!--button type="button" class="btn <?php echo $btclass ?> dropdown-toggle col-md-12"><?php echo $status_icon ?> <?php echo $status ?> </button-->
                             </div> <?php  } ?>
  
-  <td class="mailbox-subject" style="width: 10%;"><?php echo $dataA['merek'].'<br>'.$dataA['id_perangkat'] ; ?></td>
+  <td class="mailbox-subject" style="width: 10%;"><?php echo $dataA[0] ; ?></td>
+  <td class="mailbox-subject" style="width: 10%;"><?php echo $dataA['merek']; ?></td>
   <td class="mailbox-subject" style="width: 10%;"><?php echo "<span class='label label-primary pull-center'>".$dataA['mac_address']."</span>"; ?></td>
   <td class="mailbox-subject" style="width: 10%;">
       <?php $kets= tgl_indonesia($dataA['tgl_masuk']); echo  textSingkat($kets,70); ?>
@@ -169,7 +176,23 @@ echo $st=$_GET['status'];
       <?php echo $ket_perangkat; ?>
   </td>
   <td class="mailbox-subject" style="width: 10%;">
-      <?php   if(!isset($dataA['nama']) && $rusak=='no'){echo '  <i class="fa fa-archive text-primary"></i> Tersedia';}elseif(!isset($dataA['nama']) && $rusak=='ya'){echo '  <i class="fa  fa-minus-square text-danger"></i> --';}else{$kets=$dataA['nama'];  echo '<i class="fa fa-user"></i> '. textSingkat($kets,70); }?>
+      <?php   if(!isset($dataA['nama']) && $rusak=='no'){
+                if(isset($dataA['nama'])){
+                echo '  <i class="fa fa-archive text-primary"></i> Tersedia'.$dataA['nama'];
+                }else{
+                echo '  <i class="fa fa-archive text-primary"></i> Tersedia';
+                }
+              }
+              elseif(!isset($dataA['nama']) && $dataA['status']=='0'){
+                echo '  <i class="fa fa-archive text-primary"></i> Tidak Tersedia ';
+              }
+              elseif(isset($dataA['nama']) && $rusak=='ya'){
+                echo '  <i class="fa  fa-minus-square text-danger"></i> --';
+              }
+              else{
+                $kets=$dataA['nama'];  echo '<i class="fa fa-user"></i> '. textSingkat($kets,70); 
+              }
+      ?>
   </td>
 
 </tr>
@@ -201,6 +224,18 @@ echo '<td class="mailbox-subject" style="width: 10%;"><center>Data kosong</cente
 </div>
 
 <script>
+$('#TabelPerangkat').DataTable();
+function dataTabel(){
+   $('.dataTables_length').addClass('col-xs-3');
+   $('.dataTables_info').addClass('col-xs-4');
+   $('.paginate_previous').addClass('btn-flat btn-default');
+   $('.paginate_next').addClass('btn-flat btn-default');
+   $('.paginate_button').addClass('btn-flat btn-default btn-group');
+   $('.current').addClass('btn-flat btn-primary btn-group');
+}    
+    window.onload =dataTabel;
+    setInterval(dataTabel, 3000);
+ /*
         $("#DataTablepelanggan-aktifx").DataTable({
             "fixedColumns": false,
             "responsive": false,
@@ -233,4 +268,5 @@ echo '<td class="mailbox-subject" style="width: 10%;"><center>Data kosong</cente
             "info": true,
             "autoWidth": false
         });
+        */
     </script>

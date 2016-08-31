@@ -14,7 +14,7 @@
 	define("ver", "2.0");
 	define("app_name", " MHT ");
 	define("build_date", "2016");
-	define("mode", 1); // mode per baikan 1= aktif; 0 = tidak aktif 
+	define("mode", 0); // mode per baikan 1= aktif; 0 = tidak aktif 
 	define("msg", '
 		   <div class="navbar-custom-menu">
            <ul class="nav navbar-nav">
@@ -160,6 +160,7 @@ return $bulan[$bln];
 //echo $tglAkhir;
 
 
+
 // SELISIH WAKTU function dateAgo
 function selisihwaktu($date) {
   $ts = strtotime($date);
@@ -204,7 +205,7 @@ function selisihwaktu($date) {
       //return ($hours == 1) ? "an hour ago" : "$hours hours ago" ;
       return ($tahun == 1) ? "sebulan lalu" : "$bulan bulan lalu" ;  
     }else {
-    	$hrini = explode(' ',$date,0);
+      $hrini = explode(' ',$date,0);
       //return tgl_indonesia($hrini);
       return  $tahun .' Tahun lalu'; 
     }
@@ -212,6 +213,61 @@ function selisihwaktu($date) {
  
 }
 // END SELISIH WAKTU function dateAgo
+
+/// FUNGSI HITUNG WAKTU PENYELESAIAN MAINTENENCE
+function perbaikan_Selesai($dari, $hari_selesai) {
+  $ts = strtotime($hari_selesai);
+  $td = strtotime($dari);
+ if (empty($dari)){  
+  $td = strtotime(date('Y-m-d H:i:s'));
+ }else{
+  $dari="error";
+ }
+
+  $diff = ($ts - $td)/(60*60*24);
+ 
+  if ($diff == '1') {
+    return "kemarin jam ".date('g:i A', $ts);
+  } else {
+ 
+    $diff = abs($ts - $td);
+ 
+    $seconds  = $diff;
+    $minutes  = floor($diff/60);
+    $hours    = floor($minutes/60);
+    $days     = floor($hours/24);
+    $minggu   = floor($days/7);
+    $bulan    = floor($minggu/4);
+    $tahun    = floor($bulan/12);
+ 
+    if ($seconds < 60) {
+      //return "$seconds seconds ago";
+      return "$seconds detik lalu";
+    } elseif ($minutes < 60) {
+      //return ($minutes == 1) ? "a minute ago" : "$minutes minutes ago" ;
+      return ($minutes == 1 ) ? "semenit" : "$minutes menit" ;
+    } elseif ($hours < 24) {
+      //return ($hours == 1) ? "an hour ago" : "$hours hours ago" ;
+      return ($days == 1) ? "sejam" : "$hours jam" ;
+    }elseif ($days < 7) {
+      //return ($hours == 1) ? "an hour ago" : "$hours hours ago" ;
+      return ($minggu == 1) ? "sehari" : "$days hari" ;  
+    }elseif ($minggu < 4) {
+      //return ($hours == 1) ? "an hour ago" : "$hours hours ago" ;
+      return ($bulan == 1) ? "seminggu" : "$minggu minggu " ;  
+    }elseif ($bulan < 12) {
+      //return ($hours == 1) ? "an hour ago" : "$hours hours ago" ;
+      return ($tahun == 1) ? "sebulan" : "$bulan bulan" ;  
+    }else {
+      //$hrini = explode(' ',$hari_selesai,0);
+      //return tgl_indonesia($hrini);
+      //return  $tahun .' Tahun'. $hari_selesai; 
+      return   $dari ; 
+    }
+  }
+ 
+}
+ 
 // // 5 seconds ago
 //$date = date('Y-m-d H:i:s', time() - 5);
 //echo dateAgo($date);

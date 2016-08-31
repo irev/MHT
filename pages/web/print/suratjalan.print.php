@@ -112,7 +112,7 @@ $namafile = substr($get_id,4).'/'.substr($gangguan,4).'/'.date('d/m');
 //$pdf->Text(15.5,(1.5),  'Nomor : '.substr($get_id,4).'/'.substr($gangguan,4).'/'.date('d/m')); // ID_SURAT
 $pdf->Text(15.5,(1.5),  'Nomor : '.$get_id); // ID_SURAT
 $pdf->Text(5.5,(4.5),': '.tgl_indonesia($tgl_pelaporan)); //tanggal pelaporan
-$pdf->Text(5.5,(5),  ': '.$pelapor); // nama pelanggan
+$pdf->Text(5.5,(5),  ': '.$nmapelanggan); // nama pelanggan
 $pdf->Text(12,(5), ': '.$pelapor); // nama pelanggan
 $pdf->Text(5.5,(5.5),': '.$alamat); // alamat
 $pdf->Text(5.5,(6),  ': '.$hp); // hp

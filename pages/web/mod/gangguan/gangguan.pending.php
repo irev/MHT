@@ -90,26 +90,3 @@ if(!isset($_SESSION))
                   </div>
                 </div>
               </div>
-
-
-
-
- 
-<script>
-  <!--
- $('.paginate_button').addClass('btn');
-   $('#DataTablePending').DataTable({
-    "autoWidth": true,
-      "language": {
-            "lengthMenu": " Tampil _MENU_ record per halaman",
-            "zeroRecords": " Maaf - Data tidak ditemukan",
-            "info": " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
-            "infoEmpty": " Data tidak tersedia",
-            "search": " Cari Data : ",
-            "previus": " Cari Data : ",
-            "next": " Cari Data : ",
-            "infoFiltered": " (filtered from _MAX_ total records)"
-        }
-    });
-  -->
-</script>  

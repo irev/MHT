@@ -89,7 +89,7 @@ require("../../../../_db.php");
 
 
 <script>
-$(function () {
+/*
 $('#DataTableGangguanAll').DataTable({
       "language": {
             "lengthMenu"   : " Tampil _MENU_ record per halaman",
@@ -102,7 +102,11 @@ $('#DataTableGangguanAll').DataTable({
             "infoFiltered" : " (filtered from _MAX_ total records)"
         }
     });
-  });
-    console.log( "ready!" );
+*/
+
+
+
+
+
 
 </script>  

@@ -5,12 +5,23 @@
  ?>
 <section class="content">
 <div class="row">
-
+<div class="col-md-9">
+<div class="box" >
+  <div class="box-body">
+       <a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map-pelanggan.php');" class="btn btn-info"><i class="fa fa-map-marker"></i> Pelanggan</a>
+    <a href="#Map_gangguan" onclick="javascript:showpage('pages/maps/map-gangguan.php');" class="btn btn-danger"><i class="fa fa-map-marker"></i> Request </a>
+    <a href="#Map_Pending" onclick="javascript:showpage('pages/maps/map-pending.php');" class="btn btn-primary"><i class="fa fa-map-marker"></i> Pending </a>
+    <a href="#Map_Proses" onclick="javascript:showpage('pages/maps/map-proses.php');" class="btn btn-warning"><i class="fa fa-map-marker"></i> Proses </a>
+    <a href="#Map_Done" onclick="javascript:showpage('pages/maps/map-done.php');" class="btn btn-success"><i class="fa fa-map-marker"></i> Done</a>
+<br>
+</div>
+</div>
+</div>
 <div class="col-md-9">
 <div class="box" >
   <div class="box-body">
 <!--TAMPILKAN MAP-->
-    <div id="kanvaspeta" style=" margin:0px auto; width:100%; height:400px; float:left; padding:10px;"  onload="javascript:load_peta.multi_koordinat();">kanvaspeta</div>
+    <div id="kanvaspeta" style=" margin:0px auto; width:100%; height:450px; float:left; padding:10px;"  onload="javascript:load_peta.multi_koordinat();">kanvaspeta</div>
 </div>
 </div>
 </div> 
@@ -60,12 +71,6 @@
 </div>
 </div>
 </div>
-
-
-  <div class="col-md-3">
-    <div id="menumap">menumap</div>
-  </div>
-
 
 </div>
 <!--footer-->

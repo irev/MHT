@@ -19,3 +19,13 @@
 [2016-08-10 06:13:36] [EDT] [BERHASIL] [Pelanggan id=CL0012 Nama = Fiki Ardiansyah] [Oleh USER id=KR003] 
 [2016-08-10 06:14:56] [EDT] [BERHASIL] [Pelanggan id=CL0021 Nama = ere sindo] [Oleh USER id=KR003] 
 [2016-08-11 03:25:22] [EDT] [BERHASIL] [Pelanggan id=CL0010 Nama = aaaaaaaaaaaaaaaaaaxxxxx] [Oleh USER id=KR004] 
+[2016-08-25 19:35:38] [EDT] [BERHASIL] [Pelanggan id=CL0010 Nama = DESMIRAWATI] [Oleh USER id=KR004] 
+[2016-08-25 19:37:54] [EDT] [BERHASIL] [Pelanggan id=CL0010 Nama = DESMIRAWATI] [Oleh USER id=KR004] 
+[2016-08-25 19:39:48] [EDT] [BERHASIL] [Pelanggan id=CL0021 Nama = HARI SUNANDA] [Oleh USER id=KR004] 
+[2016-08-25 19:40:34] [EDT] [BERHASIL] [Pelanggan id=CL0023 Nama = ADE CANDRA] [Oleh USER id=KR004] 
+[2016-08-25 19:40:55] [EDT] [BERHASIL] [Pelanggan id=CL0011 Nama = NASRULLAH] [Oleh USER id=KR004] 
+[2016-08-25 19:41:26] [EDT] [BERHASIL] [Pelanggan id=CL0011 Nama = NASRULLAH] [Oleh USER id=KR004] 
+[2016-08-25 19:44:29] [ADD] [BERHASIL] [Pelanggan id=CL0024 Nama = RIFQI AFIF ] [Oleh USER id=KR004 
+[2016-08-25 19:44:48] [EDT] [BERHASIL] [Pelanggan id=CL0012 Nama = Fiki Ardiansyah] [Oleh USER id=KR004] 
+[2016-08-27 14:42:28] [EDT] [BERHASIL] [Pelanggan id=CL0010 Nama = DESMIRAWATI] [Oleh USER id=KR004] 
+[2016-08-28 00:35:45] [ADD] [BERHASIL] [Pelanggan id=CL0025 Nama = Roni Andres] [Oleh USER id=KR004 

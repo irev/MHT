@@ -10,7 +10,7 @@ require("../../../../_db.php");
 ?>
                 <div class="box-body no-padding">
                   <div class="mailbox-messages">
-                    <table id="DataTablepelanggan" class="table table-hover table-striped">
+                    <table id="TablePelanggan" class="table table-hover table-striped">
                     <thead>
                       <tr>
                         <th> No</th>
@@ -115,6 +115,7 @@ require("../../../../_db.php");
                 </div>
 
 <script> 
+$('#Tablepelanggan').DataTable();
 $(function () {
    $("#DataTablepelanggan").DataTable({
     "fixedColumns": false,

@@ -14,6 +14,9 @@ if(!isset($_SESSION))
 require("../../../../_db.php"); 
 
 ?>
+
+
+
 <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">REQUEST PERBAIKAN GANGGUAN</h3>
@@ -22,7 +25,7 @@ require("../../../../_db.php");
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="table-responsive mailbox-messages">
-<table id="DataTableData" class="table table-hover table-striped">
+<table id="DataTableDataGangguan" class="table table-hover table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -107,20 +110,3 @@ require("../../../../_db.php");
               </div>
 
 
-
-<script>
-   $('#DataTableData').DataTable({
-    "autoWidth": true,
-      "language": {
-            "lengthMenu": " Tampil _MENU_ record per halaman",
-            "zeroRecords": " Maaf - Data tidak ditemukan",
-            "info": " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
-            "infoEmpty": " Data tidak tersedia",
-            "search": " Cari Data : ",
-            "previus": " Cari Data : ",
-            "next": " Cari Data : ",
-            "infoFiltered": " (filtered from _MAX_ total records)"
-        }
-    });
-
-</script>  

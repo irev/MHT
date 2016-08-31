@@ -6,17 +6,13 @@ if(!isset($_SESSION))
 ?>
 <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Dafta Gangguan Sedang Proses</h3>
+                  <h3 class="box-title">Dafta Gangguan Sedang Diproses</h3>
                   <div class="box-tools pull-right">
-                    <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                  </div><!-- /.box-tools -->
+                 </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="table-responsive mailbox-messages">
-                    <table class="table table-hover table-striped">
+                    <table id="DataTableproses" class="table table-hover table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -27,6 +23,9 @@ if(!isset($_SESSION))
                         <th>Awal Gangguan</th>
                         <th>Waktu</th>
                         <th>Status</th>
+                        <?php if($_SESSION['login_hash']=='tek'){ ?>
+                        <th></th>
+                        <?php }?>
                       </tr>
                     </thead>
                       <tbody>
@@ -65,13 +64,15 @@ if(!isset($_SESSION))
       <td class="mailbox-attachment"><?php echo  tgl_indonesia($gangguan['tgl_pelaporan']); ?></td>
       <td class="mailbox-date"><?php echo  selisihwaktu($gangguan['tgl_gangguan']); ?></td> 
       <td><?php echo $status ?></td>
+     
+      <?php if($_SESSION['login_hash']=='tek'){ ?> 
       <td>
-      <?php if($_SESSION['login_hash']=='tek'){ ?>
       <a href="#dialog-data"  class="btn btn-primary btn-sm" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Selesaikan" onclick="getform.done(<?php echo substr($gangguan['id_gangguan'],5) ?>)" id="<?php echo $gangguan['id_gangguan'] ?>">
       <i class="fa fa-thumbs-up pull-right"></i>
           </a>
+     </td>
        <?php } ?>   
-      </td>
+     
 </tr>
 
 <?php } ?>   
@@ -88,6 +89,7 @@ if(!isset($_SESSION))
                   </div>
                 </div>
               </div>
-              <script type="text/javascript">
-                $('[data-toggle="tooltip"]').tooltip();
-              </script>
+  
+<script type="text/javascript">
+      $('[data-toggle="tooltip"]').tooltip();
+</script>

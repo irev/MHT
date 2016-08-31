@@ -41,5 +41,16 @@ document.addEventListener('contextmenu', function(ev) {
     ev.preventDefault();
     return false;
 }, false);
-
+/*
+   function dataTabel(){
+        $('.dataTables_length').addClass('col-xs-3');
+        $('.dataTables_info').addClass('col-xs-4');
+        $('.paginate_previous').addClass('btn-flat btn-default');
+        $('.paginate_next').addClass('btn-flat btn-default');
+        $('.paginate_button').addClass('btn-flat btn-default btn-group');
+        $('.current').addClass('btn-flat btn-primary btn-group');
+  }    
+    window.onload =dataTabel;
+    setInterval(dataTabel, 3000);
+    */
  </script>           

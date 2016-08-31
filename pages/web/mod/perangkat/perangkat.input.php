@@ -21,13 +21,13 @@ if(isset($_POST['hapus'])) {
     }
 } else {
 	// deklarasikan variabel
-  echo  $kd_pel			= $_POST['id'];			///
-  echo  $kode			= $_POST['kode'];		///
+        $kd_pel			= $_POST['id'];			///
+        $kode			= $_POST['kode'];		///
         $merek			= $_POST['merek'];		///
         $mac 			= $_POST['mac'];		///
         $ket_per 		= $_POST['ket_per'];	///
         if(!isset($_POST['stat_per'])){
-        	$status=0;
+        	$status='0';
         }else{
         	$status = $_POST['stat_per'];
         }

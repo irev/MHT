@@ -153,6 +153,7 @@ $(function () {
         }
 
    });
+   $('#DataTablekaryawan_length').addClass('col-xs-3');
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

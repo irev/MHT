@@ -7,7 +7,7 @@
 // usercase CUSTOMER SERVICE
 ///////////////////////////////
 require("../../../../_db.php"); 
-$bk = baseurl."index.php";
+//$bk = baseurl."index.php";
 error_reporting(0);
 if(!isset($_SESSION['login_hash'])) 
 { 
@@ -15,26 +15,32 @@ if(!isset($_SESSION['login_hash']))
 }
 if(!isset($_SESSION['login_hash'])){
   echo "<script>alert('anda harus login dulu..!');</script>";
- 
-  header("Location:".$bk);
+  header("Location:".baseurl);
 } 
 ?>
+<script>
+   $("#TabelPelangganb").DataTable();
+   $('.dataTables_length').addClass('col-xs-3');
+   $('.dataTables_info').addClass('col-xs-4');
+   $('.paginate_previous').addClass('btn btn-default');
+   $('.paginate_next').addClass('btn btn-default');
+   $('.paginate_button').addClass('btn btn-default btn-group');
+   $('.paginate_button').addClass('btn btn-default btn-group');
 
-
-
+</script>
     <!--Data table-->
     <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
     <div class="box-body no-padding">
         <div class="mailbox-messages">
-            <table id="DataTablepelangganAktif" class="table table-hover table-striped">
+            <table id="TabelPelangganb" class="table table-hover table-striped ">
                 <thead>
                     <tr>
                         <th> No</th>
-                        <th style="min-width: 50px;">Sataus</th>
-                        <th style="min-width: 50px;"></th>
-                        <th> Nama</th>
-                        <th>HP</th>
-                        <th style="min-width: 40%;">Alamat</th>
+                        <th >Sataus</th>
+                        <th ></th>
+                        <th > Nama</th>
+                        <th >HP</th>
+                        <th >Alamat</th>
                         <th>Paket</th>
                         <th>Perangkat</th>
                         <th>Awal pelanggan</th>
@@ -46,7 +52,7 @@ if(!isset($_SESSION['login_hash'])){
                     /* JOIN tb_perangkat
                           ON  tb_pelanggan.id_perangkat=tb_perangkat.id_perangkat 
                           */
-  echo  $st = mysql_real_escape_string($_GET['pelanggan']);
+  $st = mysql_real_escape_string($_GET['pelanggan']);
   if(!isset($_GET['pelanggan']) && !isset($_GET['id'])){
    // $st=$_GET['pelanggan'];
  $queryA = mysql_query("SELECT tb_pelanggan.*, tb_paket.paket, tb_paket.keterangan, tb_perangkat.merek, tb_perangkat.mac_address, tb_perangkat.status as status_peragkat  FROM `tb_pelanggan` 
@@ -76,7 +82,7 @@ if(!isset($_SESSION['login_hash'])){
                           ON  tb_pelanggan.id_perangkat=tb_perangkat.id_perangkat 
                           where tb_pelanggan.status ='".$st."'
                           ORDER BY `tb_pelanggan`.`id_pelanggan` ASC");
-        echo 'tampil semua ';
+        
   }  
     $i = 1;
     // tampilkan data pelanggan selama masih ada
@@ -200,7 +206,6 @@ function statusPel(a,b){
 function sudah(){
 $('Status Sudah diubah').dialog({
   modal: true
- 
 });  
 }
 </script>
@@ -251,7 +256,7 @@ $('Status Sudah diubah').dialog({
                             <?php echo "<a href='#' onclick='profile()'>".$dataA['nama']."</a>"; ?> </td>
                         <td>
                             <?php echo "0".$dataA['hp'] ?> </td>
-                        <td class="mailbox-subject" style="width: 100%;">
+                        <td class="mailbox-subject" style="width: 20%;">
                             <?php $kets=$dataA['alamat']; echo  textSingkat($kets,70); ?>
                         </td>
                         <td style="background: #dafbe6;">
@@ -284,12 +289,12 @@ $('Status Sudah diubah').dialog({
     </div>
 
     <script>
-        $("#DataTablepelanggan-aktifx").DataTable({
+        $("#TabelPelanggan").DataTable({
             "fixedColumns": false,
-            "responsive": false,
+            "responsive": true,
             "ordering": true,
             //"scrollY": false,
-            "scrollX": false,
+            "scrollX": true,
             "scrollCollapse": true,
             "fixedColumns": {
                 "leftColumns": 1,

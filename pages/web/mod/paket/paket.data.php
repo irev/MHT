@@ -13,7 +13,7 @@ if(!isset($_SESSION))
     }else{} 
 ?>
 
-                    <table id="DataTableGangguan" class="table table-hover table-striped">
+                    <table id="DataTablePaket" class="table table-hover table-striped table-responsive">
                     <thead>
                       <tr>
                         <th style="max-width: 5px;">No</th>
@@ -79,15 +79,6 @@ if(!isset($_SESSION))
 
 
 <script> 
-$(function () {
-   $("#DataTableGangguan").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
+ $("#DataTablePaket").DataTable();
+ 
 </script>

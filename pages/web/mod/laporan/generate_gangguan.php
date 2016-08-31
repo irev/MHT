@@ -69,7 +69,7 @@ $pdf->Ln(0.5);
 $pdf->Text(1,3.9,'Laporan Gangguan',0,0,'C');
 $pdf->SetFont('Times','',8);
 //label 
-$pdf->Text(1,(4.5),'Priode : '.$dari.' s.d '.$sampai );
+$pdf->Text(1,(4.5),'Priode : '.tgl_indonesia(date( 'Y-m-d',strtotime($dari))).' s.d '.tgl_indonesia(date( 'Y-m-d',strtotime($sampai))) );
 //$pdf->Text(1,(4.5), "SELECT * FROM `tb_gangguan` WHERE `tgl_pelaporan`  BETWEEN '$dari' AND '$sampai' ORDER BY `tb_gangguan`.`id_gangguan` ASC" ); /// untuk tampil tes TEST 
 
 $pdf->Cell((0.8),(0.5), 'NO','LRTB',0,'C');
@@ -85,7 +85,7 @@ $pdf->Cell((1.5),(0.5), 'KET','LRTB',0,'C');
 
 
 if (isset($_GET['thn'])) {
-	$query ="SELECT tb_gangguan.*,tb_pelanggan.nama as pelanggan, tb_pelanggan.alamat as alamat, tb_pelanggan.hp as hp  FROM `tb_gangguan` LEFT JOIN tb_pelanggan on (tb_pelanggan.id_pelanggan=tb_gangguan.id_pelanggan) WHERE `tgl_pelaporan` BETWEEN '$dari' AND '$sampai' ORDER BY `tb_gangguan`.`id_gangguan` ASC";
+	$query ="SELECT tb_gangguan.*,tb_pelanggan.nama as pelanggan, tb_pelanggan.alamat as alamat, tb_pelanggan.hp as hp  FROM `tb_gangguan` LEFT JOIN tb_pelanggan on (tb_pelanggan.id_pelanggan=tb_gangguan.id_pelanggan) WHERE `tgl_gangguan` BETWEEN '$dari' AND '$sampai' OR tgl_gangguan LIKE '$sampai%' ORDER BY `tb_gangguan`.`id_gangguan` ASC";
 
 }else{
 	$query ="SELECT tb_gangguan.*,tb_pelanggan.nama as pelanggan, tb_pelanggan.alamat as alamat, tb_pelanggan.hp as hp  FROM `tb_gangguan` LEFT JOIN tb_pelanggan on (tb_pelanggan.id_pelanggan=tb_gangguan.id_pelanggan) ORDER BY `tb_gangguan`.`id_gangguan` ASC";
@@ -101,19 +101,23 @@ while ($data = mysql_fetch_array($qr)) {
 	$pdf->Ln();
 	$pdf->Cell((0.8),(0.5), $no,'LRTB',0,'C');
 	$pdf->Cell((1.4),(0.5), $data[0],'LRTB',0,'C');
-	$pdf->Cell((1.5),(0.5), $data[1],'LRTB',0,'C');
+	//$tanggal=date_format($data[1], 'Y-m-d');
+	$tanggal=sprintf("%10s",$data[1]);
+	$pdf->Cell((1.5),(0.5), date( 'd-m-Y',strtotime($data[1])),'LRTB',0,'C');
 	$pdf->Cell((3.0),(0.5), $data[7],'LRTB',0,'L');
 	$pdf->Cell((3.0),(0.5), $data[5],'LRTB',0,'L');
 	$pdf->Cell((5.2),(0.5), $data[8],'LRTB',0,'L');
 	$pdf->Cell((2.5),(0.5), '0'.$data[9] ,'LRTB',0,'C');
 	//$pdf->Cell((1.5),(0.5), 'VIA','LRTB',0,'C');
-	$pdf->Cell((1.5),(0.5), $data[6],'LRTB',0,'C');
+	$pdf->Cell((1.5),(0.5), '','LRTB',0,'C');
 }
 }else{
 	$pdf->Ln();
 	$pdf->Cell((18.9),(0.5), 'TIDAK ADA DATA','LRTB',0,'C');
 	$pdf->Ln();
 	$pdf->Cell((18.9),(0.5), 'Silahkan coba lagi, pilih priode tanggal yang akan dicetak. ','LRTB',0,'C');
+	//tes $pdf->Ln();
+	//tes $pdf->Cell((18.9),(0.5), $query,'LRTB',0,'C');
 }
 
 //$pdf->SetY(24.0);

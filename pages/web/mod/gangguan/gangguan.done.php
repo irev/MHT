@@ -1,11 +1,9 @@
+
+
 <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Daftar Gangguan Telah Diperbaiki</h3>
                   <div class="box-tools pull-right">
-                    <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
                   </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -93,18 +91,3 @@
             </div>
 <!-- akhir kode modal dialog -->              
 
-<script type="text/javascript">
-  $('#DataTableDone').DataTable({
-    "autoWidth": true,
-      "language": {
-            "lengthMenu"   : " Tampil _MENU_ record per halaman",
-            "zeroRecords"  : " Maaf - Data tidak ditemukan",
-            "info"         : " Menampilkan halaman ke _PAGE_ dari _PAGES_ halaman",
-            "infoEmpty"    : " Data tidak tersedia",
-            "search"       : " Cari Data : ",
-            "previus"      : " Cari Data : ",
-            "next"         : " Cari Data : ",
-            "infoFiltered" : " (filtered from _MAX_ total records)"
-        }
-    });
-</script>

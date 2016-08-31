@@ -51,11 +51,23 @@ function datablock(){
 function tabadd(){
  $('#data-add').load('pages/web/mod/perangkat/perangkat.form.php?id=0&ket=Process');
 }
-  //  $('#data-pending').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=0');
-  //  $('#data-gangguan').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=1');
-  //  $('#data-cuti').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=2');
-  //  $('#data-block').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=3');
-  // $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.pending.php?pelanggan=4');
+
+
+ //$('#DataTableDataGangguan').DataTable();
+ 
+    function dataTabel(){ 
+   // $('.table').DataTable();
+        $('.dataTables_length').addClass('col-xs-3');
+        $('.dataTables_info').addClass('col-xs-4');
+        $('.paginate_previous').addClass('btn-flat btn-default');
+        $('.paginate_next').addClass('btn-flat btn-default');
+        $('.paginate_button').addClass('btn-flat btn-default btn-group');
+        $('.current').addClass('btn-flat btn-primary btn-group');
+  }    
+    window.onload =dataTabel;
+    setInterval(dataTabel, 3000); 
+
+
 </script>
 
 <!--script src="pages/web/mod/gangguan/js/aplikasi.js"></script-->

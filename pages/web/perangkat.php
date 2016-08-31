@@ -13,63 +13,6 @@ if(!isset($_SESSION['login_hash'])){
 
 ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript">
-//Atribut halaman
-$('#judulhal').text('Data Perangkat');
-$('#breadcrumb').text('Perangkat');
-
-	    //Fungsi Menu
-    function list_allpelanggan(){
-        $(this).addClass('active');
-        $('#data-pelanggan').load('pages/cs/mod/pelanggan/pelanggan.alldata.php');
-    }
-    function list_pelanggan(){
-        $(this).addClass('active');
-        $('#data-pelanggan').load('pages/cs/mod/pelanggan/pelanggan.data.php');
-    }  
-    function list_done(){
-        $(this).addClass('active');
-        //$(this).removeClass("tot");
-        $('#data-pelanggan').load('pages/cs/mod/pelanggan/pelanggan.done.php');
-    }
-    function list_OnProccess(){
-        $(this).addClass('active');
-        $('#data-pelanggan').load('pages/cs/mod/pelanggan/pelanggan.OnProccess.php');
-    } 
-    function list_Pending(){
-        $(this).addClass('active');
-        $('#data-pelanggan').load('pages/cs/mod/pelanggan/pelanggan.pending.php');
-    }
-    function list_surat(){
-        $(this).addClass('active');
-        $('#data-pelanggan').load('pages/cs/mod/pelanggan/pelanggan.surat.php');
-    }
-    
-    //TEKNISI 
-    function list_teknisi(){
-        $('#data-pelanggan').load('pages/web/mod/teknisi/teknisi.data.php');
-    }      
-    function ditail_teknisi(){
-        $('#data-pelanggan').load('pages/web/mod/teknisi/teknisi.detail.php');
-    } 
-
-
-    function pelanggan_baru(){
-        $('#data-pelanggan').load('pages/cs/mod/pelanggan/pelanggan.form.php');
-    }  
-    function list_baru(){
-        $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.baru.php');
-    } 
-    function list_aktif(){
-        $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.aktif.php');
-    } 
-    function list_cuti(){
-        $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.cuti.php');
-    }  
-    function list_block(){
-        $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.block.php');
-    }  
-</script>
 <section class="content">
 <div class="row">
 <!--h3>Data pelanggan 
@@ -78,7 +21,7 @@ $('#breadcrumb').text('Perangkat');
 			</a>
 </h3-->
 <script type="text/javascript">
-$('#data-widgets').load('pages/web/widgets.prangkat.php');
+//$('#data-widgets').load('pages/web/widgets.prangkat.php');
 $('#data-all').load('pages/web/mod/perangkat/perangkat.data.php?status=0&ket=all');
 function dataall(){
  $('#data-all').load('pages/web/mod/perangkat/perangkat.data.php?status=0&ket=all');
@@ -104,13 +47,11 @@ function datablock(){
 function tabadd(){
  $('#data-add').load('pages/web/mod/perangkat/perangkat.form.php?id=0&ket=baik');
 }
-  //  $('#data-aktif').load('pages/web/mod/pelanggan/pelanggan.aktif.php?pelanggan=0');
-  //  $('#data-stok').load('pages/web/mod/pelanggan/pelanggan.aktif.php?pelanggan=1');
-  //  $('#data-cuti').load('pages/web/mod/pelanggan/pelanggan.aktif.php?pelanggan=2');
-  //  $('#data-block').load('pages/web/mod/pelanggan/pelanggan.aktif.php?pelanggan=3');
-  // $('#data-pelanggan').load('pages/web/mod/pelanggan/pelanggan.aktif.php?pelanggan=4');
 </script>
-<div id="data-widgets"></div>
+ <div class="col-md-12">
+ <div id='widget_perangkat'></div>
+</div>
+
 <!-- col Data TAB-->
  <div class="col-md-12">
               <div class="nav-tabs-custom">
@@ -256,6 +197,14 @@ function tabadd(){
 //include('_script.php');
 ?>
 <script type="text/javascript">
+$("#breadcrumb, #judulhal").text('Data Perangkat');
+var widget_perangkat = "widget/widget_perangkat.php";
+ function widget(){
+       $('#widget_perangkat').load(widget_perangkat);
+ }
+    window.onload =widget;
+    setInterval(widget, 3000);
+
 function batal(){
     $("#koorX").val('');
     $("#koorY").val('');
